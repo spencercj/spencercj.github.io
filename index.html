@@ -74,6 +74,74 @@
       margin-bottom: 12px;
     }
 
+    /* EXPERIENCE LAYOUT */
+    .experience-split {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .experience-list h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .experience-list .job-meta {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .experience-list ul {
+      padding-left: 18px;
+      margin-bottom: 24px;
+    }
+
+    .experience-list ul li {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    /* RESUME / CV THUMBNAILS */
+    .doc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .doc-link {
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+    }
+
+    .doc-thumbnail {
+      width: 100%;
+      aspect-ratio: 8.5 / 11;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #888;
+      background: #f9f9f9;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .doc-link:hover .doc-thumbnail {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .doc-label {
+      font-size: 0.8rem;
+      margin-top: 6px;
+      color: #555;
+    }
+
     /* PROJECT GRID */
     .project-grid {
       display: grid;
@@ -116,6 +184,7 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fill this in later.</p>
     <nav>
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#certifications">Certifications</a>
       <a href="#projects">Projects</a>
@@ -129,6 +198,43 @@
     <div class="section" id="about">
       <h2>About</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fill this in with a bit more about your background, what you're looking for, and what drives you toward cybersecurity.</p>
+    </div>
+
+    <div class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="experience-split">
+
+        <div class="experience-list">
+          <h3>IT Support Specialist</h3>
+          <p class="job-meta">Company Name · Month Year – Present</p>
+          <ul>
+            <li>Resolved helpdesk tickets across hardware, software, and connectivity issues</li>
+            <li>Supported Dell docking stations, warehouse printers, and ERP/order management systems</li>
+            <li>Documented solutions and maintained internal IT knowledge base</li>
+            <li>Add more bullets from your actual resume here</li>
+          </ul>
+
+          <h3>Previous Role Title</h3>
+          <p class="job-meta">Company Name · Month Year – Month Year</p>
+          <ul>
+            <li>Bullet point from your resume</li>
+            <li>Bullet point from your resume</li>
+            <li>Bullet point from your resume</li>
+          </ul>
+        </div>
+
+        <div class="doc-links">
+          <a href="resume.pdf" target="_blank" class="doc-link">
+            <div class="doc-thumbnail">Resume preview</div>
+            <p class="doc-label">📄 Resume</p>
+          </a>
+          <a href="cv.pdf" target="_blank" class="doc-link">
+            <div class="doc-thumbnail">CV preview</div>
+            <p class="doc-label">📄 CV</p>
+          </a>
+        </div>
+
+      </div>
     </div>
 
     <div class="section" id="skills">
