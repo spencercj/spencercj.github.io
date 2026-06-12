@@ -54,7 +54,7 @@
     /* RIGHT PANE */
     .main {
       flex: 1;
-      padding: 40px 50px;
+      padding: 40px 70px;
     }
 
     .section {
@@ -74,11 +74,17 @@
       margin-bottom: 12px;
     }
 
+    /* PROJECT GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
     .project-card {
       border: 1px solid #ccc;
       border-radius: 6px;
       padding: 16px;
-      margin-bottom: 16px;
     }
 
     .project-card h3 {
@@ -129,9 +135,19 @@
 
     <div class="section" id="projects">
       <h2>Projects</h2>
-      <div class="project-card">
-        <h3>DeskStretch</h3>
-        <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>DeskStretch</h3>
+          <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project Title</h3>
+          <p>Brief description of what you built, what tools you used, and what you learned.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project Title</h3>
+          <p>Brief description of what you built, what tools you used, and what you learned.</p>
+        </div>
       </div>
     </div>
 
