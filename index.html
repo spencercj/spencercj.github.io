@@ -85,6 +85,16 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
 
     .project-card h3 {
@@ -136,18 +146,18 @@
     <div class="section" id="projects">
       <h2>Projects</h2>
       <div class="project-grid">
-        <div class="project-card">
+        <a href="projects.html#deskstretch" class="project-card">
           <h3>DeskStretch</h3>
           <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
-        </div>
-        <div class="project-card">
+        </a>
+        <a href="projects.html#project-two" class="project-card">
           <h3>Project Title</h3>
           <p>Brief description of what you built, what tools you used, and what you learned.</p>
-        </div>
-        <div class="project-card">
+        </a>
+        <a href="projects.html#project-three" class="project-card">
           <h3>Project Title</h3>
           <p>Brief description of what you built, what tools you used, and what you learned.</p>
-        </div>
+        </a>
       </div>
     </div>
 
