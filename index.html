@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spence | Cybersecurity Portfolio</title>
+  <title>Spencer J. | Cybersecurity Portfolio</title>
   <style>
     * {
       margin: 0;
@@ -19,7 +19,7 @@
 
     /* LEFT SIDEBAR */
     .sidebar {
-      width: 260px;
+      width: 300px;
       min-height: 100vh;
       position: sticky;
       top: 0;
@@ -44,45 +44,17 @@
       margin-bottom: 20px;
     }
 
-    .sidebar hr {
-      border: none;
-      border-top: 1px solid #ccc;
-      margin-bottom: 20px;
-    }
-
     .sidebar nav a {
-      display: flex;
-      align-items: center;
-      margin-bottom: 14px;
+      display: block;
+      margin-bottom: 10px;
       text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #000;
-      gap: 6px;
-      transition: gap 0.2s ease, color 0.2s ease;
-    }
-
-    .sidebar nav a .arrow {
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      font-style: normal;
-    }
-
-    .sidebar nav a:hover .arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .sidebar nav a:hover {
-      gap: 10px;
+      font-size: 0.9rem;
     }
 
     /* RIGHT PANE */
     .main {
       flex: 1;
-      padding: 40px 60px;
-      max-width: 820px;
+      padding: 40px 70px;
     }
 
     .section {
@@ -106,28 +78,16 @@
     .experience-split {
       display: flex;
       gap: 30px;
+      align-items: stretch;
     }
 
     .experience-list {
-      flex: 1;
+      flex: 7;
     }
 
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .job-header h3 {
+    .experience-list h3 {
       font-size: 1rem;
-    }
-
-    .job-location {
-      font-size: 0.8rem;
-      color: #888;
-      white-space: nowrap;
-      margin-left: 12px;
+      margin-bottom: 4px;
     }
 
     .experience-list .job-meta {
@@ -149,13 +109,12 @@
 
     /* STACK WRAPPER */
     .stack-wrapper {
+      flex: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      align-self: center;
-      padding-bottom: 24px;
     }
 
     /* PHOTO STACK */
@@ -340,14 +299,13 @@
     <h1>Spencer Jacobs</h1>
     <p class="title">'26 Cybersecurity Graduate · IT Support</p>
     <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager; backed by NSA & Google Cybersecurity certifications. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-    <hr>
     <nav>
-      <a href="#about"><span class="arrow">›</span>About</a>
-      <a href="#experience"><span class="arrow">›</span>Experience</a>
-      <a href="#skills"><span class="arrow">›</span>Skills</a>
-      <a href="#certifications"><span class="arrow">›</span>Certifications</a>
-      <a href="#projects"><span class="arrow">›</span>Projects</a>
-      <a href="#contact"><span class="arrow">›</span>Contact</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
   </aside>
 
@@ -356,7 +314,7 @@
 
     <div class="section" id="about">
       <h2>About</h2>
-      <p>Fill this in with a bit more about your background, what you're looking for, and what drives you toward cybersecurity.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fill this in with a bit more about your background, what you're looking for, and what drives you toward cybersecurity.</p>
     </div>
 
     <div class="section" id="experience">
@@ -364,29 +322,41 @@
       <div class="experience-split">
 
         <div class="experience-list">
-
-          <div class="job-header">
-            <h3>Your Job Title</h3>
-            <span class="job-location">City, State</span>
-          </div>
-          <p class="job-meta">Company Name · Month Year – Present</p>
+          <h3>IT Support Specialist Intern</h3>
+          <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
           <ul>
-            <li>Bullet point</li>
-            <li>Bullet point</li>
-            <li>Bullet point</li>
+            <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
+            <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
+            <li>Safeguard data integrity and availability of VAI S2K ERP system: a platform handling sensitive financial/operational data, by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
+            <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface and eliminate unaccounted endpoints from the organization's environment.</li>
+            <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints and maintaining documented records of enforcement actions.</li>
           </ul>
 
-          <div class="job-header">
-            <h3>Previous Role Title</h3>
-            <span class="job-location">City, State</span>
-          </div>
-          <p class="job-meta">Company Name · Month Year – Month Year</p>
+          <h3>Learning Assistant for Professor Betsy Campbell</h3>
+          <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
           <ul>
-            <li>Bullet point</li>
-            <li>Bullet point</li>
-            <li>Bullet point</li>
+            <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy for students of diverse academic backgrounds.</li>
+            <li>Evaluated and delivered structured feedback on 900+ student submissions per semester, maintaining consistent grading standards across a high-volume introductory course.</li>
+            <li>Coordinated with course faculty and fellow learning assistants to align grading standards, communicate course updates, and ensure consistent academic support across all instructional channels.</li>
           </ul>
 
+          <h3>Congressional Internship Under State Rep. David Madsen</h3>
+          <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
+          <ul>
+            <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation across internal systems.</li>
+            <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
+            <li>Used digital casework tools to continuously track and update 200+ constituent issues, streamlining workflows and improving information flow within the office.</li>
+            <li>Assisted in resolving 200+ constituent service inquiries, delivering clear, secure communication and timely updates.</li>
+          </ul>
+
+          <h3>Shift Supervisor</h3>
+          <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
+          <ul>
+            <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift, using internal IT systems (inventory, scheduling, and workflow management) to coordinate tasks and maintain accurate, compliant data.</li>
+            <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift, protecting sensitive financial data and customer information.</li>
+            <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
+            <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
+          </ul>
         </div>
 
         <!-- PHOTO STACK -->
