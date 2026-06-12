@@ -5,29 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spence | Cybersecurity Portfolio</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      display: flex;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: 300px;
+      min-height: 100vh;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      padding: 40px 30px;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .sidebar .title {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .sidebar p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    /* RIGHT PANE */
+    .main {
+      flex: 1;
+      padding: 40px 50px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .project-card {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
-  <h1>Hey, I'm Spence</h1>
-  <p>Cybersecurity grad from Penn State. Currently working in IT support while pursuing CompTIA certs and building projects.</p>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h1>Spencer Jacobs</h1>
+    <p class="title">Cybersecurity Graduate · IT Support</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fill this in later.</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
 
-  <h2>Skills</h2>
-  <p>Networking, IT Support, Linux, Security fundamentals</p>
+  <!-- MAIN SCROLLABLE PANE -->
+  <main class="main">
 
-  <h2>Certifications</h2>
-  <p>Google Cybersecurity Certificate · PSU Networking Certificate · CompTIA Network+ (in progress)</p>
+    <div class="section" id="about">
+      <h2>About</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fill this in with a bit more about your background, what you're looking for, and what drives you toward cybersecurity.</p>
+    </div>
 
-  <h2>Projects</h2>
-  <p>DeskStretch — A desktop stretch reminder app built with Electron and React</p>
+    <div class="section" id="skills">
+      <h2>Skills</h2>
+      <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting</p>
+    </div>
 
-  <h2>Contact</h2>
-  <p>GitHub: github.com/spencercj</p>
+    <div class="section" id="certifications">
+      <h2>Certifications</h2>
+      <p>Google Cybersecurity Certificate</p>
+      <p>PSU Networking Certificate</p>
+      <p>CompTIA Network+ <em>(in progress)</em></p>
+    </div>
+
+    <div class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>DeskStretch</h3>
+        <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p>GitHub: <a href="https://github.com/spencercj">github.com/spencercj</a></p>
+      <p>LinkedIn: your link here</p>
+      <p>Email: your email here</p>
+    </div>
+
+  </main>
 
 </body>
 </html>
