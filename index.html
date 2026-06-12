@@ -104,42 +104,122 @@
       margin-bottom: 4px;
     }
 
-    /* RESUME / CV THUMBNAILS */
-    .doc-links {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    /* PHOTO STACK */
+    .doc-stack {
+      position: relative;
+      width: 120px;
+      height: 160px;
+      cursor: pointer;
+      margin: 0 auto;
     }
 
-    .doc-link {
-      text-decoration: none;
-      color: inherit;
-      text-align: center;
-    }
-
-    .doc-thumbnail {
-      width: 100%;
-      aspect-ratio: 8.5 / 11;
+    .doc-stack .card {
+      position: absolute;
+      width: 100px;
+      height: 140px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      background: #f9f9f9;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #888;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .doc-stack .card-back {
+      top: 10px;
+      left: 10px;
+      transform: rotate(6deg);
+      z-index: 1;
+      background: #eee;
+    }
+
+    .doc-stack .card-front {
+      top: 0;
+      left: 0;
+      transform: rotate(-2deg);
+      z-index: 2;
+    }
+
+    .doc-stack:hover .card-front {
+      transform: rotate(-5deg) translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .doc-stack:hover .card-back {
+      transform: rotate(9deg) translateY(2px);
+    }
+
+    .stack-label {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 170px;
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-doc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      z-index: 101;
+    }
+
+    .modal-doc a {
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 280px;
+      height: 380px;
       background: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #888;
+      font-size: 0.9rem;
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
-    .doc-link:hover .doc-thumbnail {
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    .modal-doc a:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       transform: translateY(-3px);
     }
 
-    .doc-label {
+    .modal-doc p {
+      font-size: 0.85rem;
+      color: #444;
+      margin: 0;
+    }
+
+    .modal-close-hint {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 0.8rem;
-      margin-top: 6px;
-      color: #555;
+      color: #999;
+      z-index: 102;
     }
 
     /* PROJECT GRID */
@@ -176,6 +256,19 @@
   </style>
 </head>
 <body>
+
+  <!-- MODAL OVERLAY -->
+  <div class="modal-overlay" id="docModal">
+    <div class="modal-doc">
+      <a href="resume.pdf" target="_blank">📄 View Resume</a>
+      <p>Resume</p>
+    </div>
+    <div class="modal-doc">
+      <a href="cv.pdf" target="_blank">📄 View CV</a>
+      <p>CV</p>
+    </div>
+    <p class="modal-close-hint">Click anywhere to close</p>
+  </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -223,15 +316,13 @@
           </ul>
         </div>
 
-        <div class="doc-links">
-          <a href="resume.pdf" target="_blank" class="doc-link">
-            <div class="doc-thumbnail">Resume preview</div>
-            <p class="doc-label">📄 Resume</p>
-          </a>
-          <a href="cv.pdf" target="_blank" class="doc-link">
-            <div class="doc-thumbnail">CV preview</div>
-            <p class="doc-label">📄 CV</p>
-          </a>
+        <!-- PHOTO STACK -->
+        <div>
+          <div class="doc-stack" id="docStack">
+            <div class="card card-back">CV</div>
+            <div class="card card-front">Resume</div>
+          </div>
+          <p class="stack-label">Resume & CV</p>
         </div>
 
       </div>
@@ -275,6 +366,24 @@
     </div>
 
   </main>
+
+  <script>
+    const stack = document.getElementById('docStack');
+    const modal = document.getElementById('docModal');
+
+    // open modal on stack click
+    stack.addEventListener('click', () => {
+      modal.classList.add('active');
+    });
+
+    // close modal when clicking the overlay background
+    modal.addEventListener('click', (e) => {
+      // only close if they clicked the overlay itself, not the doc cards
+      if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
