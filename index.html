@@ -79,7 +79,7 @@
       display: grid;
       grid-template-columns: 3fr 1fr;
       gap: 30px;
-      align-items: start;
+      align-items: center;
     }
 
     .experience-list h3 {
@@ -125,7 +125,6 @@
       justify-content: center;
       font-size: 0.75rem;
       color: #888;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .doc-stack .card-back {
@@ -152,11 +151,15 @@
       transform: rotate(9deg) translateY(2px);
     }
 
+    .doc-stack .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
     .stack-label {
       text-align: center;
       font-size: 0.8rem;
       color: #555;
-      margin-top: 170px;
+      margin-top: 175px;
     }
 
     /* MODAL OVERLAY */
@@ -170,10 +173,13 @@
       justify-content: center;
       gap: 30px;
       backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .modal-overlay.active {
       display: flex;
+      opacity: 1;
     }
 
     .modal-doc {
@@ -185,14 +191,13 @@
     }
 
     .modal-doc a {
-      display: block;
+      display: flex;
       border: 1px solid #ccc;
       border-radius: 8px;
       overflow: hidden;
       width: 280px;
       height: 380px;
       background: #f9f9f9;
-      display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
@@ -371,14 +376,26 @@
     const stack = document.getElementById('docStack');
     const modal = document.getElementById('docModal');
 
-    // open modal on stack click
     stack.addEventListener('click', () => {
-      modal.classList.add('active');
+      const front = stack.querySelector('.card-front');
+      const back = stack.querySelector('.card-back');
+
+      // fan out animation
+      front.style.transition = 'transform 0.3s ease';
+      back.style.transition = 'transform 0.3s ease';
+      front.style.transform = 'rotate(-15deg) translateX(-10px)';
+      back.style.transform = 'rotate(15deg) translateX(10px)';
+
+      // open modal after animation finishes
+      setTimeout(() => {
+        modal.classList.add('active');
+        // reset cards
+        front.style.transform = '';
+        back.style.transform = '';
+      }, 320);
     });
 
-    // close modal when clicking the overlay background
     modal.addEventListener('click', (e) => {
-      // only close if they clicked the overlay itself, not the doc cards
       if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
         modal.classList.remove('active');
       }
