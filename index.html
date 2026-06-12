@@ -45,10 +45,30 @@
     }
 
     .sidebar nav a {
-      display: block;
-      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #000;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+
+    .sidebar nav a .arrow {
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .sidebar nav a:hover .arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sidebar nav a:hover {
+      gap: 10px;
     }
 
     /* RIGHT PANE */
@@ -300,12 +320,12 @@
     <p class="title">'26 Cybersecurity Graduate · IT Support</p>
     <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager; backed by NSA & Google Cybersecurity certifications. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
     <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#about"><span class="arrow">›</span>About</a>
+      <a href="#experience"><span class="arrow">›</span>Experience</a>
+      <a href="#skills"><span class="arrow">›</span>Skills</a>
+      <a href="#certifications"><span class="arrow">›</span>Certifications</a>
+      <a href="#projects"><span class="arrow">›</span>Projects</a>
+      <a href="#contact"><span class="arrow">›</span>Contact</a>
     </nav>
   </aside>
 
