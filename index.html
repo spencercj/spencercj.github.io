@@ -278,6 +278,12 @@
       gap: 16px;
     }
 
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
     .project-card {
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -286,6 +292,7 @@
       color: inherit;
       display: block;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 120px;
     }
 
     .project-card:hover {
@@ -301,6 +308,12 @@
     .project-card p {
       font-size: 0.9rem;
       margin: 0;
+    }
+
+    .project-card.empty {
+      border: 1px dashed #ccc;
+      background: transparent;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -426,6 +439,9 @@
           <h3>Project Title</h3>
           <p>Brief description of what you built, what tools you used, and what you learned.</p>
         </a>
+        <div class="project-card empty"></div>
+        <div class="project-card empty"></div>
+        <div class="project-card empty"></div>
       </div>
     </div>
 
