@@ -76,17 +76,13 @@
 
     /* EXPERIENCE LAYOUT */
     .experience-split {
-      display: grid;
-      grid-template-columns: 3fr 1fr;
+      display: flex;
       gap: 30px;
       align-items: stretch;
     }
 
-    .stack-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .experience-list {
+      flex: 3;
     }
 
     .experience-list h3 {
@@ -111,13 +107,22 @@
       margin-bottom: 4px;
     }
 
+    /* STACK WRAPPER */
+    .stack-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
     /* PHOTO STACK */
     .doc-stack {
       position: relative;
       width: 120px;
       height: 160px;
       cursor: pointer;
-      margin: 0 auto;
     }
 
     .doc-stack .card {
@@ -132,6 +137,7 @@
       justify-content: center;
       font-size: 0.75rem;
       color: #888;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .doc-stack .card-back {
@@ -158,35 +164,42 @@
       transform: rotate(9deg) translateY(2px);
     }
 
-    .doc-stack .card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
     .stack-label {
-      text-align: center;
       font-size: 0.8rem;
       color: #555;
-      margin-top: 175px;
     }
 
     /* MODAL OVERLAY */
     .modal-overlay {
-      display: none;
       position: fixed;
       inset: 0;
       background: rgba(255, 255, 255, 0.92);
       z-index: 100;
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 30px;
       backdrop-filter: blur(4px);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
     }
 
     .modal-overlay.active {
-      display: flex;
       opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      transform: scale(0.92);
+      transition: transform 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
     }
 
     .modal-doc {
@@ -194,14 +207,12 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      z-index: 101;
     }
 
     .modal-doc a {
       display: flex;
       border: 1px solid #ccc;
       border-radius: 8px;
-      overflow: hidden;
       width: 280px;
       height: 380px;
       background: #f9f9f9;
@@ -231,7 +242,6 @@
       transform: translateX(-50%);
       font-size: 0.8rem;
       color: #999;
-      z-index: 102;
     }
 
     /* PROJECT GRID */
@@ -271,13 +281,15 @@
 
   <!-- MODAL OVERLAY -->
   <div class="modal-overlay" id="docModal">
-    <div class="modal-doc">
-      <a href="resume.pdf" target="_blank">📄 View Resume</a>
-      <p>Resume</p>
-    </div>
-    <div class="modal-doc">
-      <a href="cv.pdf" target="_blank">📄 View CV</a>
-      <p>CV</p>
+    <div class="modal-content">
+      <div class="modal-doc">
+        <a href="resume.pdf" target="_blank">📄 View Resume</a>
+        <p>Resume</p>
+      </div>
+      <div class="modal-doc">
+        <a href="cv.pdf" target="_blank">📄 View CV</a>
+        <p>CV</p>
+      </div>
     </div>
     <p class="modal-close-hint">Click anywhere to close</p>
   </div>
@@ -329,8 +341,7 @@
         </div>
 
         <!-- PHOTO STACK -->
-        <div>
-          <div class="stack-wrapper">
+        <div class="stack-wrapper">
           <div class="doc-stack" id="docStack">
             <div class="card card-back">CV</div>
             <div class="card card-front">Resume</div>
@@ -388,19 +399,17 @@
       const front = stack.querySelector('.card-front');
       const back = stack.querySelector('.card-back');
 
-      // fan out animation
-      front.style.transition = 'transform 0.3s ease';
-      back.style.transition = 'transform 0.3s ease';
-      front.style.transform = 'rotate(-15deg) translateX(-10px)';
-      back.style.transform = 'rotate(15deg) translateX(10px)';
+      // subtle fan out
+      front.style.transition = 'transform 0.25s ease';
+      back.style.transition = 'transform 0.25s ease';
+      front.style.transform = 'rotate(-8deg) translateX(-6px)';
+      back.style.transform = 'rotate(10deg) translateX(6px)';
 
-      // open modal after animation finishes
       setTimeout(() => {
         modal.classList.add('active');
-        // reset cards
         front.style.transform = '';
         back.style.transform = '';
-      }, 320);
+      }, 260);
     });
 
     modal.addEventListener('click', (e) => {
