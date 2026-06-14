@@ -8,149 +8,322 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      background-color: #008080;
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2a/XPbliss.jpg');
-      background-size: cover;
-      background-position: center;
+      background: url('https://upload.wikimedia.org/wikipedia/en/2/2a/XPbliss.jpg') center/cover no-repeat fixed;
       min-height: 100vh;
-      font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
       overflow: hidden;
     }
 
     .desktop {
-      width: 100vw;
+      display: flex;
       height: 100vh;
-      position: relative;
-      padding: 16px;
+      padding: 20px 20px 56px 20px;
+      gap: 16px;
+      align-items: flex-start;
     }
 
-    /* ── WINDOWS ── */
-    .window {
-      position: absolute;
-      user-select: none;
-    }
-
-    .window .title-bar {
-      cursor: grab;
-    }
-
-    .window .title-bar:active {
-      cursor: grabbing;
-    }
-
-    /* SIDEBAR */
+    /* ── SIDEBAR WINDOW ── */
     #sidebar-window {
-      width: 260px;
-      top: 30px;
-      left: 24px;
+      width: 300px;
+      min-width: 300px;
+      height: calc(100vh - 76px);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    #sidebar-window .title-bar {
+      cursor: default;
+      flex-shrink: 0;
     }
 
     #sidebar-window .window-body {
-      padding: 12px;
-      max-height: calc(100vh - 160px);
+      flex: 1;
       overflow-y: auto;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .sidebar-name {
+      font-size: 1.2rem;
       font-weight: 700;
-      font-size: 1rem;
       margin-bottom: 2px;
     }
 
     .sidebar-subtitle {
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       color: #555;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .sidebar-bio {
-      font-size: 0.72rem;
-      line-height: 1.5;
+      font-size: 0.82rem;
+      line-height: 1.6;
       color: #333;
-      margin-bottom: 12px;
       padding-bottom: 12px;
       border-bottom: 1px solid #ccc;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 6px;
-      font-size: 0.8rem;
+      gap: 10px;
+      padding: 6px 8px;
+      font-size: 0.88rem;
       cursor: pointer;
-      border-radius: 2px;
       color: #000;
       text-decoration: none;
-      margin-bottom: 2px;
+      border: 1px solid transparent;
     }
 
     .nav-item:hover {
-      background: #0000aa;
+      background: #000080;
       color: white;
+      border-color: #000080;
     }
 
-    .nav-icon { font-size: 15px; width: 20px; text-align: center; }
+    .nav-icon { font-size: 16px; width: 22px; text-align: center; }
 
-    /* CONTENT WINDOWS */
-    #about-window      { width: 560px; top: 30px;  left: 310px; }
-    #experience-window { width: 660px; top: 50px;  left: 330px; display: none; }
-    #skills-window     { width: 480px; top: 60px;  left: 340px; display: none; }
-    #certs-window      { width: 460px; top: 70px;  left: 350px; display: none; }
-    #projects-window   { width: 600px; top: 40px;  left: 320px; display: none; }
-    #contact-window    { width: 420px; top: 80px;  left: 360px; display: none; }
+    /* ── MAIN DRAGGABLE WINDOW ── */
+    #main-window {
+      position: absolute;
+      top: 20px;
+      left: 336px;
+      width: calc(100vw - 376px);
+      height: calc(100vh - 76px);
+      display: flex;
+      flex-direction: column;
+    }
 
-    .window-body {
-      max-height: 480px;
+    #main-window .title-bar {
+      cursor: grab;
+      flex-shrink: 0;
+    }
+
+    #main-window .title-bar:active {
+      cursor: grabbing;
+    }
+
+    #main-window .window-body {
+      flex: 1;
       overflow-y: auto;
-      padding: 12px 16px;
-      font-size: 0.82rem;
-      line-height: 1.6;
+      padding: 30px 50px;
+      scrollbar-width: thin;
     }
 
-    .window-body h3 {
-      font-size: 0.85rem;
+    /* ── SECTIONS ── */
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #000080;
+      color: #000080;
+    }
+
+    .section p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-split {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .experience-list { flex: 7; }
+
+    .experience-list h3 {
+      font-size: 0.92rem;
       font-weight: 700;
       margin-bottom: 2px;
-      margin-top: 4px;
     }
 
     .job-meta {
-      font-size: 0.75rem;
-      color: #555;
-      margin-bottom: 6px;
-    }
-
-    .window-body ul {
-      padding-left: 16px;
-      margin-bottom: 16px;
-    }
-
-    .window-body ul li {
       font-size: 0.78rem;
-      line-height: 1.6;
-      margin-bottom: 3px;
+      color: #555;
+      margin-bottom: 8px;
     }
 
-    .window-body p { margin-bottom: 8px; }
+    .experience-list ul {
+      padding-left: 18px;
+      margin-bottom: 24px;
+    }
 
-    /* PROJECT GRID */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .experience-list ul li {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    /* ── DOC STACK ── */
+    .stack-wrapper {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
     }
 
+    .doc-stack {
+      position: relative;
+      width: 120px;
+      height: 160px;
+      cursor: pointer;
+    }
+
+    .doc-stack .card {
+      position: absolute;
+      width: 100px;
+      height: 140px;
+      border: 2px solid #aaa;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #555;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .doc-stack .card-back {
+      top: 10px; left: 10px;
+      transform: rotate(5deg);
+      z-index: 1;
+      background: #ddd;
+    }
+
+    .doc-stack .card-front {
+      top: 0; left: 0;
+      transform: rotate(-2deg);
+      z-index: 2;
+    }
+
+    .doc-stack:hover .card-front {
+      transform: rotate(-5deg) translateY(-4px);
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .doc-stack:hover .card-back {
+      transform: rotate(9deg) translateY(2px);
+    }
+
+    .stack-label {
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.88);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      display: flex;
+      gap: 30px;
+      transform: scale(0.92);
+      transition: transform 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-doc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-doc a {
+      display: flex;
+      border: 2px solid #aaa;
+      width: 260px;
+      height: 360px;
+      background: #f0f0f0;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #555;
+      font-size: 0.85rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .modal-doc a:hover {
+      box-shadow: 2px 4px 16px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
+    }
+
+    .modal-close-hint {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      color: #888;
+    }
+
+    /* ── PROJECTS ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
     .project-card {
-      border: 1px solid #aaa;
-      padding: 10px;
+      border: 2px solid #aaa;
+      padding: 14px;
       text-decoration: none;
       color: #000;
       display: block;
-      background: #fff;
-      font-size: 0.78rem;
-      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      background: #f0f0f0;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      background: #000080;
     }
 
     .project-card:hover {
@@ -160,13 +333,17 @@
     }
 
     .project-card h3 {
-      font-size: 0.8rem;
-      margin-bottom: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
     }
 
-    .project-card p { margin: 0; font-size: 0.75rem; }
+    .project-card p {
+      font-size: 0.78rem;
+      margin: 0;
+      line-height: 1.5;
+    }
 
-    /* TASKBAR */
+    /* ── TASKBAR ── */
     .taskbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -174,74 +351,55 @@
       background: linear-gradient(180deg, #245edc 0%, #3c81f3 8%, #245edc 40%, #1c4fc7 100%);
       display: flex;
       align-items: center;
-      padding: 0 4px;
+      padding: 0 6px;
       gap: 6px;
       z-index: 9999;
       border-top: 2px solid #1a3fa0;
     }
 
     .start-btn {
-      background: linear-gradient(180deg, #57bb35 0%, #3a9e18 40%, #2d8010 100%);
+      background: linear-gradient(180deg, #57bb35, #2d8010);
       color: white;
       border: 1px solid #1a5c08;
-      padding: 3px 12px 3px 8px;
+      padding: 3px 14px 3px 8px;
       border-radius: 12px;
       font-size: 0.82rem;
       font-weight: 700;
-      cursor: pointer;
       font-style: italic;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      cursor: pointer;
       height: 28px;
     }
 
-    .taskbar-divider {
-      width: 1px;
-      height: 26px;
-      background: rgba(255,255,255,0.3);
-    }
-
-    .taskbar-items {
-      display: flex;
-      gap: 4px;
-      flex: 1;
-    }
-
-    .taskbar-item {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      padding: 2px 10px;
-      font-size: 0.72rem;
-      cursor: pointer;
-      min-width: 120px;
-      height: 26px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .taskbar-item.active {
-      background: rgba(0,0,0,0.2);
-      border-color: rgba(255,255,255,0.5);
-    }
-
     .taskbar-clock {
+      margin-left: auto;
       font-size: 0.72rem;
       color: white;
       padding: 0 10px;
       border-left: 1px solid rgba(255,255,255,0.3);
-      text-align: center;
     }
 
     /* snap-back */
-    .window.snapping {
-      transition: top 0.25s ease, left 0.25s ease;
+    #main-window.snapping {
+      transition: top 0.3s ease, left 0.3s ease;
     }
   </style>
 </head>
 <body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="docModal">
+  <div class="modal-content">
+    <div class="modal-doc">
+      <a href="resume.pdf" target="_blank">📄 View Resume</a>
+      <p>Resume</p>
+    </div>
+    <div class="modal-doc">
+      <a href="cv.pdf" target="_blank">📄 View CV</a>
+      <p>CV</p>
+    </div>
+  </div>
+  <p class="modal-close-hint">Click anywhere to close</p>
+</div>
 
 <div class="desktop">
 
@@ -259,150 +417,123 @@
       <p class="sidebar-name">Spencer Jacobs</p>
       <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-      <a class="nav-item" onclick="openWindow('about')"><span class="nav-icon">👤</span> About</a>
-      <a class="nav-item" onclick="openWindow('experience')"><span class="nav-icon">💼</span> Experience</a>
-      <a class="nav-item" onclick="openWindow('skills')"><span class="nav-icon">⚙️</span> Skills</a>
-      <a class="nav-item" onclick="openWindow('certs')"><span class="nav-icon">🎓</span> Certifications</a>
-      <a class="nav-item" onclick="openWindow('projects')"><span class="nav-icon">📁</span> Projects</a>
-      <a class="nav-item" onclick="openWindow('contact')"><span class="nav-icon">📬</span> Contact</a>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="window" id="about-window">
-    <div class="title-bar">
-      <div class="title-bar-text">👤 About — Spencer Jacobs</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('about-window')"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="window" id="experience-window">
-    <div class="title-bar">
-      <div class="title-bar-text">💼 Experience</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('experience-window')"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <h3>IT Support Specialist Intern</h3>
-      <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
-      <ul>
-        <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
-        <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
-        <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
-        <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface.</li>
-        <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
-      </ul>
-      <h3>Learning Assistant for Professor Betsy Campbell</h3>
-      <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
-      <ul>
-        <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts.</li>
-        <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
-        <li>Coordinated with course faculty and fellow learning assistants to align grading standards.</li>
-      </ul>
-      <h3>Congressional Internship Under State Rep. David Madsen</h3>
-      <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
-      <ul>
-        <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information.</li>
-        <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy.</li>
-        <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
-        <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication.</li>
-      </ul>
-      <h3>Shift Supervisor</h3>
-      <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
-      <ul>
-        <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
-        <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
-        <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
-        <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20%.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="window" id="skills-window">
-    <div class="title-bar">
-      <div class="title-bar-text">⚙️ Skills</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('skills-window')"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting · Splunk · Wireshark · MS365 · PowerShell · SolarWinds · GHIDRA · FTK Imager</p>
-    </div>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="window" id="certs-window">
-    <div class="title-bar">
-      <div class="title-bar-text">🎓 Certifications</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('certs-window')"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <p>Google Cybersecurity Certificate</p>
-      <p>PSU Networking Certificate</p>
-      <p>CompTIA Network+ <em>(in progress)</em></p>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="window" id="projects-window">
-    <div class="title-bar">
-      <div class="title-bar-text">📁 Projects</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('projects-window')"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <div class="project-grid">
-        <a href="projects.html#deskstretch" class="project-card">
-          <h3>🖥️ DeskStretch</h3>
-          <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
-        </a>
-        <a href="projects.html#project-two" class="project-card">
-          <h3>📄 Project Title</h3>
-          <p>Brief description of what you built, what tools you used, and what you learned.</p>
-        </a>
-        <a href="projects.html#project-three" class="project-card">
-          <h3>🔒 Project Title</h3>
-          <p>Brief description of what you built, what tools you used, and what you learned.</p>
-        </a>
+      <div class="sidebar-nav">
+        <a class="nav-item" href="#about" onclick="scrollTo('about')"><span class="nav-icon">👤</span>About</a>
+        <a class="nav-item" href="#experience" onclick="scrollTo('experience')"><span class="nav-icon">💼</span>Experience</a>
+        <a class="nav-item" href="#skills" onclick="scrollTo('skills')"><span class="nav-icon">⚙️</span>Skills</a>
+        <a class="nav-item" href="#certifications" onclick="scrollTo('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
+        <a class="nav-item" href="#projects" onclick="scrollTo('projects')"><span class="nav-icon">📁</span>Projects</a>
+        <a class="nav-item" href="#contact" onclick="scrollTo('contact')"><span class="nav-icon">📬</span>Contact</a>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT -->
-  <div class="window" id="contact-window">
-    <div class="title-bar">
-      <div class="title-bar-text">📬 Contact</div>
+  <!-- MAIN DRAGGABLE WINDOW -->
+  <div class="window" id="main-window">
+    <div class="title-bar" id="main-title-bar">
+      <div class="title-bar-text">📂 Spencer Jacobs — Portfolio</div>
       <div class="title-bar-controls">
         <button aria-label="Minimize"></button>
         <button aria-label="Maximize"></button>
-        <button aria-label="Close" onclick="closeWindow('contact-window')"></button>
+        <button aria-label="Close"></button>
       </div>
     </div>
-    <div class="window-body">
-      <p>GitHub: <a href="https://github.com/spencercj">github.com/spencercj</a></p>
-      <p>LinkedIn: your link here</p>
-      <p>Email: your email here</p>
+    <div class="window-body" id="main-body">
+
+      <div class="section" id="about">
+        <h2>About</h2>
+        <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
+      </div>
+
+      <div class="section" id="experience">
+        <h2>Experience</h2>
+        <div class="experience-split">
+          <div class="experience-list">
+
+            <h3>IT Support Specialist Intern</h3>
+            <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
+            <ul>
+              <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
+              <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
+              <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
+              <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface and eliminate unaccounted endpoints.</li>
+              <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
+            </ul>
+
+            <h3>Learning Assistant for Professor Betsy Campbell</h3>
+            <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
+            <ul>
+              <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
+              <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
+              <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
+            </ul>
+
+            <h3>Congressional Internship Under State Rep. David Madsen</h3>
+            <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
+            <ul>
+              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation.</li>
+              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
+              <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
+              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication and timely updates.</li>
+            </ul>
+
+            <h3>Shift Supervisor</h3>
+            <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
+            <ul>
+              <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
+              <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
+              <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
+              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
+            </ul>
+
+          </div>
+          <div class="stack-wrapper">
+            <div class="doc-stack" id="docStack">
+              <div class="card card-back">CV</div>
+              <div class="card card-front">Resume</div>
+            </div>
+            <p class="stack-label">Resume & CV</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="skills">
+        <h2>Skills</h2>
+        <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting · Splunk · Wireshark · MS365 · PowerShell · SolarWinds · GHIDRA · FTK Imager</p>
+      </div>
+
+      <div class="section" id="certifications">
+        <h2>Certifications</h2>
+        <p>Google Cybersecurity Certificate</p>
+        <p>PSU Networking Certificate</p>
+        <p>CompTIA Network+ <em>(in progress)</em></p>
+      </div>
+
+      <div class="section" id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <a href="projects.html#deskstretch" class="project-card">
+            <h3>🖥️ DeskStretch</h3>
+            <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
+          </a>
+          <a href="projects.html#project-two" class="project-card">
+            <h3>📄 Project Title</h3>
+            <p>Brief description of what you built, what tools you used, and what you learned.</p>
+          </a>
+          <a href="projects.html#project-three" class="project-card">
+            <h3>🔒 Project Title</h3>
+            <p>Brief description of what you built, what tools you used, and what you learned.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="section" id="contact">
+        <h2>Contact</h2>
+        <p>GitHub: <a href="https://github.com/spencercj">github.com/spencercj</a></p>
+        <p>LinkedIn: your link here</p>
+        <p>Email: your email here</p>
+      </div>
+
     </div>
   </div>
 
@@ -411,8 +542,6 @@
 <!-- TASKBAR -->
 <div class="taskbar">
   <button class="start-btn">⊞ start</button>
-  <div class="taskbar-divider"></div>
-  <div class="taskbar-items" id="taskbar-items"></div>
   <div class="taskbar-clock" id="clock"></div>
 </div>
 
@@ -426,80 +555,71 @@
   updateClock();
   setInterval(updateClock, 1000);
 
-  // SNAP-BACK ORIGINS
-  const origins = {};
-  document.querySelectorAll('.window').forEach(win => {
-    origins[win.id] = { top: win.offsetTop, left: win.offsetLeft };
-  });
+  // SMOOTH SCROLL inside main window
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    const body = document.getElementById('main-body');
+    if (el && body) {
+      body.scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
+    }
+    return false;
+  }
 
-  // DRAG
-  let dragging = null, offX = 0, offY = 0;
+  // DRAG MAIN WINDOW (snap back)
+  const mainWin = document.getElementById('main-window');
+  const titleBar = document.getElementById('main-title-bar');
+  const originTop  = mainWin.offsetTop;
+  const originLeft = mainWin.offsetLeft;
 
-  document.querySelectorAll('.title-bar').forEach(bar => {
-    bar.addEventListener('mousedown', e => {
-      if (e.target.tagName === 'BUTTON') return;
-      const win = bar.closest('.window');
-      dragging = win;
-      offX = e.clientX - win.offsetLeft;
-      offY = e.clientY - win.offsetTop;
-      win.style.zIndex = 100;
-      win.classList.remove('snapping');
-    });
+  let dragging = false, offX = 0, offY = 0;
+
+  titleBar.addEventListener('mousedown', e => {
+    if (e.target.tagName === 'BUTTON') return;
+    dragging = true;
+    offX = e.clientX - mainWin.offsetLeft;
+    offY = e.clientY - mainWin.offsetTop;
+    mainWin.style.zIndex = 100;
+    mainWin.classList.remove('snapping');
   });
 
   document.addEventListener('mousemove', e => {
     if (!dragging) return;
-    dragging.style.left = (e.clientX - offX) + 'px';
-    dragging.style.top  = (e.clientY - offY) + 'px';
+    mainWin.style.left = (e.clientX - offX) + 'px';
+    mainWin.style.top  = (e.clientY - offY) + 'px';
   });
 
   document.addEventListener('mouseup', () => {
     if (!dragging) return;
-    const id = dragging.id;
-    dragging.classList.add('snapping');
-    dragging.style.top  = origins[id].top + 'px';
-    dragging.style.left = origins[id].left + 'px';
-    dragging.style.zIndex = '';
-    dragging = null;
+    dragging = false;
+    mainWin.classList.add('snapping');
+    mainWin.style.top  = originTop + 'px';
+    mainWin.style.left = originLeft + 'px';
+    mainWin.style.zIndex = '';
   });
 
-  // OPEN / CLOSE
-  const windowMap = {
-    about: 'about-window',
-    experience: 'experience-window',
-    skills: 'skills-window',
-    certs: 'certs-window',
-    projects: 'projects-window',
-    contact: 'contact-window',
-  };
+  // DOC STACK MODAL
+  const stack = document.getElementById('docStack');
+  const modal = document.getElementById('docModal');
 
-  function openWindow(key) {
-    Object.values(windowMap).forEach(id => {
-      document.getElementById(id).style.display = 'none';
-    });
-    const win = document.getElementById(windowMap[key]);
-    win.style.display = 'block';
-    win.style.zIndex = 50;
-    updateTaskbar(key);
-  }
+  stack.addEventListener('click', () => {
+    const front = stack.querySelector('.card-front');
+    const back  = stack.querySelector('.card-back');
+    front.style.transition = 'transform 0.25s ease';
+    back.style.transition  = 'transform 0.25s ease';
+    front.style.transform  = 'rotate(-8deg) translateX(-6px)';
+    back.style.transform   = 'rotate(10deg) translateX(6px)';
+    setTimeout(() => {
+      modal.classList.add('active');
+      front.style.transform = '';
+      back.style.transform  = '';
+    }, 260);
+  });
 
-  function closeWindow(id) {
-    document.getElementById(id).style.display = 'none';
-    updateTaskbar(null);
-  }
-
-  // TASKBAR
-  const labels = { about:'About', experience:'Experience', skills:'Skills', certs:'Certifications', projects:'Projects', contact:'Contact' };
-  function updateTaskbar(key) {
-    const bar = document.getElementById('taskbar-items');
-    bar.innerHTML = '';
-    if (!key) return;
-    const btn = document.createElement('div');
-    btn.className = 'taskbar-item active';
-    btn.textContent = '🗂️ ' + labels[key];
-    btn.onclick = () => closeWindow(windowMap[key]);
-    bar.appendChild(btn);
-  }
+  modal.addEventListener('click', e => {
+    if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
+      modal.classList.remove('active');
+    }
+  });
 </script>
 
 </body>
