@@ -4,279 +4,202 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spencer J. | Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/xp.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
+      background-color: #008080;
+      background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2a/XPbliss.jpg');
+      background-size: cover;
+      background-position: center;
       min-height: 100vh;
-      background: #1a1a2e;
-      background-image: 
-        radial-gradient(ellipse at 20% 50%, #16213e 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, #0f3460 0%, transparent 50%);
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
       overflow: hidden;
     }
 
-    /* ── DESKTOP ── */
     .desktop {
       width: 100vw;
       height: 100vh;
       position: relative;
-      padding: 20px;
+      padding: 16px;
     }
 
-    /* ── WINDOW ── */
+    /* ── WINDOWS ── */
     .window {
       position: absolute;
-      background: #2d2d2d;
-      border: 1px solid #555;
-      border-radius: 6px 6px 4px 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-      min-width: 300px;
       user-select: none;
     }
 
-    /* ── TITLE BAR ── */
-    .title-bar {
-      background: linear-gradient(180deg, #4a90d9 0%, #1a5fb4 40%, #1456a8 100%);
-      padding: 6px 10px;
-      border-radius: 5px 5px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .window .title-bar {
       cursor: grab;
-      height: 32px;
     }
 
-    .title-bar:active {
+    .window .title-bar:active {
       cursor: grabbing;
     }
 
-    .title-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .window-icon {
-      font-size: 14px;
-    }
-
-    .title-bar-title {
-      color: white;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-
-    .title-bar-buttons {
-      display: flex;
-      gap: 4px;
-    }
-
-    .tb-btn {
-      width: 18px;
-      height: 18px;
-      border-radius: 3px;
-      border: 1px solid rgba(0,0,0,0.4);
-      font-size: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-weight: bold;
-      color: #222;
-    }
-
-    .tb-btn.minimize { background: linear-gradient(180deg, #ffe873, #d4a400); }
-    .tb-btn.maximize { background: linear-gradient(180deg, #8be08b, #28a028); }
-    .tb-btn.close    { background: linear-gradient(180deg, #ff7070, #cc0000); color: white; }
-
-    /* ── WINDOW CONTENT ── */
-    .window-content {
-      padding: 16px;
-      color: #ddd;
-      font-size: 0.85rem;
-      line-height: 1.6;
-      max-height: 400px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #555 #2d2d2d;
-    }
-
-    .window-content h3 {
-      color: #fff;
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .window-content .job-meta {
-      font-size: 0.78rem;
-      color: #888;
-      margin-bottom: 8px;
-    }
-
-    .window-content ul {
-      padding-left: 16px;
-      margin-bottom: 20px;
-    }
-
-    .window-content ul li {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      margin-bottom: 3px;
-      color: #bbb;
-    }
-
-    .window-content p {
-      color: #bbb;
-      margin-bottom: 8px;
-    }
-
-    /* ── SIDEBAR WINDOW ── */
+    /* SIDEBAR */
     #sidebar-window {
       width: 260px;
-      top: 40px;
-      left: 30px;
+      top: 30px;
+      left: 24px;
     }
 
-    #sidebar-window .window-content {
-      max-height: calc(100vh - 140px);
+    #sidebar-window .window-body {
+      padding: 12px;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
     }
 
     .sidebar-name {
-      font-size: 1.1rem;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
+      font-size: 1rem;
+      margin-bottom: 2px;
     }
 
-    .sidebar-title {
-      font-size: 0.75rem;
-      color: #888;
-      margin-bottom: 12px;
+    .sidebar-subtitle {
+      font-size: 0.72rem;
+      color: #555;
+      margin-bottom: 10px;
     }
 
     .sidebar-bio {
-      font-size: 0.78rem;
-      color: #aaa;
-      line-height: 1.6;
-      margin-bottom: 16px;
-      border-bottom: 1px solid #444;
-      padding-bottom: 16px;
-    }
-
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: #333;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ccc;
     }
 
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 7px 10px;
-      border-radius: 4px;
+      gap: 8px;
+      padding: 5px 6px;
+      font-size: 0.8rem;
       cursor: pointer;
-      transition: background 0.15s ease;
+      border-radius: 2px;
+      color: #000;
       text-decoration: none;
-      color: #ccc;
-      font-size: 0.82rem;
+      margin-bottom: 2px;
     }
 
     .nav-item:hover {
-      background: rgba(74, 144, 217, 0.25);
-      color: #fff;
+      background: #0000aa;
+      color: white;
     }
 
-    .nav-item .nav-icon {
-      font-size: 16px;
-      width: 20px;
-      text-align: center;
+    .nav-icon { font-size: 15px; width: 20px; text-align: center; }
+
+    /* CONTENT WINDOWS */
+    #about-window      { width: 560px; top: 30px;  left: 310px; }
+    #experience-window { width: 660px; top: 50px;  left: 330px; display: none; }
+    #skills-window     { width: 480px; top: 60px;  left: 340px; display: none; }
+    #certs-window      { width: 460px; top: 70px;  left: 350px; display: none; }
+    #projects-window   { width: 600px; top: 40px;  left: 320px; display: none; }
+    #contact-window    { width: 420px; top: 80px;  left: 360px; display: none; }
+
+    .window-body {
+      max-height: 480px;
+      overflow-y: auto;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      line-height: 1.6;
     }
 
-    /* ── CONTENT WINDOWS ── */
-    #about-window    { width: 580px; top: 40px;  left: 320px; }
-    #experience-window { width: 680px; top: 80px;  left: 360px; display: none; }
-    #skills-window   { width: 500px; top: 100px; left: 380px; display: none; }
-    #certs-window    { width: 480px; top: 110px; left: 390px; display: none; }
-    #projects-window { width: 620px; top: 60px;  left: 340px; display: none; }
-    #contact-window  { width: 440px; top: 120px; left: 370px; display: none; }
+    .window-body h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      margin-top: 4px;
+    }
 
-    /* ── PROJECT GRID ── */
+    .job-meta {
+      font-size: 0.75rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .window-body ul {
+      padding-left: 16px;
+      margin-bottom: 16px;
+    }
+
+    .window-body ul li {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      margin-bottom: 3px;
+    }
+
+    .window-body p { margin-bottom: 8px; }
+
+    /* PROJECT GRID */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .project-card {
-      background: #3a3a3a;
-      border: 1px solid #555;
-      border-radius: 4px;
-      padding: 12px;
-      cursor: pointer;
-      transition: background 0.15s ease;
+      border: 1px solid #aaa;
+      padding: 10px;
       text-decoration: none;
-      color: #ccc;
+      color: #000;
       display: block;
+      background: #fff;
+      font-size: 0.78rem;
+      cursor: pointer;
     }
 
     .project-card:hover {
-      background: #444;
-      border-color: #4a90d9;
+      background: #000080;
+      color: white;
+      border-color: #000080;
     }
 
     .project-card h3 {
-      color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       margin-bottom: 4px;
     }
 
-    .project-card p {
-      font-size: 0.78rem;
-      color: #999;
-      margin: 0;
-    }
+    .project-card p { margin: 0; font-size: 0.75rem; }
 
-    /* ── TASKBAR ── */
+    /* TASKBAR */
     .taskbar {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 36px;
-      background: linear-gradient(180deg, #3a3a3a, #2a2a2a);
-      border-top: 1px solid #555;
+      bottom: 0; left: 0; right: 0;
+      height: 38px;
+      background: linear-gradient(180deg, #245edc 0%, #3c81f3 8%, #245edc 40%, #1c4fc7 100%);
       display: flex;
       align-items: center;
-      padding: 0 8px;
-      gap: 8px;
+      padding: 0 4px;
+      gap: 6px;
       z-index: 9999;
+      border-top: 2px solid #1a3fa0;
     }
 
     .start-btn {
-      background: linear-gradient(180deg, #4a90d9, #1a5fb4);
+      background: linear-gradient(180deg, #57bb35 0%, #3a9e18 40%, #2d8010 100%);
       color: white;
-      border: none;
-      padding: 4px 14px;
-      border-radius: 4px;
-      font-size: 0.78rem;
+      border: 1px solid #1a5c08;
+      padding: 3px 12px 3px 8px;
+      border-radius: 12px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.5px;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
     }
 
     .taskbar-divider {
       width: 1px;
-      height: 24px;
-      background: #555;
+      height: 26px;
+      background: rgba(255,255,255,0.3);
     }
 
     .taskbar-items {
@@ -286,32 +209,35 @@
     }
 
     .taskbar-item {
-      background: #3d3d3d;
-      border: 1px solid #555;
-      color: #ccc;
-      padding: 3px 10px;
-      border-radius: 3px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 2px 10px;
       font-size: 0.72rem;
       cursor: pointer;
-      transition: background 0.1s;
+      min-width: 120px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .taskbar-item:hover, .taskbar-item.active {
-      background: #4a90d9;
-      color: white;
-      border-color: #6aa8e8;
+    .taskbar-item.active {
+      background: rgba(0,0,0,0.2);
+      border-color: rgba(255,255,255,0.5);
     }
 
     .taskbar-clock {
       font-size: 0.72rem;
-      color: #aaa;
-      padding: 0 8px;
-      border-left: 1px solid #555;
+      color: white;
+      padding: 0 10px;
+      border-left: 1px solid rgba(255,255,255,0.3);
+      text-align: center;
     }
 
-    /* snap-back animation */
+    /* snap-back */
     .window.snapping {
-      transition: top 0.3s ease, left 0.3s ease;
+      transition: top 0.25s ease, left 0.25s ease;
     }
   </style>
 </head>
@@ -319,168 +245,133 @@
 
 <div class="desktop">
 
-  <!-- SIDEBAR WINDOW -->
+  <!-- SIDEBAR -->
   <div class="window" id="sidebar-window">
-    <div class="title-bar" data-window="sidebar-window">
-      <div class="title-bar-left">
-        <span class="window-icon">🖥️</span>
-        <span class="title-bar-title">Spencer Jacobs</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">🖥️ Spencer Jacobs</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <p class="sidebar-name">Spencer Jacobs</p>
-      <p class="sidebar-title">'26 Cybersecurity Graduate · IT Support</p>
+      <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-      <div class="sidebar-nav">
-        <a class="nav-item" onclick="openWindow('about')">
-          <span class="nav-icon">👤</span> About
-        </a>
-        <a class="nav-item" onclick="openWindow('experience')">
-          <span class="nav-icon">💼</span> Experience
-        </a>
-        <a class="nav-item" onclick="openWindow('skills')">
-          <span class="nav-icon">⚙️</span> Skills
-        </a>
-        <a class="nav-item" onclick="openWindow('certs')">
-          <span class="nav-icon">🎓</span> Certifications
-        </a>
-        <a class="nav-item" onclick="openWindow('projects')">
-          <span class="nav-icon">📁</span> Projects
-        </a>
-        <a class="nav-item" onclick="openWindow('contact')">
-          <span class="nav-icon">📬</span> Contact
-        </a>
-      </div>
+      <a class="nav-item" onclick="openWindow('about')"><span class="nav-icon">👤</span> About</a>
+      <a class="nav-item" onclick="openWindow('experience')"><span class="nav-icon">💼</span> Experience</a>
+      <a class="nav-item" onclick="openWindow('skills')"><span class="nav-icon">⚙️</span> Skills</a>
+      <a class="nav-item" onclick="openWindow('certs')"><span class="nav-icon">🎓</span> Certifications</a>
+      <a class="nav-item" onclick="openWindow('projects')"><span class="nav-icon">📁</span> Projects</a>
+      <a class="nav-item" onclick="openWindow('contact')"><span class="nav-icon">📬</span> Contact</a>
     </div>
   </div>
 
-  <!-- ABOUT WINDOW -->
+  <!-- ABOUT -->
   <div class="window" id="about-window">
-    <div class="title-bar" data-window="about-window">
-      <div class="title-bar-left">
-        <span class="window-icon">👤</span>
-        <span class="title-bar-title">About — Spencer Jacobs</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('about-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">👤 About — Spencer Jacobs</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('about-window')"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
     </div>
   </div>
 
-  <!-- EXPERIENCE WINDOW -->
+  <!-- EXPERIENCE -->
   <div class="window" id="experience-window">
-    <div class="title-bar" data-window="experience-window">
-      <div class="title-bar-left">
-        <span class="window-icon">💼</span>
-        <span class="title-bar-title">Experience</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('experience-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">💼 Experience</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('experience-window')"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <h3>IT Support Specialist Intern</h3>
       <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
       <ul>
         <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
         <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
-        <li>Safeguard data integrity and availability of VAI S2K ERP system: a platform handling sensitive financial/operational data, by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
-        <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface and eliminate unaccounted endpoints from the organization's environment.</li>
-        <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints and maintaining documented records of enforcement actions.</li>
+        <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
+        <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface.</li>
+        <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
       </ul>
-
       <h3>Learning Assistant for Professor Betsy Campbell</h3>
       <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
       <ul>
-        <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
+        <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts.</li>
         <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
-        <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
+        <li>Coordinated with course faculty and fellow learning assistants to align grading standards.</li>
       </ul>
-
       <h3>Congressional Internship Under State Rep. David Madsen</h3>
       <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
       <ul>
-        <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation across internal systems.</li>
-        <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
+        <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information.</li>
+        <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy.</li>
         <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
-        <li>Assisted in resolving 200+ constituent service inquiries, delivering clear, secure communication and timely updates.</li>
+        <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication.</li>
       </ul>
-
       <h3>Shift Supervisor</h3>
       <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
       <ul>
-        <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift, using internal IT systems to coordinate tasks and maintain accurate, compliant data.</li>
+        <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
         <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
         <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
-        <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
+        <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20%.</li>
       </ul>
     </div>
   </div>
 
-  <!-- SKILLS WINDOW -->
+  <!-- SKILLS -->
   <div class="window" id="skills-window">
-    <div class="title-bar" data-window="skills-window">
-      <div class="title-bar-left">
-        <span class="window-icon">⚙️</span>
-        <span class="title-bar-title">Skills</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('skills-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">⚙️ Skills</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('skills-window')"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting · Splunk · Wireshark · MS365 · PowerShell · SolarWinds · GHIDRA · FTK Imager</p>
     </div>
   </div>
 
-  <!-- CERTS WINDOW -->
+  <!-- CERTIFICATIONS -->
   <div class="window" id="certs-window">
-    <div class="title-bar" data-window="certs-window">
-      <div class="title-bar-left">
-        <span class="window-icon">🎓</span>
-        <span class="title-bar-title">Certifications</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('certs-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">🎓 Certifications</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('certs-window')"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <p>Google Cybersecurity Certificate</p>
       <p>PSU Networking Certificate</p>
       <p>CompTIA Network+ <em>(in progress)</em></p>
     </div>
   </div>
 
-  <!-- PROJECTS WINDOW -->
+  <!-- PROJECTS -->
   <div class="window" id="projects-window">
-    <div class="title-bar" data-window="projects-window">
-      <div class="title-bar-left">
-        <span class="window-icon">📁</span>
-        <span class="title-bar-title">Projects</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('projects-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">📁 Projects</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('projects-window')"></button>
       </div>
     </div>
-    <div class="window-content">
+    <div class="window-body">
       <div class="project-grid">
         <a href="projects.html#deskstretch" class="project-card">
           <h3>🖥️ DeskStretch</h3>
@@ -498,21 +389,18 @@
     </div>
   </div>
 
-  <!-- CONTACT WINDOW -->
+  <!-- CONTACT -->
   <div class="window" id="contact-window">
-    <div class="title-bar" data-window="contact-window">
-      <div class="title-bar-left">
-        <span class="window-icon">📬</span>
-        <span class="title-bar-title">Contact</span>
-      </div>
-      <div class="title-bar-buttons">
-        <div class="tb-btn minimize">─</div>
-        <div class="tb-btn maximize">□</div>
-        <div class="tb-btn close" onclick="closeWindow('contact-window')">✕</div>
+    <div class="title-bar">
+      <div class="title-bar-text">📬 Contact</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('contact-window')"></button>
       </div>
     </div>
-    <div class="window-content">
-      <p>GitHub: <a href="https://github.com/spencercj" style="color:#4a90d9;">github.com/spencercj</a></p>
+    <div class="window-body">
+      <p>GitHub: <a href="https://github.com/spencercj">github.com/spencercj</a></p>
       <p>LinkedIn: your link here</p>
       <p>Email: your email here</p>
     </div>
@@ -522,14 +410,14 @@
 
 <!-- TASKBAR -->
 <div class="taskbar">
-  <button class="start-btn">⊞ Start</button>
+  <button class="start-btn">⊞ start</button>
   <div class="taskbar-divider"></div>
   <div class="taskbar-items" id="taskbar-items"></div>
   <div class="taskbar-clock" id="clock"></div>
 </div>
 
 <script>
-  // ── CLOCK ──
+  // CLOCK
   function updateClock() {
     const now = new Date();
     document.getElementById('clock').textContent =
@@ -538,19 +426,18 @@
   updateClock();
   setInterval(updateClock, 1000);
 
-  // ── WINDOW ORIGINS (for snap back) ──
+  // SNAP-BACK ORIGINS
   const origins = {};
   document.querySelectorAll('.window').forEach(win => {
-    const rect = win.getBoundingClientRect();
     origins[win.id] = { top: win.offsetTop, left: win.offsetLeft };
   });
 
-  // ── DRAGGING ──
+  // DRAG
   let dragging = null, offX = 0, offY = 0;
 
   document.querySelectorAll('.title-bar').forEach(bar => {
     bar.addEventListener('mousedown', e => {
-      if (e.target.classList.contains('tb-btn')) return;
+      if (e.target.tagName === 'BUTTON') return;
       const win = bar.closest('.window');
       dragging = win;
       offX = e.clientX - win.offsetLeft;
@@ -576,7 +463,7 @@
     dragging = null;
   });
 
-  // ── OPEN / CLOSE WINDOWS ──
+  // OPEN / CLOSE
   const windowMap = {
     about: 'about-window',
     experience: 'experience-window',
@@ -587,12 +474,10 @@
   };
 
   function openWindow(key) {
-    const id = windowMap[key];
-    const win = document.getElementById(id);
-    // hide all content windows first
-    Object.values(windowMap).forEach(wid => {
-      document.getElementById(wid).style.display = 'none';
+    Object.values(windowMap).forEach(id => {
+      document.getElementById(id).style.display = 'none';
     });
+    const win = document.getElementById(windowMap[key]);
     win.style.display = 'block';
     win.style.zIndex = 50;
     updateTaskbar(key);
@@ -603,17 +488,15 @@
     updateTaskbar(null);
   }
 
-  // ── TASKBAR ──
-  let activeKey = null;
+  // TASKBAR
+  const labels = { about:'About', experience:'Experience', skills:'Skills', certs:'Certifications', projects:'Projects', contact:'Contact' };
   function updateTaskbar(key) {
-    activeKey = key;
     const bar = document.getElementById('taskbar-items');
     bar.innerHTML = '';
     if (!key) return;
-    const label = { about:'About', experience:'Experience', skills:'Skills', certs:'Certifications', projects:'Projects', contact:'Contact' };
     const btn = document.createElement('div');
     btn.className = 'taskbar-item active';
-    btn.textContent = label[key] || key;
+    btn.textContent = '🗂️ ' + labels[key];
     btn.onclick = () => closeWindow(windowMap[key]);
     bar.appendChild(btn);
   }
