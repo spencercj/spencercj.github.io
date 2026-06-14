@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spencer J. | Portfolio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -24,8 +22,6 @@
       min-height: 100vh;
       overflow: hidden;
     }
-
-    body.pixel-mode { font-family: 'VT323', monospace; font-size: 16px; }
 
     .desktop {
       width: 100vw;
@@ -50,10 +46,9 @@
       flex-direction: column;
     }
 
-    /* ACTIVE TITLE BAR — dramatic dark left to light right */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(to right, #0a246a 0%, #1a3a8a 20%, #2858b8 45%, #6898d0 70%, #a6caf0 100%);
+      background: linear-gradient(to right, #0a246a 0%, #a6caf0 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -69,16 +64,13 @@
       color: white;
       font-size: 11px;
       font-weight: 700;
-      font-family: Tahoma, Arial, sans-serif;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
       text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
       gap: 5px;
     }
 
-    body.pixel-mode .xp-title-text { font-family: 'VT323', monospace; font-size: 15px; }
-
-    /* TITLE BAR BUTTONS */
     .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
@@ -112,14 +104,12 @@
       border-right: 1px solid rgba(255,255,255,0.7);
     }
 
-    /* WINDOW BODY */
     .xp-body {
       background-color: #ece9d8;
       overflow-y: auto;
       flex: 1;
     }
 
-    /* XP SCROLLBAR */
     .xp-body::-webkit-scrollbar { width: 17px; }
     .xp-body::-webkit-scrollbar-track {
       background: #d4d0c8;
@@ -167,21 +157,17 @@
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
-    body.pixel-mode .sidebar-name { font-family: 'VT323', monospace; font-size: 18px; }
-
-    .sidebar-subtitle { font-size: 10px; color: #555; }
+    .sidebar-subtitle { font-size: 10px; color: #555; font-family: Tahoma, Arial, sans-serif; }
 
     .sidebar-bio {
       font-size: 10px;
       line-height: 1.55;
       color: #222;
+      font-family: Tahoma, Arial, sans-serif;
       border-bottom: 1px solid #b0a898;
       padding-bottom: 8px;
     }
 
-    body.pixel-mode .sidebar-bio { font-family: 'VT323', monospace; font-size: 13px; }
-
-    /* XP PANEL — LUNA BLUE */
     .xp-panel {
       border: 1px solid #5080c0;
       border-radius: 3px;
@@ -216,8 +202,6 @@
       font-family: Tahoma, Arial, sans-serif;
     }
 
-    body.pixel-mode .nav-item { font-family: 'VT323', monospace; font-size: 14px; }
-
     .nav-item:hover {
       background: #316ac5;
       color: white;
@@ -241,9 +225,6 @@
       overflow-y: scroll;
     }
 
-    /* ══════════════════════════════
-       SECTIONS
-    ══════════════════════════════ */
     .section { margin-bottom: 44px; }
 
     .section h2 {
@@ -256,13 +237,14 @@
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
-    body.pixel-mode .section h2 { font-family: 'VT323', monospace; font-size: 17px; }
+    .section p {
+      font-size: 11px;
+      line-height: 1.65;
+      margin-bottom: 8px;
+      color: #111;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
-    .section p { font-size: 11px; line-height: 1.65; margin-bottom: 8px; color: #111; }
-
-    body.pixel-mode .section p { font-family: 'VT323', monospace; font-size: 14px; }
-
-    /* EXPERIENCE */
     .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list  { flex: 7; }
 
@@ -274,9 +256,12 @@
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
-    body.pixel-mode .experience-list h3 { font-family: 'VT323', monospace; font-size: 15px; }
-
-    .job-meta { font-size: 10px; color: #666; margin-bottom: 5px; }
+    .job-meta {
+      font-size: 10px;
+      color: #666;
+      margin-bottom: 5px;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
     .experience-list ul { padding-left: 16px; margin-bottom: 18px; }
 
@@ -285,11 +270,9 @@
       line-height: 1.6;
       margin-bottom: 2px;
       color: #222;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    body.pixel-mode .experience-list ul li { font-family: 'VT323', monospace; font-size: 13px; }
-
-    /* DOC STACK */
     .stack-wrapper {
       flex: 3;
       display: flex;
@@ -317,6 +300,7 @@
       justify-content: center;
       gap: 4px;
       font-size: 10px;
+      font-family: Tahoma, Arial, sans-serif;
       color: #333;
       transition: transform 0.25s ease;
     }
@@ -327,9 +311,8 @@
     .doc-stack:hover .card-front { transform: rotate(-5deg) translateY(-4px); }
     .doc-stack:hover .card-back  { transform: rotate(9deg) translateY(2px); }
 
-    .stack-label { font-size: 10px; color: #555; text-align: center; }
+    .stack-label { font-size: 10px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
 
-    /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -375,6 +358,7 @@
       color: #003399;
       font-size: 11px;
       font-weight: 700;
+      font-family: Tahoma, Arial, sans-serif;
       transition: transform 0.2s ease;
     }
 
@@ -388,9 +372,9 @@
       transform: translateX(-50%);
       font-size: 10px;
       color: #666;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    /* PROJECTS */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -411,6 +395,7 @@
       background: #ece9d8;
       transition: background 0.1s ease, color 0.1s ease;
       font-size: 11px;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
     .project-card:hover {
@@ -431,17 +416,13 @@
     }
 
     .project-card:hover h3 { color: white; }
-
-    body.pixel-mode .project-card h3 { font-family: 'VT323', monospace; font-size: 14px; }
-
     .project-card p { font-size: 10px; margin: 0; line-height: 1.5; }
 
-    /* SETTINGS */
     .field-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .field-row label { font-size: 11px; cursor: pointer; }
+    .field-row label { font-size: 11px; cursor: pointer; font-family: Tahoma, Arial, sans-serif; }
 
     /* ══════════════════════════════
-       TASKBAR — LUNA BLUE
+       TASKBAR
     ══════════════════════════════ */
     .taskbar {
       position: fixed;
@@ -456,7 +437,6 @@
       z-index: 9999;
     }
 
-    /* START BUTTON — always green regardless of theme */
     .start-btn {
       height: 24px;
       padding: 0 10px 0 6px;
@@ -515,13 +495,11 @@
       background: none;
     }
 
-    /* SNAP BACK */
     .xp-window.snapping { transition: top 0.28s ease, left 0.28s ease; }
   </style>
 </head>
-<body class="pixel-mode">
+<body>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="docModal">
   <div class="modal-content">
     <div class="modal-doc">
@@ -544,7 +522,6 @@
 
 <div class="desktop">
 
-  <!-- SIDEBAR -->
   <div class="xp-window" id="sidebar-win">
     <div class="xp-title-bar" id="sidebar-bar">
       <div class="xp-title-text">🖥️ Spencer Jacobs</div>
@@ -573,7 +550,6 @@
     </div>
   </div>
 
-  <!-- MAIN WINDOW -->
   <div class="xp-window" id="main-win">
     <div class="xp-title-bar" id="main-bar">
       <div class="xp-title-text">📂 Spencer Jacobs — Portfolio</div>
@@ -682,11 +658,7 @@
 
       <div class="section" id="settings">
         <h2>⚙️ Settings</h2>
-        <div class="field-row">
-          <input type="checkbox" id="fontToggle" checked onchange="toggleFont(this)">
-          <label for="fontToggle">Use pixel font (default)</label>
-        </div>
-        <p style="font-size:10px; color:#666; margin-top:4px;">Uncheck to switch to standard Tahoma font.</p>
+        <p>No settings available.</p>
       </div>
 
     </div>
@@ -694,7 +666,6 @@
 
 </div>
 
-<!-- TASKBAR -->
 <div class="taskbar">
   <button class="start-btn">⊞ start</button>
   <div class="taskbar-sep"></div>
@@ -712,10 +683,6 @@
   }
   updateClock();
   setInterval(updateClock, 1000);
-
-  function toggleFont(cb) {
-    document.body.classList.toggle('pixel-mode', cb.checked);
-  }
 
   function scrollToSection(id) {
     const el = document.getElementById(id);
