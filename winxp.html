@@ -35,24 +35,24 @@
     }
 
     /* ══════════════════════════════
-       XP WINDOW CHROME
+       XP WINDOW CHROME — OLIVE GREEN
     ══════════════════════════════ */
     .xp-window {
       position: absolute;
       border-radius: 6px 6px 0 0;
-      border: 1px solid #0831d9;
+      border: 1px solid #3a6629;
       box-shadow:
-        inset 0 0 0 1px #aecaf8,
+        inset 0 0 0 1px #8aad62,
         3px 3px 10px rgba(0,0,0,0.55);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* ACTIVE TITLE BAR — exact Luna spec */
+    /* ACTIVE TITLE BAR */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(to right, #0a246a, #a6caf0);
+      background: linear-gradient(to right, #3a6629, #c5d9a0);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -111,7 +111,7 @@
       border-right: 1px solid rgba(255,255,255,0.7);
     }
 
-    /* WINDOW BODY — exact #ECE9D8 */
+    /* WINDOW BODY */
     .xp-body {
       background-color: #ece9d8;
       overflow-y: auto;
@@ -162,7 +162,7 @@
     .sidebar-name {
       font-size: 12px;
       font-weight: 700;
-      color: #003366;
+      color: #1a3a0a;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -180,26 +180,26 @@
 
     body.pixel-mode .sidebar-bio { font-family: 'VT323', monospace; font-size: 13px; }
 
-    /* XP PANEL */
+    /* XP PANEL — OLIVE */
     .xp-panel {
-      border: 1px solid #7a96df;
+      border: 1px solid #5a8040;
       border-radius: 3px;
       overflow: hidden;
     }
 
     .xp-panel-header {
-      background: linear-gradient(to bottom, #c1d9f5, #a8c8f0);
-      color: #003366;
+      background: linear-gradient(to bottom, #c5d9a0, #a8c070);
+      color: #3a6629;
       font-size: 10px;
       font-weight: 700;
       padding: 3px 8px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      border-bottom: 1px solid #7a96df;
+      border-bottom: 1px solid #5a8040;
     }
 
     .xp-panel-body {
       padding: 3px 4px;
-      background: #dce8f8;
+      background: #dce8c8;
     }
 
     .nav-item {
@@ -208,7 +208,7 @@
       gap: 6px;
       padding: 3px 6px;
       font-size: 11px;
-      color: #003399;
+      color: #3a6629;
       cursor: pointer;
       text-decoration: none;
       border-radius: 2px;
@@ -218,7 +218,12 @@
     body.pixel-mode .nav-item { font-family: 'VT323', monospace; font-size: 14px; }
 
     .nav-item:hover {
-      background: #316ac5;
+      background: #4a7a35;
+      color: white;
+    }
+
+    .nav-item.active {
+      background: #6b8e4e;
       color: white;
     }
 
@@ -235,7 +240,7 @@
     }
 
     #main-body {
-      padding: 16px 20px;
+      padding: 16px 20px 16px 20px;
       height: 100%;
       overflow-y: scroll;
     }
@@ -248,10 +253,10 @@
     .section h2 {
       font-size: 12px;
       font-weight: 700;
-      color: #003399;
+      color: #3a6629;
       margin-bottom: 10px;
       padding-bottom: 3px;
-      border-bottom: 1px solid #7a96df;
+      border-bottom: 1px solid #8aad62;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -269,7 +274,7 @@
       font-size: 11px;
       font-weight: 700;
       margin-bottom: 2px;
-      color: #003399;
+      color: #4a7a35;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -321,14 +326,7 @@
     }
 
     .doc-stack .card .file-icon { font-size: 28px; }
-
-    .doc-stack .card-back {
-      top: 10px; left: 10px;
-      transform: rotate(5deg);
-      z-index: 1;
-      background: #d4d0c8;
-    }
-
+    .doc-stack .card-back { top: 10px; left: 10px; transform: rotate(5deg); z-index: 1; background: #d4d0c8; }
     .doc-stack .card-front { top: 0; left: 0; transform: rotate(-2deg); z-index: 2; }
     .doc-stack:hover .card-front { transform: rotate(-5deg) translateY(-4px); }
     .doc-stack:hover .card-back  { transform: rotate(9deg) translateY(2px); }
@@ -378,7 +376,7 @@
       border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       text-decoration: none;
-      color: #003399;
+      color: #3a6629;
       font-size: 11px;
       font-weight: 700;
       transition: transform 0.2s ease;
@@ -420,12 +418,12 @@
     }
 
     .project-card:hover {
-      background: #316ac5;
+      background: #4a7a35;
       color: white;
-      border-top: 1px solid #1a4a9a;
-      border-left: 1px solid #1a4a9a;
-      border-bottom: 1px solid #5a8ad8;
-      border-right: 1px solid #5a8ad8;
+      border-top: 1px solid #2a4a1a;
+      border-left: 1px solid #2a4a1a;
+      border-bottom: 1px solid #8aad62;
+      border-right: 1px solid #8aad62;
       box-shadow: none;
     }
 
@@ -433,7 +431,7 @@
       font-size: 11px;
       margin-bottom: 6px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      color: #003399;
+      color: #3a6629;
     }
 
     .project-card:hover h3 { color: white; }
@@ -447,14 +445,14 @@
     .field-row label { font-size: 11px; cursor: pointer; }
 
     /* ══════════════════════════════
-       TASKBAR
+       TASKBAR — OLIVE
     ══════════════════════════════ */
     .taskbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
       height: 30px;
-      background: #245edc;
-      border-top: 1px solid #6b9fff;
+      background: #6b8e4e;
+      border-top: 1px solid #8aad62;
       display: flex;
       align-items: center;
       padding: 0 2px;
@@ -465,13 +463,11 @@
     .start-btn {
       height: 24px;
       padding: 0 10px 0 6px;
-      background: linear-gradient(180deg,
-        #67cf5b 0%, #3a8a3a 40%, #2a6a28 60%, #1e5c1e 100%
-      );
+      background: linear-gradient(to bottom, #7ab356, #4a7a35, #3a6220);
       border-radius: 0 12px 12px 0;
-      border: 1px solid #1a5808;
+      border: 1px solid #2a4a18;
       border-left: none;
-      box-shadow: inset 0 1px 0 rgba(168,230,160,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
+      box-shadow: inset 0 1px 0 rgba(180,220,140,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
       color: white;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       font-size: 12px;
@@ -484,9 +480,7 @@
     }
 
     .start-btn:hover {
-      background: linear-gradient(180deg,
-        #78de6a 0%, #4a9a48 40%, #3a7a38 60%, #2a6a28 100%
-      );
+      background: linear-gradient(to bottom, #8ac466, #5a8a45, #4a7230);
     }
 
     .taskbar-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.25); margin: 0 2px; }
@@ -512,7 +506,7 @@
       display: flex;
       align-items: center;
       height: 100%;
-      background: linear-gradient(180deg, #1c50c8 0%, #1848b8 50%, #1040a8 100%);
+      background: linear-gradient(180deg, #4a6e32 0%, #3a5e28 50%, #2a4e18 100%);
       border-left: 1px solid rgba(255,255,255,0.2);
       padding: 0 10px;
     }
@@ -684,7 +678,7 @@
 
       <div class="section" id="contact">
         <h2>Contact</h2>
-        <p>GitHub: <a href="https://github.com/spencercj" style="color:#003399;">github.com/spencercj</a></p>
+        <p>GitHub: <a href="https://github.com/spencercj" style="color:#3a6629;">github.com/spencercj</a></p>
         <p>LinkedIn: your link here</p>
         <p>Email: your email here</p>
       </div>
