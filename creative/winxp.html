@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spencer J. | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #1a1a2e;
+      background-image: 
+        radial-gradient(ellipse at 20% 50%, #16213e 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, #0f3460 0%, transparent 50%);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── DESKTOP ── */
+    .desktop {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* ── WINDOW ── */
+    .window {
+      position: absolute;
+      background: #2d2d2d;
+      border: 1px solid #555;
+      border-radius: 6px 6px 4px 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      min-width: 300px;
+      user-select: none;
+    }
+
+    /* ── TITLE BAR ── */
+    .title-bar {
+      background: linear-gradient(180deg, #4a90d9 0%, #1a5fb4 40%, #1456a8 100%);
+      padding: 6px 10px;
+      border-radius: 5px 5px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: grab;
+      height: 32px;
+    }
+
+    .title-bar:active {
+      cursor: grabbing;
+    }
+
+    .title-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .window-icon {
+      font-size: 14px;
+    }
+
+    .title-bar-title {
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .title-bar-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .tb-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.4);
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .tb-btn.minimize { background: linear-gradient(180deg, #ffe873, #d4a400); }
+    .tb-btn.maximize { background: linear-gradient(180deg, #8be08b, #28a028); }
+    .tb-btn.close    { background: linear-gradient(180deg, #ff7070, #cc0000); color: white; }
+
+    /* ── WINDOW CONTENT ── */
+    .window-content {
+      padding: 16px;
+      color: #ddd;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-height: 400px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #555 #2d2d2d;
+    }
+
+    .window-content h3 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .window-content .job-meta {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .window-content ul {
+      padding-left: 16px;
+      margin-bottom: 20px;
+    }
+
+    .window-content ul li {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin-bottom: 3px;
+      color: #bbb;
+    }
+
+    .window-content p {
+      color: #bbb;
+      margin-bottom: 8px;
+    }
+
+    /* ── SIDEBAR WINDOW ── */
+    #sidebar-window {
+      width: 260px;
+      top: 40px;
+      left: 30px;
+    }
+
+    #sidebar-window .window-content {
+      max-height: calc(100vh - 140px);
+    }
+
+    .sidebar-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-title {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-bio {
+      font-size: 0.78rem;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 16px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 0.82rem;
+    }
+
+    .nav-item:hover {
+      background: rgba(74, 144, 217, 0.25);
+      color: #fff;
+    }
+
+    .nav-item .nav-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* ── CONTENT WINDOWS ── */
+    #about-window    { width: 580px; top: 40px;  left: 320px; }
+    #experience-window { width: 680px; top: 80px;  left: 360px; display: none; }
+    #skills-window   { width: 500px; top: 100px; left: 380px; display: none; }
+    #certs-window    { width: 480px; top: 110px; left: 390px; display: none; }
+    #projects-window { width: 620px; top: 60px;  left: 340px; display: none; }
+    #contact-window  { width: 440px; top: 120px; left: 370px; display: none; }
+
+    /* ── PROJECT GRID ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .project-card {
+      background: #3a3a3a;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 12px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      text-decoration: none;
+      color: #ccc;
+      display: block;
+    }
+
+    .project-card:hover {
+      background: #444;
+      border-color: #4a90d9;
+    }
+
+    .project-card h3 {
+      color: #fff;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .project-card p {
+      font-size: 0.78rem;
+      color: #999;
+      margin: 0;
+    }
+
+    /* ── TASKBAR ── */
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: linear-gradient(180deg, #3a3a3a, #2a2a2a);
+      border-top: 1px solid #555;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 8px;
+      z-index: 9999;
+    }
+
+    .start-btn {
+      background: linear-gradient(180deg, #4a90d9, #1a5fb4);
+      color: white;
+      border: none;
+      padding: 4px 14px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+
+    .taskbar-divider {
+      width: 1px;
+      height: 24px;
+      background: #555;
+    }
+
+    .taskbar-items {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .taskbar-item {
+      background: #3d3d3d;
+      border: 1px solid #555;
+      color: #ccc;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .taskbar-item:hover, .taskbar-item.active {
+      background: #4a90d9;
+      color: white;
+      border-color: #6aa8e8;
+    }
+
+    .taskbar-clock {
+      font-size: 0.72rem;
+      color: #aaa;
+      padding: 0 8px;
+      border-left: 1px solid #555;
+    }
+
+    /* snap-back animation */
+    .window.snapping {
+      transition: top 0.3s ease, left 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div class="desktop">
+
+  <!-- SIDEBAR WINDOW -->
+  <div class="window" id="sidebar-window">
+    <div class="title-bar" data-window="sidebar-window">
+      <div class="title-bar-left">
+        <span class="window-icon">🖥️</span>
+        <span class="title-bar-title">Spencer Jacobs</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <p class="sidebar-name">Spencer Jacobs</p>
+      <p class="sidebar-title">'26 Cybersecurity Graduate · IT Support</p>
+      <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
+      <div class="sidebar-nav">
+        <a class="nav-item" onclick="openWindow('about')">
+          <span class="nav-icon">👤</span> About
+        </a>
+        <a class="nav-item" onclick="openWindow('experience')">
+          <span class="nav-icon">💼</span> Experience
+        </a>
+        <a class="nav-item" onclick="openWindow('skills')">
+          <span class="nav-icon">⚙️</span> Skills
+        </a>
+        <a class="nav-item" onclick="openWindow('certs')">
+          <span class="nav-icon">🎓</span> Certifications
+        </a>
+        <a class="nav-item" onclick="openWindow('projects')">
+          <span class="nav-icon">📁</span> Projects
+        </a>
+        <a class="nav-item" onclick="openWindow('contact')">
+          <span class="nav-icon">📬</span> Contact
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT WINDOW -->
+  <div class="window" id="about-window">
+    <div class="title-bar" data-window="about-window">
+      <div class="title-bar-left">
+        <span class="window-icon">👤</span>
+        <span class="title-bar-title">About — Spencer Jacobs</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('about-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <p>Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026, with a foundation blending technical depth with real-world experience across IT support, public sector operations, and technical instruction. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE WINDOW -->
+  <div class="window" id="experience-window">
+    <div class="title-bar" data-window="experience-window">
+      <div class="title-bar-left">
+        <span class="window-icon">💼</span>
+        <span class="title-bar-title">Experience</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('experience-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <h3>IT Support Specialist Intern</h3>
+      <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
+      <ul>
+        <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
+        <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
+        <li>Safeguard data integrity and availability of VAI S2K ERP system: a platform handling sensitive financial/operational data, by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
+        <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface and eliminate unaccounted endpoints from the organization's environment.</li>
+        <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints and maintaining documented records of enforcement actions.</li>
+      </ul>
+
+      <h3>Learning Assistant for Professor Betsy Campbell</h3>
+      <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
+      <ul>
+        <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
+        <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
+        <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
+      </ul>
+
+      <h3>Congressional Internship Under State Rep. David Madsen</h3>
+      <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
+      <ul>
+        <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation across internal systems.</li>
+        <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
+        <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
+        <li>Assisted in resolving 200+ constituent service inquiries, delivering clear, secure communication and timely updates.</li>
+      </ul>
+
+      <h3>Shift Supervisor</h3>
+      <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
+      <ul>
+        <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift, using internal IT systems to coordinate tasks and maintain accurate, compliant data.</li>
+        <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
+        <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
+        <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS WINDOW -->
+  <div class="window" id="skills-window">
+    <div class="title-bar" data-window="skills-window">
+      <div class="title-bar-left">
+        <span class="window-icon">⚙️</span>
+        <span class="title-bar-title">Skills</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('skills-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting · Splunk · Wireshark · MS365 · PowerShell · SolarWinds · GHIDRA · FTK Imager</p>
+    </div>
+  </div>
+
+  <!-- CERTS WINDOW -->
+  <div class="window" id="certs-window">
+    <div class="title-bar" data-window="certs-window">
+      <div class="title-bar-left">
+        <span class="window-icon">🎓</span>
+        <span class="title-bar-title">Certifications</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('certs-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <p>Google Cybersecurity Certificate</p>
+      <p>PSU Networking Certificate</p>
+      <p>CompTIA Network+ <em>(in progress)</em></p>
+    </div>
+  </div>
+
+  <!-- PROJECTS WINDOW -->
+  <div class="window" id="projects-window">
+    <div class="title-bar" data-window="projects-window">
+      <div class="title-bar-left">
+        <span class="window-icon">📁</span>
+        <span class="title-bar-title">Projects</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('projects-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <div class="project-grid">
+        <a href="projects.html#deskstretch" class="project-card">
+          <h3>🖥️ DeskStretch</h3>
+          <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
+        </a>
+        <a href="projects.html#project-two" class="project-card">
+          <h3>📄 Project Title</h3>
+          <p>Brief description of what you built, what tools you used, and what you learned.</p>
+        </a>
+        <a href="projects.html#project-three" class="project-card">
+          <h3>🔒 Project Title</h3>
+          <p>Brief description of what you built, what tools you used, and what you learned.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT WINDOW -->
+  <div class="window" id="contact-window">
+    <div class="title-bar" data-window="contact-window">
+      <div class="title-bar-left">
+        <span class="window-icon">📬</span>
+        <span class="title-bar-title">Contact</span>
+      </div>
+      <div class="title-bar-buttons">
+        <div class="tb-btn minimize">─</div>
+        <div class="tb-btn maximize">□</div>
+        <div class="tb-btn close" onclick="closeWindow('contact-window')">✕</div>
+      </div>
+    </div>
+    <div class="window-content">
+      <p>GitHub: <a href="https://github.com/spencercj" style="color:#4a90d9;">github.com/spencercj</a></p>
+      <p>LinkedIn: your link here</p>
+      <p>Email: your email here</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- TASKBAR -->
+<div class="taskbar">
+  <button class="start-btn">⊞ Start</button>
+  <div class="taskbar-divider"></div>
+  <div class="taskbar-items" id="taskbar-items"></div>
+  <div class="taskbar-clock" id="clock"></div>
+</div>
+
+<script>
+  // ── CLOCK ──
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent =
+      now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ── WINDOW ORIGINS (for snap back) ──
+  const origins = {};
+  document.querySelectorAll('.window').forEach(win => {
+    const rect = win.getBoundingClientRect();
+    origins[win.id] = { top: win.offsetTop, left: win.offsetLeft };
+  });
+
+  // ── DRAGGING ──
+  let dragging = null, offX = 0, offY = 0;
+
+  document.querySelectorAll('.title-bar').forEach(bar => {
+    bar.addEventListener('mousedown', e => {
+      if (e.target.classList.contains('tb-btn')) return;
+      const win = bar.closest('.window');
+      dragging = win;
+      offX = e.clientX - win.offsetLeft;
+      offY = e.clientY - win.offsetTop;
+      win.style.zIndex = 100;
+      win.classList.remove('snapping');
+    });
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    dragging.style.left = (e.clientX - offX) + 'px';
+    dragging.style.top  = (e.clientY - offY) + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    const id = dragging.id;
+    dragging.classList.add('snapping');
+    dragging.style.top  = origins[id].top + 'px';
+    dragging.style.left = origins[id].left + 'px';
+    dragging.style.zIndex = '';
+    dragging = null;
+  });
+
+  // ── OPEN / CLOSE WINDOWS ──
+  const windowMap = {
+    about: 'about-window',
+    experience: 'experience-window',
+    skills: 'skills-window',
+    certs: 'certs-window',
+    projects: 'projects-window',
+    contact: 'contact-window',
+  };
+
+  function openWindow(key) {
+    const id = windowMap[key];
+    const win = document.getElementById(id);
+    // hide all content windows first
+    Object.values(windowMap).forEach(wid => {
+      document.getElementById(wid).style.display = 'none';
+    });
+    win.style.display = 'block';
+    win.style.zIndex = 50;
+    updateTaskbar(key);
+  }
+
+  function closeWindow(id) {
+    document.getElementById(id).style.display = 'none';
+    updateTaskbar(null);
+  }
+
+  // ── TASKBAR ──
+  let activeKey = null;
+  function updateTaskbar(key) {
+    activeKey = key;
+    const bar = document.getElementById('taskbar-items');
+    bar.innerHTML = '';
+    if (!key) return;
+    const label = { about:'About', experience:'Experience', skills:'Skills', certs:'Certifications', projects:'Projects', contact:'Contact' };
+    const btn = document.createElement('div');
+    btn.className = 'taskbar-item active';
+    btn.textContent = label[key] || key;
+    btn.onclick = () => closeWindow(windowMap[key]);
+    bar.appendChild(btn);
+  }
+</script>
+
+</body>
+</html>
