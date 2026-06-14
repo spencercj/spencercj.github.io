@@ -10,252 +10,206 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
-
-    :root {
-      --pixel-font: 'VT323', monospace;
-      --normal-font: 'Segoe UI', Tahoma, Arial, sans-serif;
-      --active-font: var(--pixel-font);
-    }
-
     body {
       background:
-        radial-gradient(ellipse at 40% 100%, #3a7d2c 0%, #5aad3a 35%, #6dc940 55%, transparent 70%),
-        radial-gradient(ellipse at 60% 100%, #2e6e22 0%, #4a9e30 40%, transparent 65%),
-        linear-gradient(180deg, #4a9edb 0%, #6ab8e8 30%, #89cff0 55%, #a8d8f0 65%, #7bbf45 65%, #5aad3a 75%, #3a7d2c 100%);
+        radial-gradient(ellipse at 30% 100%, #2d6e1a 0%, #4a9e2a 30%, transparent 60%),
+        radial-gradient(ellipse at 70% 100%, #1e5c10 0%, #3a8e20 35%, transparent 60%),
+        radial-gradient(ellipse at 50% 85%, #5ab830 0%, #7acc40 25%, transparent 55%),
+        linear-gradient(180deg,
+          #3a8fd4 0%,
+          #5aaee8 25%,
+          #78c0f0 45%,
+          #9ad4f8 55%,
+          #b8e4ff 62%,
+          #88c840 65%,
+          #5aad30 72%,
+          #3a8820 80%,
+          #2a6e18 100%
+        );
       min-height: 100vh;
-      font-family: var(--active-font);
-      font-size: 16px;
+      font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
       overflow: hidden;
     }
 
-    .desktop {
-      display: flex;
-      height: 100vh;
-      padding: 20px 20px 56px 20px;
-      gap: 16px;
-      align-items: flex-start;
-      position: relative;
-    }
-
-    /* ── PIXEL FONT OVERRIDE ── */
     body.pixel-mode {
-      font-size: 18px;
-      letter-spacing: 0.3px;
-    }
-
-    body.pixel-mode .window-body,
-    body.pixel-mode .title-bar-text,
-    body.pixel-mode .nav-item,
-    body.pixel-mode .sidebar-name,
-    body.pixel-mode .sidebar-subtitle,
-    body.pixel-mode .sidebar-bio,
-    body.pixel-mode .section h2,
-    body.pixel-mode .section p,
-    body.pixel-mode .experience-list h3,
-    body.pixel-mode .experience-list li,
-    body.pixel-mode .job-meta,
-    body.pixel-mode .project-card,
-    body.pixel-mode .stack-label {
       font-family: 'VT323', monospace;
-      font-size: 1.15rem;
     }
 
-    body.pixel-mode .sidebar-name { font-size: 1.5rem; }
-    body.pixel-mode .section h2   { font-size: 1.4rem; }
+    .desktop {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      padding-bottom: 42px;
+    }
 
-    /* ── SIDEBAR WINDOW ── */
-    #sidebar-window {
-      width: 300px;
-      min-width: 300px;
-      height: calc(100vh - 76px);
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
+    /* ── WINDOWS ── */
+    .win {
       position: absolute;
+      min-width: 200px;
+    }
+
+    .win .title-bar {
+      cursor: grab;
+    }
+
+    .win .title-bar:active {
+      cursor: grabbing;
+    }
+
+    /* SIDEBAR */
+    #sidebar-win {
       top: 20px;
       left: 20px;
+      width: 280px;
     }
 
-    #sidebar-window .title-bar {
-      cursor: grab;
-      flex-shrink: 0;
-    }
-
-    #sidebar-window .title-bar:active { cursor: grabbing; }
-
-    #sidebar-window .window-body {
-      flex: 1;
+    #sidebar-win .window-body {
+      padding: 10px;
+      max-height: calc(100vh - 110px);
       overflow-y: auto;
-      padding: 16px 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-
-      /* XP SCROLLBAR */
-      scrollbar-width: thin;
-      scrollbar-color: #c0c0c0 #f0f0f0;
-    }
-
-    #sidebar-window .window-body::-webkit-scrollbar { width: 16px; }
-    #sidebar-window .window-body::-webkit-scrollbar-track {
-      background: #f0f0f0;
-      border-left: 1px solid #aaa;
-    }
-    #sidebar-window .window-body::-webkit-scrollbar-thumb {
-      background: #c0c0c0;
-      border: 1px solid #888;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #888;
-    }
-    #sidebar-window .window-body::-webkit-scrollbar-button {
-      background: #d4d0c8;
-      border: 1px solid #888;
-      box-shadow: inset 1px 1px 0 #fff;
-      height: 16px;
+      gap: 8px;
     }
 
     .sidebar-name {
-      font-size: 1.2rem;
       font-weight: 700;
+      font-size: 1rem;
       margin-bottom: 2px;
     }
 
     .sidebar-subtitle {
-      font-size: 0.8rem;
-      color: #555;
-      margin-bottom: 8px;
+      font-size: 0.75rem;
+      color: #444;
+      margin-bottom: 6px;
     }
 
     .sidebar-bio {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: #333;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      color: #222;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 10px;
+      margin-bottom: 4px;
     }
 
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 8px;
-      font-size: 0.88rem;
+      gap: 8px;
+      padding: 4px 6px;
+      font-size: 0.82rem;
       cursor: pointer;
       color: #000;
       text-decoration: none;
-      border: 1px solid transparent;
+      font-family: 'Tahoma', Arial, sans-serif;
+    }
+
+    body.pixel-mode .nav-item {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
     }
 
     .nav-item:hover {
-      background: #000080;
+      background: #0a246a;
       color: white;
-      border-color: #000080;
     }
 
-    .nav-icon { font-size: 16px; width: 22px; text-align: center; }
+    .nav-icon { width: 20px; text-align: center; font-size: 14px; }
 
-    /* ── MAIN WINDOW ── */
-    #main-window {
-      position: absolute;
+    /* MAIN WINDOW */
+    #main-win {
       top: 20px;
-      left: 336px;
-      width: calc(100vw - 376px);
-      height: calc(100vh - 76px);
+      left: 318px;
+      width: calc(100vw - 358px);
+      height: calc(100vh - 62px);
       display: flex;
       flex-direction: column;
     }
 
-    #main-window .title-bar {
-      cursor: grab;
-      flex-shrink: 0;
-    }
-
-    #main-window .title-bar:active { cursor: grabbing; }
-
-    #main-window .window-body {
+    #main-win .window-body {
       flex: 1;
-      overflow-y: auto;
-      padding: 30px 50px;
-
-      /* XP SCROLLBAR */
-      scrollbar-width: thin;
-      scrollbar-color: #c0c0c0 #f0f0f0;
+      overflow-y: scroll;
+      padding: 24px 40px;
+      font-family: 'Tahoma', Arial, sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.6;
     }
 
-    #main-window .window-body::-webkit-scrollbar { width: 16px; }
-    #main-window .window-body::-webkit-scrollbar-track {
-      background: #f0f0f0;
-      border-left: 1px solid #aaa;
-    }
-    #main-window .window-body::-webkit-scrollbar-thumb {
-      background: #c0c0c0;
-      border: 1px solid #888;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #888;
-    }
-    #main-window .window-body::-webkit-scrollbar-button {
-      background: #d4d0c8;
-      border: 1px solid #888;
-      box-shadow: inset 1px 1px 0 #fff;
-      height: 16px;
+    body.pixel-mode #main-win .window-body {
+      font-family: 'VT323', monospace;
+      font-size: 1.05rem;
     }
 
-    /* ── SECTIONS ── */
-    .section { margin-bottom: 60px; }
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
 
     .section h2 {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #000080;
-      color: #000080;
+      color: #0a246a;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #aaa;
+      font-family: 'Tahoma', Arial, sans-serif;
+    }
+
+    body.pixel-mode .section h2 {
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
     }
 
     .section p {
-      font-size: 0.88rem;
-      line-height: 1.75;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: #111;
     }
 
-    /* ── EXPERIENCE ── */
+    /* EXPERIENCE */
     .experience-split {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: stretch;
     }
 
     .experience-list { flex: 7; }
 
     .experience-list h3 {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 2px;
+      color: #000;
+      font-family: 'Tahoma', Arial, sans-serif;
+    }
+
+    body.pixel-mode .experience-list h3 {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
     }
 
     .job-meta {
-      font-size: 0.78rem;
-      color: #555;
-      margin-bottom: 8px;
+      font-size: 0.73rem;
+      color: #666;
+      margin-bottom: 6px;
     }
 
     .experience-list ul {
-      padding-left: 18px;
-      margin-bottom: 24px;
+      padding-left: 16px;
+      margin-bottom: 20px;
     }
 
     .experience-list ul li {
-      font-size: 0.84rem;
-      line-height: 1.7;
-      margin-bottom: 4px;
+      font-size: 0.8rem;
+      line-height: 1.65;
+      margin-bottom: 3px;
+      color: #222;
     }
 
-    /* ── DOC STACK ── */
+    body.pixel-mode .experience-list ul li {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+    }
+
+    /* DOC STACK */
     .stack-wrapper {
       flex: 3;
       display: flex;
@@ -276,20 +230,22 @@
       position: absolute;
       width: 100px;
       height: 140px;
-      border: 2px solid #aaa;
-      background: #f0f0f0;
+      border: 1px solid #aaa;
+      background: #ece9d8;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.75rem;
       color: #555;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
 
     .doc-stack .card-back {
       top: 10px; left: 10px;
       transform: rotate(5deg);
-      z-index: 1; background: #ddd;
+      z-index: 1;
+      background: #d4d0c8;
     }
 
     .doc-stack .card-front {
@@ -300,27 +256,28 @@
 
     .doc-stack:hover .card-front {
       transform: rotate(-5deg) translateY(-4px);
-      box-shadow: 2px 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.25);
     }
 
-    .doc-stack:hover .card-back { transform: rotate(9deg) translateY(2px); }
+    .doc-stack:hover .card-back {
+      transform: rotate(9deg) translateY(2px);
+    }
 
-    .stack-label { font-size: 0.75rem; color: #555; }
+    .stack-label { font-size: 0.73rem; color: #555; }
 
-    /* ── MODAL ── */
+    /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.88);
+      background: rgba(236,233,216,0.92);
       z-index: 9000;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 30px;
-      backdrop-filter: blur(4px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.2s ease;
     }
 
     .modal-overlay.active { opacity: 1; pointer-events: all; }
@@ -328,8 +285,8 @@
     .modal-content {
       display: flex;
       gap: 30px;
-      transform: scale(0.92);
-      transition: transform 0.25s ease;
+      transform: scale(0.93);
+      transition: transform 0.2s ease;
     }
 
     .modal-overlay.active .modal-content { transform: scale(1); }
@@ -343,117 +300,155 @@
 
     .modal-doc a {
       display: flex;
-      border: 2px solid #aaa;
-      width: 260px;
-      height: 360px;
-      background: #f0f0f0;
+      border: 1px solid #aaa;
+      width: 240px;
+      height: 340px;
+      background: #ece9d8;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       color: #555;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
+      box-shadow: 1px 1px 4px rgba(0,0,0,0.15);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
     .modal-doc a:hover {
-      box-shadow: 2px 4px 16px rgba(0,0,0,0.15);
-      transform: translateY(-3px);
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
     }
 
     .modal-close-hint {
       position: fixed;
-      bottom: 60px;
+      bottom: 56px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.78rem;
-      color: #888;
+      font-size: 0.75rem;
+      color: #666;
     }
 
-    /* ── PROJECTS ── */
+    /* PROJECTS */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .project-card {
-      border: 2px solid #aaa;
-      padding: 14px;
+      border: 1px solid #aaa;
+      padding: 12px;
       text-decoration: none;
       color: #000;
       display: block;
       aspect-ratio: 1 / 1;
-      background: #f0f0f0;
-      transition: background 0.15s ease, border-color 0.15s ease;
-      position: relative;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      background: #000080;
+      background: #ece9d8;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+      transition: background 0.15s ease;
+      font-size: 0.78rem;
     }
 
     .project-card:hover {
-      background: #000080;
+      background: #0a246a;
       color: white;
-      border-color: #000080;
     }
 
-    .project-card h3 { font-size: 0.85rem; margin-bottom: 6px; }
-    .project-card p  { font-size: 0.78rem; margin: 0; line-height: 1.5; }
-
-    /* ── SETTINGS SECTION ── */
-    .settings-option {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 0.88rem;
+    .project-card h3 {
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      font-family: 'Tahoma', Arial, sans-serif;
     }
 
-    .settings-option label { cursor: pointer; }
+    body.pixel-mode .project-card h3 {
+      font-family: 'VT323', monospace;
+      font-size: 1.05rem;
+    }
 
-    /* ── TASKBAR ── */
+    .project-card p { font-size: 0.75rem; margin: 0; line-height: 1.5; }
+
+    /* SETTINGS */
+    .field-row { margin-bottom: 10px; }
+
+    /* TASKBAR */
     .taskbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      height: 38px;
-      background: linear-gradient(180deg, #245edc 0%, #3c81f3 8%, #245edc 40%, #1c4fc7 100%);
+      height: 40px;
+      background: linear-gradient(180deg,
+        #2464c8 0%,
+        #3c7cf0 6%,
+        #2060d0 50%,
+        #1850b8 94%,
+        #1040a0 100%
+      );
       display: flex;
       align-items: center;
-      padding: 0 6px;
-      gap: 6px;
+      padding: 0 4px;
+      gap: 4px;
       z-index: 9999;
-      border-top: 2px solid #1a3fa0;
+      border-top: 1px solid #1040a0;
+      box-shadow: 0 -1px 0 #4888f0;
     }
 
     .start-btn {
-      background: linear-gradient(180deg, #57bb35, #2d8010);
+      height: 30px;
+      padding: 0 12px 0 6px;
+      background: linear-gradient(180deg, #56b43a 0%, #3a9020 50%, #2a7010 100%);
+      border: 1px solid #1a5808;
+      border-radius: 0 12px 12px 0;
       color: white;
-      border: 1px solid #1a5c08;
-      padding: 3px 14px 3px 8px;
-      border-radius: 12px;
-      font-size: 0.82rem;
+      font-family: 'Tahoma', Arial, sans-serif;
+      font-size: 0.85rem;
       font-weight: 700;
       font-style: italic;
       cursor: pointer;
-      height: 28px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+      letter-spacing: 0.3px;
     }
+
+    .start-btn:hover {
+      background: linear-gradient(180deg, #68c84a 0%, #4aa030 50%, #3a8020 100%);
+    }
+
+    .taskbar-sep {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 2px;
+    }
+
+    .taskbar-btn {
+      height: 28px;
+      padding: 0 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-size: 0.72rem;
+      font-family: 'Tahoma', Arial, sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .taskbar-btn:hover { background: rgba(255,255,255,0.25); }
 
     .taskbar-clock {
       margin-left: auto;
-      font-size: 0.72rem;
       color: white;
-      padding: 0 10px;
-      border-left: 1px solid rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+      font-family: 'Tahoma', Arial, sans-serif;
+      padding: 0 8px;
+      border-left: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      min-width: 50px;
     }
 
-    /* snap-back */
-    .window.snapping {
-      transition: top 0.3s ease, left 0.3s ease;
+    /* SNAP BACK */
+    .win.snapping {
+      transition: top 0.28s ease, left 0.28s ease;
     }
   </style>
 </head>
@@ -476,9 +471,9 @@
 
 <div class="desktop">
 
-  <!-- SIDEBAR -->
-  <div class="window" id="sidebar-window">
-    <div class="title-bar" id="sidebar-title-bar">
+  <!-- SIDEBAR WINDOW -->
+  <div class="window win" id="sidebar-win">
+    <div class="title-bar" id="sidebar-bar">
       <div class="title-bar-text">🖥️ Spencer Jacobs</div>
       <div class="title-bar-controls">
         <button aria-label="Minimize"></button>
@@ -486,25 +481,23 @@
         <button aria-label="Close"></button>
       </div>
     </div>
-    <div class="window-body">
+    <div class="window-body" style="padding:10px; max-height:calc(100vh - 110px); overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
       <p class="sidebar-name">Spencer Jacobs</p>
       <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-      <div class="sidebar-nav">
-        <a class="nav-item" onclick="scrollToSection('about')"><span class="nav-icon">👤</span>About</a>
-        <a class="nav-item" onclick="scrollToSection('experience')"><span class="nav-icon">💼</span>Experience</a>
-        <a class="nav-item" onclick="scrollToSection('skills')"><span class="nav-icon">⚙️</span>Skills</a>
-        <a class="nav-item" onclick="scrollToSection('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
-        <a class="nav-item" onclick="scrollToSection('projects')"><span class="nav-icon">📁</span>Projects</a>
-        <a class="nav-item" onclick="scrollToSection('contact')"><span class="nav-icon">📬</span>Contact</a>
-        <a class="nav-item" onclick="scrollToSection('settings')"><span class="nav-icon">⚙️</span>Settings</a>
-      </div>
+      <a class="nav-item" onclick="scrollToSection('about')"><span class="nav-icon">👤</span>About</a>
+      <a class="nav-item" onclick="scrollToSection('experience')"><span class="nav-icon">💼</span>Experience</a>
+      <a class="nav-item" onclick="scrollToSection('skills')"><span class="nav-icon">⚙️</span>Skills</a>
+      <a class="nav-item" onclick="scrollToSection('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
+      <a class="nav-item" onclick="scrollToSection('projects')"><span class="nav-icon">📁</span>Projects</a>
+      <a class="nav-item" onclick="scrollToSection('contact')"><span class="nav-icon">📬</span>Contact</a>
+      <a class="nav-item" onclick="scrollToSection('settings')"><span class="nav-icon">🔧</span>Settings</a>
     </div>
   </div>
 
   <!-- MAIN WINDOW -->
-  <div class="window" id="main-window">
-    <div class="title-bar" id="main-title-bar">
+  <div class="window win" id="main-win">
+    <div class="title-bar" id="main-bar">
       <div class="title-bar-text">📂 Spencer Jacobs — Portfolio</div>
       <div class="title-bar-controls">
         <button aria-label="Minimize"></button>
@@ -512,7 +505,7 @@
         <button aria-label="Close"></button>
       </div>
     </div>
-    <div class="window-body" id="main-body">
+    <div class="window-body" id="main-body" style="flex:1; overflow-y:scroll; padding:24px 40px;">
 
       <div class="section" id="about">
         <h2>About</h2>
@@ -523,17 +516,15 @@
         <h2>Experience</h2>
         <div class="experience-split">
           <div class="experience-list">
-
             <h3>IT Support Specialist Intern</h3>
             <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
             <ul>
               <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
               <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
               <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
-              <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface and eliminate unaccounted endpoints.</li>
+              <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface.</li>
               <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
             </ul>
-
             <h3>Learning Assistant for Professor Betsy Campbell</h3>
             <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
             <ul>
@@ -541,7 +532,6 @@
               <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
               <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
             </ul>
-
             <h3>Congressional Internship Under State Rep. David Madsen</h3>
             <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
             <ul>
@@ -550,7 +540,6 @@
               <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
               <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication and timely updates.</li>
             </ul>
-
             <h3>Shift Supervisor</h3>
             <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
             <ul>
@@ -559,7 +548,6 @@
               <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
               <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
             </ul>
-
           </div>
           <div class="stack-wrapper">
             <div class="doc-stack" id="docStack">
@@ -610,11 +598,11 @@
 
       <div class="section" id="settings">
         <h2>⚙️ Settings</h2>
-        <div class="settings-option">
+        <div class="field-row">
           <input type="checkbox" id="fontToggle" checked onchange="toggleFont(this)">
           <label for="fontToggle">Use pixel font (default)</label>
         </div>
-        <p style="font-size:0.78rem; color:#555;">Uncheck to switch to a standard readable font.</p>
+        <p style="font-size:0.75rem; color:#666; margin-top:6px;">Uncheck to switch to standard font.</p>
       </div>
 
     </div>
@@ -625,6 +613,8 @@
 <!-- TASKBAR -->
 <div class="taskbar">
   <button class="start-btn">⊞ start</button>
+  <div class="taskbar-sep"></div>
+  <button class="taskbar-btn">📂 Portfolio</button>
   <div class="taskbar-clock" id="clock"></div>
 </div>
 
@@ -643,28 +633,33 @@
     document.body.classList.toggle('pixel-mode', cb.checked);
   }
 
-  // SMOOTH SCROLL inside main window
+  // SCROLL
   function scrollToSection(id) {
     const el = document.getElementById(id);
     const body = document.getElementById('main-body');
-    if (el && body) {
-      body.scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
-    }
+    if (el && body) body.scrollTo({ top: el.offsetTop - 16, behavior: 'smooth' });
   }
 
-  // DRAG + SNAP BACK for both windows
-  function makeDraggable(winEl, titleBarEl) {
-    const origTop  = winEl.offsetTop;
-    const origLeft = winEl.offsetLeft;
+  // DRAGGABLE + SNAP BACK
+  function makeDraggable(winEl, barEl) {
+    let origTop, origLeft;
+
+    // capture origins after layout
+    requestAnimationFrame(() => {
+      origTop  = winEl.offsetTop;
+      origLeft = winEl.offsetLeft;
+    });
+
     let dragging = false, offX = 0, offY = 0;
 
-    titleBarEl.addEventListener('mousedown', e => {
+    barEl.addEventListener('mousedown', e => {
       if (e.target.tagName === 'BUTTON') return;
       dragging = true;
       offX = e.clientX - winEl.offsetLeft;
       offY = e.clientY - winEl.offsetTop;
       winEl.style.zIndex = 100;
       winEl.classList.remove('snapping');
+      e.preventDefault();
     });
 
     document.addEventListener('mousemove', e => {
@@ -683,16 +678,10 @@
     });
   }
 
-  makeDraggable(
-    document.getElementById('sidebar-window'),
-    document.getElementById('sidebar-title-bar')
-  );
-  makeDraggable(
-    document.getElementById('main-window'),
-    document.getElementById('main-title-bar')
-  );
+  makeDraggable(document.getElementById('sidebar-win'), document.getElementById('sidebar-bar'));
+  makeDraggable(document.getElementById('main-win'),    document.getElementById('main-bar'));
 
-  // DOC STACK MODAL
+  // DOC STACK
   const stack = document.getElementById('docStack');
   const modal = document.getElementById('docModal');
 
@@ -716,6 +705,5 @@
     }
   });
 </script>
-
 </body>
 </html>
