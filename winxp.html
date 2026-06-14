@@ -42,7 +42,7 @@
       padding-bottom: 42px;
     }
 
-    /* ── WINDOWS ── */
+   /* ── WINDOWS ── */
     .win {
       position: absolute;
       min-width: 200px;
@@ -54,6 +54,59 @@
 
     .win .title-bar:active {
       cursor: grabbing;
+    }
+
+    .window {
+      background: #ece9d8;
+      border: none;
+      box-shadow:
+        inset -1px -1px 0 #0a0a0a,
+        inset 1px 1px 0 #ffffff,
+        inset -2px -2px 0 #808080,
+        inset 2px 2px 0 #dfdfdf;
+    }
+
+    #main-win .window-body,
+    #sidebar-win .window-body {
+      background: linear-gradient(160deg,
+        #f5f4ee 0%,
+        #eceae0 30%,
+        #e4e2d6 60%,
+        #dedad0 100%
+      );
+      box-shadow:
+        inset 1px 1px 2px rgba(255,255,255,0.9),
+        inset -1px -1px 2px rgba(0,0,0,0.08);
+    }
+
+    .project-card {
+      background: linear-gradient(145deg,
+        #f5f4ee 0%,
+        #eceae0 40%,
+        #dedad0 100%
+      );
+      border: 1px solid #888;
+      box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.95),
+        inset -1px -1px 0 rgba(0,0,0,0.15),
+        1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .doc-stack .card {
+      background: linear-gradient(145deg,
+        #f5f4ee 0%,
+        #eceae0 50%,
+        #d8d6cc 100%
+      );
+      border: 1px solid #888;
+      box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.95),
+        inset -1px -1px 0 rgba(0,0,0,0.12),
+        1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .doc-stack .card-back {
+      background: linear-gradient(145deg, #e8e6dc 0%, #d4d2c8 100%);
     }
 
     /* SIDEBAR */
