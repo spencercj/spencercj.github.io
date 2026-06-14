@@ -4,263 +4,321 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spencer J. | Portfolio</title>
-  <link rel="stylesheet" href="https://unpkg.com/xp.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
+      font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+      font-size: 11px;
       background:
-        radial-gradient(ellipse at 30% 100%, #2d6e1a 0%, #4a9e2a 30%, transparent 60%),
-        radial-gradient(ellipse at 70% 100%, #1e5c10 0%, #3a8e20 35%, transparent 60%),
-        radial-gradient(ellipse at 50% 85%, #5ab830 0%, #7acc40 25%, transparent 55%),
+        radial-gradient(ellipse at 30% 100%, #1e5c10 0%, #3a8820 25%, #5ab830 45%, transparent 65%),
+        radial-gradient(ellipse at 70% 100%, #2a6e18 0%, #4a9e28 30%, transparent 60%),
+        radial-gradient(ellipse at 50% 82%, #6acc38 0%, #88d848 20%, transparent 45%),
         linear-gradient(180deg,
-          #3a8fd4 0%,
-          #5aaee8 25%,
-          #78c0f0 45%,
-          #9ad4f8 55%,
-          #b8e4ff 62%,
-          #88c840 65%,
-          #5aad30 72%,
-          #3a8820 80%,
-          #2a6e18 100%
+          #1848a0 0%,
+          #3068c8 15%,
+          #5090d8 30%,
+          #78b8f0 48%,
+          #a8d8f8 56%,
+          #c8eaff 60%,
+          #7ac840 63%,
+          #4a9e28 70%,
+          #2a7010 80%,
+          #1a5008 100%
         );
       min-height: 100vh;
-      font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
       overflow: hidden;
     }
 
     body.pixel-mode {
       font-family: 'VT323', monospace;
+      font-size: 16px;
     }
 
     .desktop {
       width: 100vw;
       height: 100vh;
       position: relative;
-      padding-bottom: 42px;
+      padding-bottom: 30px;
     }
 
-   /* ── WINDOWS ── */
-    .win {
+    /* ══════════════════════════════
+       XP WINDOW CHROME
+    ══════════════════════════════ */
+    .xp-window {
       position: absolute;
-      min-width: 200px;
+      border-radius: 6px 6px 4px 4px;
+      /* outer border */
+      border: 1px solid #0831d9;
+      /* inner bevel */
+      box-shadow:
+        inset 0 0 0 1px #aecaf8,        /* inner highlight */
+        2px 2px 8px rgba(0,0,0,0.5);    /* drop shadow */
+      overflow: hidden;
     }
 
-    .win .title-bar {
+    /* TITLE BAR */
+    .xp-title-bar {
+      height: 28px;
+      background: linear-gradient(90deg, #0a246a 0%, #2a58b8 40%, #a6caf0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px 0 6px;
       cursor: grab;
+      user-select: none;
+      flex-shrink: 0;
     }
 
-    .win .title-bar:active {
-      cursor: grabbing;
+    .xp-title-bar:active { cursor: grabbing; }
+
+    .xp-title-text {
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: Tahoma, Arial, sans-serif;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .window {
+    body.pixel-mode .xp-title-text {
+      font-family: 'VT323', monospace;
+      font-size: 15px;
+    }
+
+    /* TITLE BAR BUTTONS */
+    .xp-title-btns {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .xp-btn {
+      width: 21px;
+      height: 21px;
+      border-radius: 3px;
+      border-top: 1px solid #ffffff88;
+      border-left: 1px solid #ffffff88;
+      border-bottom: 1px solid #00000066;
+      border-right: 1px solid #00000066;
+      font-size: 10px;
+      font-family: 'Marlett', 'Webdings', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #000;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .xp-btn-min {
+      background: linear-gradient(180deg, #d8d4c8 0%, #b8b4a8 100%);
+    }
+
+    .xp-btn-max {
+      background: linear-gradient(180deg, #d8d4c8 0%, #b8b4a8 100%);
+    }
+
+    .xp-btn-close {
+      background: linear-gradient(180deg, #e87060 0%, #c84030 100%);
+      color: white;
+    }
+
+    .xp-btn:active {
+      border-top: 1px solid #00000066;
+      border-left: 1px solid #00000066;
+      border-bottom: 1px solid #ffffff88;
+      border-right: 1px solid #ffffff88;
+    }
+
+    /* WINDOW BODY */
+    .xp-body {
       background: #ece9d8;
-      border: none;
-      box-shadow:
-        inset -1px -1px 0 #0a0a0a,
-        inset 1px 1px 0 #ffffff,
-        inset -2px -2px 0 #808080,
-        inset 2px 2px 0 #dfdfdf;
-    }
-
-    #main-win .window-body,
-    #sidebar-win .window-body {
-      background: linear-gradient(160deg,
-        #f5f4ee 0%,
-        #eceae0 30%,
-        #e4e2d6 60%,
-        #dedad0 100%
-      );
-      box-shadow:
-        inset 1px 1px 2px rgba(255,255,255,0.9),
-        inset -1px -1px 2px rgba(0,0,0,0.08);
-    }
-
-    .project-card {
-      background: linear-gradient(145deg,
-        #f5f4ee 0%,
-        #eceae0 40%,
-        #dedad0 100%
-      );
-      border: 1px solid #888;
-      box-shadow:
-        inset 1px 1px 0 rgba(255,255,255,0.95),
-        inset -1px -1px 0 rgba(0,0,0,0.15),
-        1px 1px 3px rgba(0,0,0,0.2);
-    }
-
-    .doc-stack .card {
-      background: linear-gradient(145deg,
-        #f5f4ee 0%,
-        #eceae0 50%,
-        #d8d6cc 100%
-      );
-      border: 1px solid #888;
-      box-shadow:
-        inset 1px 1px 0 rgba(255,255,255,0.95),
-        inset -1px -1px 0 rgba(0,0,0,0.12),
-        1px 1px 3px rgba(0,0,0,0.2);
-    }
-
-    .doc-stack .card-back {
-      background: linear-gradient(145deg, #e8e6dc 0%, #d4d2c8 100%);
-    }
-
-    /* SIDEBAR */
-    #sidebar-win {
-      top: 20px;
-      left: 20px;
-      width: 280px;
-    }
-
-    #sidebar-win .window-body {
-      padding: 10px;
-      max-height: calc(100vh - 110px);
       overflow-y: auto;
+
+      /* XP scrollbar */
+      scrollbar-width: thin;
+      scrollbar-color: #c0c0c0 #d4d0c8;
+    }
+
+    .xp-body::-webkit-scrollbar { width: 17px; }
+
+    .xp-body::-webkit-scrollbar-track {
+      background: #d4d0c8;
+      border-left: 1px solid #808080;
+    }
+
+    .xp-body::-webkit-scrollbar-thumb {
+      background: #c0c0c0;
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040;
+      border-right: 1px solid #404040;
+      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+    }
+
+    .xp-body::-webkit-scrollbar-button {
+      background: #d4d0c8;
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040;
+      border-right: 1px solid #404040;
+      height: 17px;
+      display: block;
+    }
+
+    /* ══════════════════════════════
+       SIDEBAR
+    ══════════════════════════════ */
+    #sidebar-win {
+      top: 16px;
+      left: 16px;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar-win .xp-body {
+      max-height: calc(100vh - 80px);
+      padding: 10px 8px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
     .sidebar-name {
+      font-size: 13px;
       font-weight: 700;
-      font-size: 1rem;
+      color: #0a246a;
+    }
+
+    body.pixel-mode .sidebar-name { font-family: 'VT323', monospace; font-size: 20px; }
+
+    .sidebar-subtitle { font-size: 10px; color: #555; }
+
+    .sidebar-bio {
+      font-size: 10px;
+      line-height: 1.55;
+      color: #222;
+      border-bottom: 1px solid #b0a898;
+      padding-bottom: 8px;
+    }
+
+    body.pixel-mode .sidebar-bio { font-family: 'VT323', monospace; font-size: 14px; }
+
+    /* XP PANEL SECTION */
+    .xp-panel {
+      background: linear-gradient(180deg, #dce8f8 0%, #c8dcf4 100%);
+      border: 1px solid #7a96df;
+      border-radius: 4px;
+      overflow: hidden;
       margin-bottom: 2px;
     }
 
-    .sidebar-subtitle {
-      font-size: 0.75rem;
-      color: #444;
-      margin-bottom: 6px;
+    .xp-panel-header {
+      background: linear-gradient(90deg, #2a58b8 0%, #7ab0e8 100%);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    .sidebar-bio {
-      font-size: 0.75rem;
-      line-height: 1.55;
-      color: #222;
-      border-bottom: 1px solid #aaa;
-      padding-bottom: 10px;
-      margin-bottom: 4px;
-    }
+    .xp-panel-body { padding: 4px 6px; }
 
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 4px 6px;
-      font-size: 0.82rem;
+      gap: 6px;
+      padding: 3px 6px;
+      font-size: 11px;
+      color: #0a246a;
       cursor: pointer;
-      color: #000;
       text-decoration: none;
-      font-family: 'Tahoma', Arial, sans-serif;
+      border-radius: 2px;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    body.pixel-mode .nav-item {
-      font-family: 'VT323', monospace;
-      font-size: 1.1rem;
-    }
+    body.pixel-mode .nav-item { font-family: 'VT323', monospace; font-size: 15px; }
 
     .nav-item:hover {
       background: #0a246a;
       color: white;
+      text-decoration: underline;
     }
 
-    .nav-icon { width: 20px; text-align: center; font-size: 14px; }
+    .nav-icon { width: 18px; text-align: center; font-size: 13px; }
 
-    /* MAIN WINDOW */
+    /* ══════════════════════════════
+       MAIN WINDOW
+    ══════════════════════════════ */
     #main-win {
-      top: 20px;
-      left: 318px;
-      width: calc(100vw - 358px);
-      height: calc(100vh - 62px);
+      top: 16px;
+      left: 252px;
+      width: calc(100vw - 280px);
+      height: calc(100vh - 58px);
       display: flex;
       flex-direction: column;
     }
 
-    #main-win .window-body {
+    #main-body {
       flex: 1;
       overflow-y: scroll;
-      padding: 24px 40px;
-      font-family: 'Tahoma', Arial, sans-serif;
-      font-size: 0.82rem;
-      line-height: 1.6;
+      padding: 20px 36px;
     }
 
-    body.pixel-mode #main-win .window-body {
-      font-family: 'VT323', monospace;
-      font-size: 1.05rem;
-    }
-
-    /* SECTIONS */
-    .section { margin-bottom: 52px; }
+    /* ══════════════════════════════
+       SECTIONS
+    ══════════════════════════════ */
+    .section { margin-bottom: 48px; }
 
     .section h2 {
-      font-size: 0.95rem;
+      font-size: 12px;
       font-weight: 700;
       color: #0a246a;
-      margin-bottom: 12px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #aaa;
-      font-family: 'Tahoma', Arial, sans-serif;
+      margin-bottom: 10px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #7a96df;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    body.pixel-mode .section h2 {
-      font-family: 'VT323', monospace;
-      font-size: 1.4rem;
-    }
+    body.pixel-mode .section h2 { font-family: 'VT323', monospace; font-size: 18px; }
 
-    .section p {
-      margin-bottom: 8px;
-      color: #111;
-    }
+    .section p { font-size: 11px; line-height: 1.65; margin-bottom: 8px; color: #111; }
+
+    body.pixel-mode .section p { font-family: 'VT323', monospace; font-size: 15px; }
 
     /* EXPERIENCE */
-    .experience-split {
-      display: flex;
-      gap: 20px;
-      align-items: stretch;
-    }
-
+    .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list { flex: 7; }
 
     .experience-list h3 {
-      font-size: 0.85rem;
+      font-size: 11px;
       font-weight: 700;
       margin-bottom: 2px;
-      color: #000;
-      font-family: 'Tahoma', Arial, sans-serif;
+      color: #0a246a;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    body.pixel-mode .experience-list h3 {
-      font-family: 'VT323', monospace;
-      font-size: 1.1rem;
-    }
+    body.pixel-mode .experience-list h3 { font-family: 'VT323', monospace; font-size: 16px; }
 
-    .job-meta {
-      font-size: 0.73rem;
-      color: #666;
-      margin-bottom: 6px;
-    }
+    .job-meta { font-size: 10px; color: #666; margin-bottom: 5px; }
 
-    .experience-list ul {
-      padding-left: 16px;
-      margin-bottom: 20px;
-    }
+    .experience-list ul { padding-left: 16px; margin-bottom: 18px; }
 
     .experience-list ul li {
-      font-size: 0.8rem;
-      line-height: 1.65;
-      margin-bottom: 3px;
+      font-size: 11px;
+      line-height: 1.6;
+      margin-bottom: 2px;
       color: #222;
     }
 
-    body.pixel-mode .experience-list ul li {
-      font-family: 'VT323', monospace;
-      font-size: 1rem;
-    }
+    body.pixel-mode .experience-list ul li { font-family: 'VT323', monospace; font-size: 14px; }
 
     /* DOC STACK */
     .stack-wrapper {
@@ -272,26 +330,25 @@
       gap: 10px;
     }
 
-    .doc-stack {
-      position: relative;
-      width: 120px;
-      height: 160px;
-      cursor: pointer;
-    }
+    .doc-stack { position: relative; width: 120px; height: 160px; cursor: pointer; }
 
     .doc-stack .card {
       position: absolute;
       width: 100px;
       height: 140px;
-      border: 1px solid #aaa;
+      /* XP bevel */
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040;
+      border-right: 1px solid #404040;
+      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       background: #ece9d8;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 10px;
       color: #555;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
 
     .doc-stack .card-back {
@@ -301,22 +358,12 @@
       background: #d4d0c8;
     }
 
-    .doc-stack .card-front {
-      top: 0; left: 0;
-      transform: rotate(-2deg);
-      z-index: 2;
-    }
+    .doc-stack .card-front { top: 0; left: 0; transform: rotate(-2deg); z-index: 2; }
 
-    .doc-stack:hover .card-front {
-      transform: rotate(-5deg) translateY(-4px);
-      box-shadow: 2px 4px 10px rgba(0,0,0,0.25);
-    }
+    .doc-stack:hover .card-front { transform: rotate(-5deg) translateY(-4px); }
+    .doc-stack:hover .card-back  { transform: rotate(9deg) translateY(2px); }
 
-    .doc-stack:hover .card-back {
-      transform: rotate(9deg) translateY(2px);
-    }
-
-    .stack-label { font-size: 0.73rem; color: #555; }
+    .stack-label { font-size: 10px; color: #555; }
 
     /* MODAL */
     .modal-overlay {
@@ -344,39 +391,33 @@
 
     .modal-overlay.active .modal-content { transform: scale(1); }
 
-    .modal-doc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
+    .modal-doc { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
     .modal-doc a {
       display: flex;
-      border: 1px solid #aaa;
       width: 240px;
       height: 340px;
       background: #ece9d8;
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040;
+      border-right: 1px solid #404040;
+      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       color: #555;
-      font-size: 0.82rem;
-      box-shadow: 1px 1px 4px rgba(0,0,0,0.15);
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      font-size: 11px;
+      transition: transform 0.2s ease;
     }
 
-    .modal-doc a:hover {
-      box-shadow: 2px 4px 12px rgba(0,0,0,0.2);
-      transform: translateY(-2px);
-    }
-
+    .modal-doc a:hover { transform: translateY(-2px); }
     .modal-close-hint {
       position: fixed;
-      bottom: 56px;
+      bottom: 46px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.75rem;
+      font-size: 10px;
       color: #666;
     }
 
@@ -388,119 +429,120 @@
     }
 
     .project-card {
-      border: 1px solid #aaa;
+      border-top: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040;
+      border-right: 1px solid #404040;
+      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       padding: 12px;
       text-decoration: none;
       color: #000;
       display: block;
       aspect-ratio: 1 / 1;
       background: #ece9d8;
-      box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-      transition: background 0.15s ease;
-      font-size: 0.78rem;
+      transition: background 0.1s ease, color 0.1s ease;
+      font-size: 11px;
     }
 
     .project-card:hover {
       background: #0a246a;
       color: white;
+      border-top: 1px solid #0a246a;
+      border-left: 1px solid #0a246a;
     }
 
-    .project-card h3 {
-      font-size: 0.82rem;
-      margin-bottom: 6px;
-      font-family: 'Tahoma', Arial, sans-serif;
-    }
-
-    body.pixel-mode .project-card h3 {
-      font-family: 'VT323', monospace;
-      font-size: 1.05rem;
-    }
-
-    .project-card p { font-size: 0.75rem; margin: 0; line-height: 1.5; }
+    .project-card h3 { font-size: 11px; margin-bottom: 6px; font-family: Tahoma, Arial, sans-serif; }
+    .project-card p  { font-size: 10px; margin: 0; line-height: 1.5; }
 
     /* SETTINGS */
-    .field-row { margin-bottom: 10px; }
+    .field-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .field-row label { font-size: 11px; cursor: pointer; }
 
-    /* TASKBAR */
+    /* ══════════════════════════════
+       TASKBAR
+    ══════════════════════════════ */
     .taskbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      height: 40px;
-      background: linear-gradient(180deg,
-        #2464c8 0%,
-        #3c7cf0 6%,
-        #2060d0 50%,
-        #1850b8 94%,
-        #1040a0 100%
-      );
+      height: 30px;
+      background: linear-gradient(180deg, #245edc 0%, #3c7fe8 5%, #245edc 50%, #1850c0 95%, #1040a8 100%);
+      border-top: 1px solid #6b9fff;
       display: flex;
       align-items: center;
-      padding: 0 4px;
-      gap: 4px;
+      padding: 0 2px;
+      gap: 2px;
       z-index: 9999;
-      border-top: 1px solid #1040a0;
-      box-shadow: 0 -1px 0 #4888f0;
     }
 
     .start-btn {
-      height: 30px;
-      padding: 0 12px 0 6px;
-      background: linear-gradient(180deg, #56b43a 0%, #3a9020 50%, #2a7010 100%);
-      border: 1px solid #1a5808;
+      height: 24px;
+      padding: 0 10px 0 4px;
+      background: linear-gradient(180deg, #56b43a 0%, #3a9020 45%, #2a7010 55%, #1e5c08 100%);
       border-radius: 0 12px 12px 0;
+      border: 1px solid #1a5808;
+      border-left: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.3);
       color: white;
-      font-family: 'Tahoma', Arial, sans-serif;
-      font-size: 0.85rem;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-size: 12px;
       font-weight: 700;
       font-style: italic;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+      gap: 4px;
       letter-spacing: 0.3px;
     }
 
     .start-btn:hover {
-      background: linear-gradient(180deg, #68c84a 0%, #4aa030 50%, #3a8020 100%);
+      background: linear-gradient(180deg, #68c84a 0%, #4aa030 45%, #3a8020 55%, #2a6c18 100%);
     }
 
     .taskbar-sep {
       width: 1px;
-      height: 28px;
+      height: 22px;
       background: rgba(255,255,255,0.2);
       margin: 0 2px;
     }
 
     .taskbar-btn {
-      height: 28px;
+      height: 22px;
       padding: 0 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255,255,255,0.3);
+      border-left: 1px solid rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+      border-right: 1px solid rgba(0,0,0,0.3);
       color: white;
-      font-size: 0.72rem;
-      font-family: 'Tahoma', Arial, sans-serif;
+      font-size: 10px;
+      font-family: Tahoma, Arial, sans-serif;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
 
     .taskbar-btn:hover { background: rgba(255,255,255,0.25); }
 
-    .taskbar-clock {
+    .taskbar-tray {
       margin-left: auto;
-      color: white;
-      font-size: 0.75rem;
-      font-family: 'Tahoma', Arial, sans-serif;
-      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      background: linear-gradient(180deg, #1448b8 0%, #1c58d0 50%, #1040a8 100%);
       border-left: 1px solid rgba(255,255,255,0.2);
+      padding: 0 8px;
+    }
+
+    .taskbar-clock {
+      color: white;
+      font-size: 10px;
+      font-family: Tahoma, Arial, sans-serif;
       text-align: center;
-      min-width: 50px;
     }
 
     /* SNAP BACK */
-    .win.snapping {
+    .xp-window.snapping {
       transition: top 0.28s ease, left 0.28s ease;
     }
   </style>
@@ -524,41 +566,47 @@
 
 <div class="desktop">
 
-  <!-- SIDEBAR WINDOW -->
-  <div class="window win" id="sidebar-win">
-    <div class="title-bar" id="sidebar-bar">
-      <div class="title-bar-text">🖥️ Spencer Jacobs</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
+  <!-- SIDEBAR -->
+  <div class="xp-window" id="sidebar-win">
+    <div class="xp-title-bar" id="sidebar-bar">
+      <div class="xp-title-text">🖥️ Spencer Jacobs</div>
+      <div class="xp-title-btns">
+        <div class="xp-btn xp-btn-min">─</div>
+        <div class="xp-btn xp-btn-max">□</div>
+        <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
-    <div class="window-body" style="padding:10px; max-height:calc(100vh - 110px); overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+    <div class="xp-body" style="max-height:calc(100vh - 80px); padding:10px 8px; display:flex; flex-direction:column; gap:8px;">
       <p class="sidebar-name">Spencer Jacobs</p>
       <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-      <a class="nav-item" onclick="scrollToSection('about')"><span class="nav-icon">👤</span>About</a>
-      <a class="nav-item" onclick="scrollToSection('experience')"><span class="nav-icon">💼</span>Experience</a>
-      <a class="nav-item" onclick="scrollToSection('skills')"><span class="nav-icon">⚙️</span>Skills</a>
-      <a class="nav-item" onclick="scrollToSection('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
-      <a class="nav-item" onclick="scrollToSection('projects')"><span class="nav-icon">📁</span>Projects</a>
-      <a class="nav-item" onclick="scrollToSection('contact')"><span class="nav-icon">📬</span>Contact</a>
-      <a class="nav-item" onclick="scrollToSection('settings')"><span class="nav-icon">🔧</span>Settings</a>
+
+      <div class="xp-panel">
+        <div class="xp-panel-header">Navigation</div>
+        <div class="xp-panel-body">
+          <a class="nav-item" onclick="scrollToSection('about')"><span class="nav-icon">👤</span>About</a>
+          <a class="nav-item" onclick="scrollToSection('experience')"><span class="nav-icon">💼</span>Experience</a>
+          <a class="nav-item" onclick="scrollToSection('skills')"><span class="nav-icon">⚙️</span>Skills</a>
+          <a class="nav-item" onclick="scrollToSection('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
+          <a class="nav-item" onclick="scrollToSection('projects')"><span class="nav-icon">📁</span>Projects</a>
+          <a class="nav-item" onclick="scrollToSection('contact')"><span class="nav-icon">📬</span>Contact</a>
+          <a class="nav-item" onclick="scrollToSection('settings')"><span class="nav-icon">🔧</span>Settings</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- MAIN WINDOW -->
-  <div class="window win" id="main-win">
-    <div class="title-bar" id="main-bar">
-      <div class="title-bar-text">📂 Spencer Jacobs — Portfolio</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
+  <div class="xp-window" id="main-win">
+    <div class="xp-title-bar" id="main-bar">
+      <div class="xp-title-text">📂 Spencer Jacobs — Portfolio</div>
+      <div class="xp-title-btns">
+        <div class="xp-btn xp-btn-min">─</div>
+        <div class="xp-btn xp-btn-max">□</div>
+        <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
-    <div class="window-body" id="main-body" style="flex:1; overflow-y:scroll; padding:24px 40px;">
+    <div class="xp-body" id="main-body" style="flex:1; padding:20px 36px;">
 
       <div class="section" id="about">
         <h2>About</h2>
@@ -644,7 +692,7 @@
 
       <div class="section" id="contact">
         <h2>Contact</h2>
-        <p>GitHub: <a href="https://github.com/spencercj">github.com/spencercj</a></p>
+        <p>GitHub: <a href="https://github.com/spencercj" style="color:#0a246a;">github.com/spencercj</a></p>
         <p>LinkedIn: your link here</p>
         <p>Email: your email here</p>
       </div>
@@ -655,7 +703,7 @@
           <input type="checkbox" id="fontToggle" checked onchange="toggleFont(this)">
           <label for="fontToggle">Use pixel font (default)</label>
         </div>
-        <p style="font-size:0.75rem; color:#666; margin-top:6px;">Uncheck to switch to standard font.</p>
+        <p style="font-size:10px; color:#666; margin-top:4px;">Uncheck to switch to standard Tahoma font.</p>
       </div>
 
     </div>
@@ -668,7 +716,9 @@
   <button class="start-btn">⊞ start</button>
   <div class="taskbar-sep"></div>
   <button class="taskbar-btn">📂 Portfolio</button>
-  <div class="taskbar-clock" id="clock"></div>
+  <div class="taskbar-tray">
+    <div class="taskbar-clock" id="clock"></div>
+  </div>
 </div>
 
 <script>
@@ -690,23 +740,20 @@
   function scrollToSection(id) {
     const el = document.getElementById(id);
     const body = document.getElementById('main-body');
-    if (el && body) body.scrollTo({ top: el.offsetTop - 16, behavior: 'smooth' });
+    if (el && body) body.scrollTo({ top: el.offsetTop - 12, behavior: 'smooth' });
   }
 
-  // DRAGGABLE + SNAP BACK
+  // DRAG + SNAP
   function makeDraggable(winEl, barEl) {
     let origTop, origLeft;
-
-    // capture origins after layout
     requestAnimationFrame(() => {
       origTop  = winEl.offsetTop;
       origLeft = winEl.offsetLeft;
     });
-
     let dragging = false, offX = 0, offY = 0;
 
     barEl.addEventListener('mousedown', e => {
-      if (e.target.tagName === 'BUTTON') return;
+      if (e.target.classList.contains('xp-btn')) return;
       dragging = true;
       offX = e.clientX - winEl.offsetLeft;
       offY = e.clientY - winEl.offsetTop;
