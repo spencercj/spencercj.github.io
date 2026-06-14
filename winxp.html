@@ -35,24 +35,25 @@
     }
 
     /* ══════════════════════════════
-       XP WINDOW CHROME — OLIVE GREEN
+       XP WINDOW CHROME — LUNA BLUE
     ══════════════════════════════ */
     .xp-window {
       position: absolute;
       border-radius: 6px 6px 0 0;
-      border: 1px solid #3a6629;
+      border: 2px solid #0831d9;
       box-shadow:
-        inset 0 0 0 1px #8aad62,
+        inset 1px 1px 0 #aecaf8,
+        inset -1px -1px 0 #0a246a,
         3px 3px 10px rgba(0,0,0,0.55);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* ACTIVE TITLE BAR */
+    /* ACTIVE TITLE BAR — dramatic dark left to light right */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(to right, #3a6629, #c5d9a0);
+      background: linear-gradient(to right, #0a246a 0%, #1a3a8a 20%, #2858b8 45%, #6898d0 70%, #a6caf0 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -162,7 +163,7 @@
     .sidebar-name {
       font-size: 12px;
       font-weight: 700;
-      color: #1a3a0a;
+      color: #003366;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -180,26 +181,26 @@
 
     body.pixel-mode .sidebar-bio { font-family: 'VT323', monospace; font-size: 13px; }
 
-    /* XP PANEL — OLIVE */
+    /* XP PANEL — LUNA BLUE */
     .xp-panel {
-      border: 1px solid #5a8040;
+      border: 1px solid #5080c0;
       border-radius: 3px;
       overflow: hidden;
     }
 
     .xp-panel-header {
-      background: linear-gradient(to bottom, #c5d9a0, #a8c070);
-      color: #3a6629;
+      background: linear-gradient(to bottom, #c1d9f5, #a8c8f0);
+      color: #003366;
       font-size: 10px;
       font-weight: 700;
       padding: 3px 8px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      border-bottom: 1px solid #5a8040;
+      border-bottom: 1px solid #5080c0;
     }
 
     .xp-panel-body {
       padding: 3px 4px;
-      background: #dce8c8;
+      background: #dce8f8;
     }
 
     .nav-item {
@@ -208,7 +209,7 @@
       gap: 6px;
       padding: 3px 6px;
       font-size: 11px;
-      color: #3a6629;
+      color: #003399;
       cursor: pointer;
       text-decoration: none;
       border-radius: 2px;
@@ -218,12 +219,7 @@
     body.pixel-mode .nav-item { font-family: 'VT323', monospace; font-size: 14px; }
 
     .nav-item:hover {
-      background: #4a7a35;
-      color: white;
-    }
-
-    .nav-item.active {
-      background: #6b8e4e;
+      background: #316ac5;
       color: white;
     }
 
@@ -240,7 +236,7 @@
     }
 
     #main-body {
-      padding: 16px 20px 16px 20px;
+      padding: 16px 20px;
       height: 100%;
       overflow-y: scroll;
     }
@@ -253,10 +249,10 @@
     .section h2 {
       font-size: 12px;
       font-weight: 700;
-      color: #3a6629;
+      color: #003399;
       margin-bottom: 10px;
       padding-bottom: 3px;
-      border-bottom: 1px solid #8aad62;
+      border-bottom: 1px solid #7a96df;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -274,7 +270,7 @@
       font-size: 11px;
       font-weight: 700;
       margin-bottom: 2px;
-      color: #4a7a35;
+      color: #003399;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -376,7 +372,7 @@
       border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       text-decoration: none;
-      color: #3a6629;
+      color: #003399;
       font-size: 11px;
       font-weight: 700;
       transition: transform 0.2s ease;
@@ -418,12 +414,12 @@
     }
 
     .project-card:hover {
-      background: #4a7a35;
+      background: #316ac5;
       color: white;
-      border-top: 1px solid #2a4a1a;
-      border-left: 1px solid #2a4a1a;
-      border-bottom: 1px solid #8aad62;
-      border-right: 1px solid #8aad62;
+      border-top: 1px solid #1a4a9a;
+      border-left: 1px solid #1a4a9a;
+      border-bottom: 1px solid #5a8ad8;
+      border-right: 1px solid #5a8ad8;
       box-shadow: none;
     }
 
@@ -431,7 +427,7 @@
       font-size: 11px;
       margin-bottom: 6px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      color: #3a6629;
+      color: #003399;
     }
 
     .project-card:hover h3 { color: white; }
@@ -445,14 +441,14 @@
     .field-row label { font-size: 11px; cursor: pointer; }
 
     /* ══════════════════════════════
-       TASKBAR — OLIVE
+       TASKBAR — LUNA BLUE
     ══════════════════════════════ */
     .taskbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
       height: 30px;
-      background: #6b8e4e;
-      border-top: 1px solid #8aad62;
+      background: #245edc;
+      border-top: 1px solid #6b9fff;
       display: flex;
       align-items: center;
       padding: 0 2px;
@@ -460,14 +456,15 @@
       z-index: 9999;
     }
 
+    /* START BUTTON — always green regardless of theme */
     .start-btn {
       height: 24px;
       padding: 0 10px 0 6px;
-      background: linear-gradient(to bottom, #7ab356, #4a7a35, #3a6220);
+      background: linear-gradient(to bottom, #67cf5b, #3a8a3a, #1e5c1e);
       border-radius: 0 12px 12px 0;
-      border: 1px solid #2a4a18;
+      border: 1px solid #1a5808;
       border-left: none;
-      box-shadow: inset 0 1px 0 rgba(180,220,140,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
+      box-shadow: inset 0 1px 0 rgba(168,230,160,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
       color: white;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       font-size: 12px;
@@ -480,7 +477,7 @@
     }
 
     .start-btn:hover {
-      background: linear-gradient(to bottom, #8ac466, #5a8a45, #4a7230);
+      background: linear-gradient(to bottom, #78de6a, #4a9a48, #2a6a28);
     }
 
     .taskbar-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.25); margin: 0 2px; }
@@ -506,7 +503,7 @@
       display: flex;
       align-items: center;
       height: 100%;
-      background: linear-gradient(180deg, #4a6e32 0%, #3a5e28 50%, #2a4e18 100%);
+      background: linear-gradient(180deg, #1c50c8 0%, #1848b8 50%, #1040a8 100%);
       border-left: 1px solid rgba(255,255,255,0.2);
       padding: 0 10px;
     }
@@ -678,7 +675,7 @@
 
       <div class="section" id="contact">
         <h2>Contact</h2>
-        <p>GitHub: <a href="https://github.com/spencercj" style="color:#3a6629;">github.com/spencercj</a></p>
+        <p>GitHub: <a href="https://github.com/spencercj" style="color:#003399;">github.com/spencercj</a></p>
         <p>LinkedIn: your link here</p>
         <p>Email: your email here</p>
       </div>
