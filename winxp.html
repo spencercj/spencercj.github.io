@@ -31,7 +31,7 @@
     }
 
     /* ══════════════════════════════
-       XP WINDOW CHROME — LUNA BLUE
+       XP WINDOW CHROME
     ══════════════════════════════ */
     .xp-window {
       position: absolute;
@@ -46,9 +46,16 @@
       flex-direction: column;
     }
 
+    /* AUTHENTIC LUNA TITLE BAR — 2D gradient (top-to-bottom + left-to-right) */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(to right, #0a246a 0%, #a6caf0 100%);
+      background: linear-gradient(
+        to bottom,
+        #4a90d8 0%,
+        #1a55b0 35%,
+        #0a246a 65%,
+        #1a4a9a 100%
+      );
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,6 +63,16 @@
       cursor: grab;
       user-select: none;
       flex-shrink: 0;
+      position: relative;
+    }
+
+    /* subtle left-to-right lightening overlay */
+    .xp-title-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 0%, rgba(166,202,240,0.35) 100%);
+      pointer-events: none;
     }
 
     .xp-title-bar:active { cursor: grabbing; }
@@ -65,13 +82,21 @@
       font-size: 11px;
       font-weight: 700;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
       display: flex;
       align-items: center;
       gap: 5px;
+      position: relative;
+      z-index: 1;
     }
 
-    .xp-title-btns { display: flex; gap: 2px; align-items: center; }
+    .xp-title-btns {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
 
     .xp-btn {
       width: 21px;
@@ -104,12 +129,14 @@
       border-right: 1px solid rgba(255,255,255,0.7);
     }
 
+    /* WINDOW BODY */
     .xp-body {
       background-color: #ece9d8;
       overflow-y: auto;
       flex: 1;
     }
 
+    /* XP SCROLLBAR */
     .xp-body::-webkit-scrollbar { width: 17px; }
     .xp-body::-webkit-scrollbar-track {
       background: #d4d0c8;
@@ -134,7 +161,7 @@
     }
 
     /* ══════════════════════════════
-       SIDEBAR
+       SIDEBAR WINDOW
     ══════════════════════════════ */
     #sidebar-win {
       top: 16px;
@@ -144,10 +171,11 @@
 
     #sidebar-win .xp-body {
       max-height: calc(100vh - 80px);
-      padding: 10px 8px;
+      padding: 8px 6px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+      background: #d6e8f8;
     }
 
     .sidebar-name {
@@ -155,38 +183,54 @@
       font-weight: 700;
       color: #003366;
       font-family: 'Trebuchet MS', Arial, sans-serif;
+      padding: 4px 6px 2px;
     }
 
-    .sidebar-subtitle { font-size: 10px; color: #555; font-family: Tahoma, Arial, sans-serif; }
+    .sidebar-subtitle {
+      font-size: 10px;
+      color: #555;
+      font-family: Tahoma, Arial, sans-serif;
+      padding: 0 6px;
+    }
 
     .sidebar-bio {
       font-size: 10px;
       line-height: 1.55;
       color: #222;
       font-family: Tahoma, Arial, sans-serif;
-      border-bottom: 1px solid #b0a898;
-      padding-bottom: 8px;
+      padding: 4px 6px 8px;
+      border-bottom: 1px solid #a8c4e0;
     }
 
+    /* XP PANEL — exact Luna style */
     .xp-panel {
       border: 1px solid #5080c0;
-      border-radius: 3px;
+      border-radius: 4px;
       overflow: hidden;
+      margin-bottom: 2px;
     }
 
     .xp-panel-header {
-      background: linear-gradient(to bottom, #c1d9f5, #a8c8f0);
+      background: linear-gradient(to bottom, #c1d9f5 0%, #a8c8f0 100%);
       color: #003366;
       font-size: 10px;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 4px 8px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       border-bottom: 1px solid #5080c0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .xp-panel-chevron {
+      font-size: 8px;
+      color: #003366;
     }
 
     .xp-panel-body {
       padding: 3px 4px;
-      background: #dce8f8;
+      background: #d6e8f8;
     }
 
     .nav-item {
@@ -198,8 +242,8 @@
       color: #003399;
       cursor: pointer;
       text-decoration: none;
-      border-radius: 2px;
       font-family: Tahoma, Arial, sans-serif;
+      border-radius: 2px;
     }
 
     .nav-item:hover {
@@ -225,6 +269,9 @@
       overflow-y: scroll;
     }
 
+    /* ══════════════════════════════
+       SECTIONS
+    ══════════════════════════════ */
     .section { margin-bottom: 44px; }
 
     .section h2 {
@@ -245,6 +292,7 @@
       font-family: Tahoma, Arial, sans-serif;
     }
 
+    /* EXPERIENCE */
     .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list  { flex: 7; }
 
@@ -273,6 +321,7 @@
       font-family: Tahoma, Arial, sans-serif;
     }
 
+    /* DOC STACK */
     .stack-wrapper {
       flex: 3;
       display: flex;
@@ -313,6 +362,7 @@
 
     .stack-label { font-size: 10px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
 
+    /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -375,6 +425,7 @@
       font-family: Tahoma, Arial, sans-serif;
     }
 
+    /* PROJECTS */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -418,6 +469,7 @@
     .project-card:hover h3 { color: white; }
     .project-card p { font-size: 10px; margin: 0; line-height: 1.5; }
 
+    /* SETTINGS */
     .field-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
     .field-row label { font-size: 11px; cursor: pointer; font-family: Tahoma, Arial, sans-serif; }
 
@@ -522,6 +574,7 @@
 
 <div class="desktop">
 
+  <!-- SIDEBAR -->
   <div class="xp-window" id="sidebar-win">
     <div class="xp-title-bar" id="sidebar-bar">
       <div class="xp-title-text">🖥️ Spencer Jacobs</div>
@@ -531,12 +584,16 @@
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
-    <div class="xp-body" style="max-height:calc(100vh - 80px); padding:10px 8px; display:flex; flex-direction:column; gap:8px;">
+    <div class="xp-body" style="max-height:calc(100vh - 80px);">
       <p class="sidebar-name">Spencer Jacobs</p>
       <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
+
       <div class="xp-panel">
-        <div class="xp-panel-header">Navigation</div>
+        <div class="xp-panel-header">
+          <span>Navigation</span>
+          <span class="xp-panel-chevron">▲</span>
+        </div>
         <div class="xp-panel-body">
           <a class="nav-item" onclick="scrollToSection('about')"><span class="nav-icon">👤</span>About</a>
           <a class="nav-item" onclick="scrollToSection('experience')"><span class="nav-icon">💼</span>Experience</a>
@@ -544,12 +601,12 @@
           <a class="nav-item" onclick="scrollToSection('certifications')"><span class="nav-icon">🎓</span>Certifications</a>
           <a class="nav-item" onclick="scrollToSection('projects')"><span class="nav-icon">📁</span>Projects</a>
           <a class="nav-item" onclick="scrollToSection('contact')"><span class="nav-icon">📬</span>Contact</a>
-          <a class="nav-item" onclick="scrollToSection('settings')"><span class="nav-icon">🔧</span>Settings</a>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MAIN WINDOW -->
   <div class="xp-window" id="main-win">
     <div class="xp-title-bar" id="main-bar">
       <div class="xp-title-text">📂 Spencer Jacobs — Portfolio</div>
@@ -654,11 +711,6 @@
         <p>GitHub: <a href="https://github.com/spencercj" style="color:#003399;">github.com/spencercj</a></p>
         <p>LinkedIn: your link here</p>
         <p>Email: your email here</p>
-      </div>
-
-      <div class="section" id="settings">
-        <h2>⚙️ Settings</h2>
-        <p>No settings available.</p>
       </div>
 
     </div>
