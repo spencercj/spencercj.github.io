@@ -39,13 +39,27 @@
       flex-direction: column;
     }
 
+    /* ACTIVE TITLE BAR — 3 layer */
     .xp-title-bar {
       height: 28px;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.0) 55%, rgba(0,0,0,0.2) 100%),
-        linear-gradient(to right, #0a246a 0%, #1b4faa 25%, #4c86d0 60%, #a6caf0 100%);
-      border-top: 1px solid #6b9fff;
-      border-bottom: 1px solid #0831d9;
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.55) 0%,
+          rgba(255,255,255,0.25) 30%,
+          rgba(255,255,255,0.00) 55%,
+          rgba(0,0,0,0.00) 55%,
+          rgba(0,0,0,0.15) 100%
+        ),
+        linear-gradient(to bottom,
+          rgba(100,160,230,0.0) 0%,
+          rgba(100,160,230,0.3) 45%,
+          rgba(100,160,230,0.0) 100%
+        ),
+        linear-gradient(to right,
+          #0a246a 0%, #1b4faa 20%, #4c86d0 55%, #a6caf0 100%
+        );
+      border-top: 1px solid #6ea8e8;
+      border-bottom: 1px solid #0a246a;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 6px;
       cursor: grab; user-select: none; flex-shrink: 0;
@@ -53,10 +67,38 @@
 
     .xp-title-bar:active { cursor: grabbing; }
 
+    /* INACTIVE TITLE BAR — sidebar */
+    .xp-title-bar-inactive {
+      height: 28px;
+      background:
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.25) 0%,
+          rgba(255,255,255,0.10) 30%,
+          rgba(255,255,255,0.00) 55%,
+          rgba(0,0,0,0.00) 55%,
+          rgba(0,0,0,0.10) 100%
+        ),
+        linear-gradient(to bottom,
+          rgba(100,160,230,0.0) 0%,
+          rgba(100,160,230,0.15) 45%,
+          rgba(100,160,230,0.0) 100%
+        ),
+        linear-gradient(to right,
+          #7a96df 0%, #9db8e8 50%, #c4d3f0 100%
+        );
+      border-top: 1px solid #a0b8e0;
+      border-bottom: 1px solid #4a6aaa;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4px 0 6px;
+      cursor: grab; user-select: none; flex-shrink: 0;
+    }
+
+    .xp-title-bar-inactive:active { cursor: grabbing; }
+
     .xp-title-text {
       color: white; font-size: 12px; font-weight: 700;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6), 0 0 4px rgba(0,0,80,0.4);
       display: flex; align-items: center; gap: 5px;
     }
 
@@ -102,8 +144,7 @@
     .xp-nav-group { display: flex; align-items: center; gap: 0; }
 
     .xp-sphere-btn {
-      width: 24px; height: 24px;
-      border-radius: 50%;
+      width: 24px; height: 24px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #a8e060 0%, #6cbb30 25%, #3a8a1a 60%, #2a6a10 100%);
       border: 1px solid #1a5a08;
       box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
@@ -123,7 +164,6 @@
 
     .xp-nav-label { font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000; padding: 0 3px; cursor: pointer; }
     .xp-nav-label:hover { color: #316ac5; }
-    .xp-nav-sep { width: 1px; height: 14px; background: #aca899; margin: 0 2px; }
     .xp-nav-drop { font-size: 8px; color: #444; cursor: pointer; padding: 0 2px; }
 
     .xp-toolbar-btn {
@@ -163,9 +203,7 @@
       overflow: hidden; white-space: nowrap; position: relative;
     }
 
-    .xp-address-folder-icon {
-      position: absolute; left: 4px; font-size: 13px; line-height: 1;
-    }
+    .xp-address-folder-icon { position: absolute; left: 4px; font-size: 13px; line-height: 1; }
 
     #address-path {
       overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
@@ -247,7 +285,7 @@
     .nav-icon { width: 18px; text-align: center; font-size: 14px; }
 
     #main-win { top: 16px; left: 248px; width: calc(100vw - 276px); height: calc(100vh - 58px); }
-    #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
+    #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; position: relative; }
 
     .section { margin-bottom: 44px; }
 
@@ -266,55 +304,190 @@
     .experience-list ul { padding-left: 18px; margin-bottom: 18px; }
     .experience-list ul li { font-size: 13px; line-height: 1.6; margin-bottom: 3px; color: #222; font-family: Tahoma, Arial, sans-serif; }
 
+    /* STACK WRAPPER */
     .stack-wrapper { flex: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .doc-stack { position: relative; width: 110px; height: 150px; cursor: pointer; }
 
-    .doc-stack .card {
-      position: absolute; width: 90px; height: 130px; background: #ece9d8;
-      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
-      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 4px; font-size: 11px; font-family: Tahoma, Arial, sans-serif; color: #333;
-      transition: transform 0.25s ease;
+    /* XP FILE ICON */
+    .xp-file-icon-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      width: 80px; cursor: pointer; padding: 4px; border-radius: 2px;
     }
 
-    .doc-stack .card .file-icon { font-size: 28px; }
-    .doc-stack .card-back { top: 10px; left: 10px; transform: rotate(5deg); z-index: 1; background: #d4d0c8; }
-    .doc-stack .card-front { top: 0; left: 0; transform: rotate(-2deg); z-index: 2; }
-    .doc-stack:hover .card-front { transform: rotate(-5deg) translateY(-4px); }
-    .doc-stack:hover .card-back { transform: rotate(9deg) translateY(2px); }
-    .stack-label { font-size: 11px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
-
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(236,233,216,0.92);
-      z-index: 9000; display: flex; align-items: center; justify-content: center; gap: 30px;
-      opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+    .xp-file-icon-wrap:hover {
+      outline: 1px dotted #000;
+      background: rgba(49,106,197,0.1);
     }
 
-    .modal-overlay.active { opacity: 1; pointer-events: all; }
-    .modal-content { display: flex; gap: 30px; transform: scale(0.93); transition: transform 0.2s ease; }
-    .modal-overlay.active .modal-content { transform: scale(1); }
-    .modal-doc { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
-    .modal-doc a {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      width: 240px; height: 340px; background: #ece9d8;
-      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
-      box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
-      text-decoration: none; color: #003399;
-      font-size: 13px; font-weight: 700; font-family: Tahoma, Arial, sans-serif;
-      transition: transform 0.2s ease;
+    .xp-file-icon {
+      width: 32px; height: 40px;
+      background: #ffffff;
+      border: 1px solid #336699;
+      position: relative;
+      flex-shrink: 0;
     }
 
-    .modal-doc a .doc-icon { font-size: 48px; }
-    .modal-doc a:hover { transform: translateY(-2px); }
-
-    .modal-close-hint {
-      position: fixed; bottom: 46px; left: 50%; transform: translateX(-50%);
-      font-size: 11px; color: #666; font-family: Tahoma, Arial, sans-serif;
+    .xp-file-icon .fold {
+      position: absolute; top: 0; right: 0;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 8px 8px 0;
+      border-color: transparent #c0d8f0 transparent transparent;
     }
+
+    .xp-file-icon .line {
+      height: 2px; background: #336699;
+      margin: 6px 4px 0 4px; border-radius: 1px;
+    }
+
+    .xp-file-icon .line:nth-child(2) { width: calc(70% - 8px); }
+    .xp-file-icon .line:nth-child(3) { width: calc(90% - 8px); }
+    .xp-file-icon .line:nth-child(4) { width: calc(80% - 8px); }
+
+    .xp-file-label {
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px;
+      color: #ffffff; background: #316ac5;
+      text-align: center; padding: 1px 4px; margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    /* XP DIALOG */
+    #doc-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: transparent; z-index: 999;
+      display: none;
+    }
+
+    #doc-dialog {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px; z-index: 1000;
+      border: 2px solid #0831d9;
+      box-shadow: inset 1px 1px 0 #aecaf8, inset -1px -1px 0 #0a246a, 4px 4px 12px rgba(0,0,0,0.5);
+      border-radius: 4px 4px 0 0;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      background: #ece9d8;
+    }
+
+    #doc-dialog .dialog-title-bar {
+      height: 28px;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.1) 100%),
+        linear-gradient(to right, #0a246a 0%, #2060b8 35%, #a6caf0 100%);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4px 0 8px; flex-shrink: 0;
+    }
+
+    #doc-dialog .dialog-title-text {
+      color: white; font-size: 11px; font-weight: 700;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    #doc-dialog .dialog-body {
+      padding: 16px;
+    }
+
+    #doc-dialog .dialog-question {
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
+      margin-bottom: 16px;
+    }
+
+    #doc-dialog .dialog-icons {
+      display: flex; gap: 24px; justify-content: center; margin-bottom: 16px;
+    }
+
+    #doc-dialog .dialog-file {
+      display: flex; flex-direction: column; align-items: center;
+      cursor: pointer; padding: 4px; border-radius: 2px;
+    }
+
+    #doc-dialog .dialog-file:hover {
+      outline: 1px dotted #000;
+      background: rgba(49,106,197,0.1);
+    }
+
+    #doc-dialog .dialog-file-icon {
+      width: 24px; height: 30px;
+      background: #ffffff; border: 1px solid #336699; position: relative;
+    }
+
+    #doc-dialog .dialog-file-icon .fold {
+      position: absolute; top: 0; right: 0;
+      width: 0; height: 0; border-style: solid;
+      border-width: 0 6px 6px 0;
+      border-color: transparent #c0d8f0 transparent transparent;
+    }
+
+    #doc-dialog .dialog-file-icon .line {
+      height: 2px; background: #336699; margin: 4px 3px 0 3px; border-radius: 1px;
+    }
+
+    #doc-dialog .dialog-file-label {
+      font-family: Tahoma, Arial, sans-serif; font-size: 10px;
+      color: #fff; background: #316ac5;
+      padding: 1px 3px; margin-top: 3px; text-align: center;
+    }
+
+    #doc-dialog .dialog-btns {
+      display: flex; justify-content: flex-end; gap: 6px;
+    }
+
+    .xp-dialog-btn {
+      background: linear-gradient(to bottom, #fefefe, #e0ddd4);
+      border: 1px solid #707070; border-radius: 3px;
+      padding: 4px 16px; font-family: Tahoma, Arial, sans-serif; font-size: 11px;
+      box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #a0a0a0;
+      cursor: pointer;
+    }
+
+    .xp-dialog-btn:hover { background: linear-gradient(to bottom, #ffffff, #e8e8e8); }
+    .xp-dialog-btn.primary { border-color: #003399; }
+
+    /* INFO DIALOG */
+    #info-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: transparent; z-index: 1998;
+      display: none;
+    }
+
+    #info-dialog {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 260px; z-index: 1999;
+      border: 2px solid #0831d9;
+      box-shadow: inset 1px 1px 0 #aecaf8, inset -1px -1px 0 #0a246a, 4px 4px 12px rgba(0,0,0,0.5);
+      border-radius: 4px 4px 0 0; overflow: hidden;
+      display: none; flex-direction: column;
+      background: #ece9d8;
+    }
+
+    #info-dialog .dialog-title-bar {
+      height: 28px;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.1) 100%),
+        linear-gradient(to right, #0a246a 0%, #2060b8 35%, #a6caf0 100%);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4px 0 8px; flex-shrink: 0;
+    }
+
+    #info-dialog .dialog-title-text {
+      color: white; font-size: 11px; font-weight: 700;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+
+    #info-dialog .dialog-body {
+      padding: 16px; font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
+    }
+
+    #info-dialog .info-msg { margin-bottom: 16px; }
+
+    #info-dialog .dialog-btns { display: flex; justify-content: flex-end; }
 
     .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
@@ -373,25 +546,66 @@
 </head>
 <body>
 
-<div class="modal-overlay" id="docModal">
-  <div class="modal-content">
-    <div class="modal-doc">
-      <a href="resume.pdf" target="_blank"><span class="doc-icon">📄</span>View Resume</a>
-      <p>Resume</p>
-    </div>
-    <div class="modal-doc">
-      <a href="cv.pdf" target="_blank"><span class="doc-icon">📋</span>View CV</a>
-      <p>CV</p>
+<!-- DOC SELECTION OVERLAY + DIALOG -->
+<div id="doc-overlay"></div>
+<div id="doc-dialog">
+  <div class="dialog-title-bar">
+    <div class="dialog-title-text">📄 Open Document</div>
+    <div class="xp-title-btns">
+      <div class="xp-btn xp-btn-close" onclick="closeDocDialog()">✕</div>
     </div>
   </div>
-  <p class="modal-close-hint">Click anywhere to close</p>
+  <div class="dialog-body">
+    <p class="dialog-question">Which document would you like to open?</p>
+    <div class="dialog-icons">
+      <div class="dialog-file" onclick="openResume()">
+        <div class="dialog-file-icon">
+          <div class="fold"></div>
+          <div class="line" style="width:65%;"></div>
+          <div class="line" style="width:85%;"></div>
+          <div class="line" style="width:75%;"></div>
+        </div>
+        <div class="dialog-file-label">Resume.pdf</div>
+      </div>
+      <div class="dialog-file" onclick="openCV()">
+        <div class="dialog-file-icon">
+          <div class="fold"></div>
+          <div class="line" style="width:65%;"></div>
+          <div class="line" style="width:85%;"></div>
+          <div class="line" style="width:75%;"></div>
+        </div>
+        <div class="dialog-file-label">CV.pdf</div>
+      </div>
+    </div>
+    <div class="dialog-btns">
+      <button class="xp-dialog-btn" onclick="closeDocDialog()">Cancel</button>
+      <button class="xp-dialog-btn primary">Open</button>
+    </div>
+  </div>
+</div>
+
+<!-- INFO DIALOG -->
+<div id="info-overlay"></div>
+<div id="info-dialog">
+  <div class="dialog-title-bar">
+    <div class="dialog-title-text">Open</div>
+    <div class="xp-title-btns">
+      <div class="xp-btn xp-btn-close" onclick="closeInfoDialog()">✕</div>
+    </div>
+  </div>
+  <div class="dialog-body">
+    <p class="info-msg">No file linked yet. Add your PDF path to the href to enable this.</p>
+    <div class="dialog-btns">
+      <button class="xp-dialog-btn primary" onclick="closeInfoDialog()">OK</button>
+    </div>
+  </div>
 </div>
 
 <div class="desktop">
 
   <!-- SIDEBAR -->
   <div class="xp-window" id="sidebar-win">
-    <div class="xp-title-bar" id="sidebar-bar">
+    <div class="xp-title-bar-inactive" id="sidebar-bar">
       <div class="xp-title-text">🖥️ Spencer Jacobs</div>
       <div class="xp-title-btns">
         <div class="xp-btn xp-btn-min">_</div>
@@ -440,7 +654,7 @@
       <span class="xp-menu-item">Help</span>
     </div>
 
-   <div class="xp-toolbar">
+    <div class="xp-toolbar">
       <div class="xp-nav-group">
         <div class="xp-sphere-btn"><span class="xp-sphere-arrow">←</span></div>
         <span class="xp-nav-label">Back</span>
@@ -458,8 +672,7 @@
       <span style="display:inline-block;width:1px;height:18px;background:#b0aca0;vertical-align:middle;margin:0 6px;"></span>
       <button class="xp-toolbar-btn">⊞ Views ▾</button>
     </div>
-    
-    <!-- ADDRESS BAR -->
+
     <div class="xp-address-bar">
       <span class="xp-address-label">Address</span>
       <div class="xp-address-field-wrap">
@@ -489,26 +702,26 @@
             <h3>IT Support Specialist Intern</h3>
             <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
             <ul>
-              <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
-              <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
-              <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
+              <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions and escalating with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
+              <li>Harden and maintain secure endpoint configurations across 100+ user devices, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
+              <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues and supporting critical end-of-period closing processes.</li>
               <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface.</li>
               <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
             </ul>
             <h3>Learning Assistant for Professor Betsy Campbell</h3>
             <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
             <ul>
-              <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
+              <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts.</li>
               <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
-              <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
+              <li>Coordinated with course faculty and fellow learning assistants to align grading standards.</li>
             </ul>
             <h3>Congressional Internship Under State Rep. David Madsen</h3>
             <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
             <ul>
-              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation.</li>
-              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
+              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information.</li>
+              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy.</li>
               <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
-              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication and timely updates.</li>
+              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication.</li>
             </ul>
             <h3>Shift Supervisor</h3>
             <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
@@ -516,15 +729,20 @@
               <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
               <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
               <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
-              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
+              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20%.</li>
             </ul>
           </div>
           <div class="stack-wrapper">
-            <div class="doc-stack" id="docStack">
-              <div class="card card-back"><span class="file-icon">📋</span><span>CV</span></div>
-              <div class="card card-front"><span class="file-icon">📄</span><span>Resume</span></div>
+            <!-- XP FILE ICON -->
+            <div class="xp-file-icon-wrap" onclick="openDocDialog()">
+              <div class="xp-file-icon">
+                <div class="fold"></div>
+                <div class="line" style="width:calc(70% - 8px);"></div>
+                <div class="line" style="width:calc(90% - 8px);"></div>
+                <div class="line" style="width:calc(80% - 8px);"></div>
+              </div>
+              <div class="xp-file-label">Resume & CV</div>
             </div>
-            <p class="stack-label">Resume & CV</p>
           </div>
         </div>
       </div>
@@ -595,6 +813,7 @@
     if (el && body) body.scrollTo({ top: el.offsetTop - 12, behavior: 'smooth' });
   }
 
+  // DRAGGABLE WINDOWS
   function makeDraggable(winEl, barEl) {
     let origTop, origLeft;
     requestAnimationFrame(() => {
@@ -632,28 +851,46 @@
   makeDraggable(document.getElementById('sidebar-win'), document.getElementById('sidebar-bar'));
   makeDraggable(document.getElementById('main-win'),    document.getElementById('main-bar'));
 
-  const stack = document.getElementById('docStack');
-  const modal = document.getElementById('docModal');
+  // DOC DIALOG
+  function openDocDialog() {
+    document.getElementById('doc-overlay').style.display = 'block';
+    document.getElementById('doc-dialog').style.display  = 'flex';
+  }
 
-  stack.addEventListener('click', () => {
-    const front = stack.querySelector('.card-front');
-    const back  = stack.querySelector('.card-back');
-    front.style.transition = 'transform 0.25s ease';
-    back.style.transition  = 'transform 0.25s ease';
-    front.style.transform  = 'rotate(-8deg) translateX(-6px)';
-    back.style.transform   = 'rotate(10deg) translateX(6px)';
-    setTimeout(() => {
-      modal.classList.add('active');
-      front.style.transform = '';
-      back.style.transform  = '';
-    }, 260);
-  });
+  function closeDocDialog() {
+    document.getElementById('doc-overlay').style.display = 'none';
+    document.getElementById('doc-dialog').style.display  = 'none';
+  }
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
-      modal.classList.remove('active');
-    }
-  });
+  document.getElementById('doc-overlay').addEventListener('click', closeDocDialog);
+  document.getElementById('doc-dialog').addEventListener('click', e => e.stopPropagation());
+
+  // INFO DIALOG
+  function showXPDialog(msg) {
+    document.getElementById('info-overlay').style.display = 'block';
+    document.getElementById('info-dialog').style.display  = 'flex';
+  }
+
+  function closeInfoDialog() {
+    document.getElementById('info-overlay').style.display = 'none';
+    document.getElementById('info-dialog').style.display  = 'none';
+  }
+
+  document.getElementById('info-overlay').addEventListener('click', closeInfoDialog);
+  document.getElementById('info-dialog').addEventListener('click', e => e.stopPropagation());
+
+  // FILE OPEN HANDLERS
+  function openResume() {
+    const url = ''; // ← paste your resume URL here later
+    if (url) { window.open(url, '_blank'); }
+    else { closeDocDialog(); showXPDialog('No file linked yet.'); }
+  }
+
+  function openCV() {
+    const url = ''; // ← paste your CV URL here later
+    if (url) { window.open(url, '_blank'); }
+    else { closeDocDialog(); showXPDialog('No file linked yet.'); }
+  }
 
   // DYNAMIC ADDRESS BAR
   const addressPath = document.getElementById('address-path');
@@ -680,27 +917,18 @@
 
   function updateAddress() {
     for (const s of trackedSections) {
-      if (visibleSections.has(s.id)) {
-        setAddressPath(s.label);
-        return;
-      }
+      if (visibleSections.has(s.id)) { setAddressPath(s.label); return; }
     }
     setAddressPath(null);
   }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        visibleSections.add(entry.target.id);
-      } else {
-        visibleSections.delete(entry.target.id);
-      }
+      if (entry.isIntersecting) visibleSections.add(entry.target.id);
+      else visibleSections.delete(entry.target.id);
     });
     updateAddress();
-  }, {
-    root: document.getElementById('main-body'),
-    threshold: 0.3
-  });
+  }, { root: document.getElementById('main-body'), threshold: 0.3 });
 
   trackedSections.forEach(s => {
     const el = document.getElementById(s.id);
