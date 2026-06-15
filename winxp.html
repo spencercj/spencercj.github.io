@@ -49,34 +49,24 @@
         linear-gradient(to right, #0a246a 0%, #1b4faa 25%, #4c86d0 60%, #a6caf0 100%);
       border-top: 1px solid #6b9fff;
       border-bottom: 1px solid #0831d9;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 6px;
-      cursor: grab;
-      user-select: none;
-      flex-shrink: 0;
+      cursor: grab; user-select: none; flex-shrink: 0;
     }
 
     .xp-title-bar:active { cursor: grabbing; }
 
     .xp-title-text {
-      color: white;
-      font-size: 12px;
-      font-weight: 700;
+      color: white; font-size: 12px; font-weight: 700;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      display: flex; align-items: center; gap: 5px;
     }
 
     .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
-      width: 18px; height: 18px;
-      border-radius: 3px;
-      font-size: 8px;
+      width: 18px; height: 18px; border-radius: 3px; font-size: 8px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; font-weight: 700; color: white;
       border-top: 1px solid rgba(255,255,255,0.6);
@@ -91,17 +81,13 @@
 
     /* ── MENU BAR ── */
     .xp-menu-bar {
-      height: 20px;
-      background: #ece9d8;
+      height: 20px; background: #ece9d8;
       border-bottom: 1px solid #aca899;
-      display: flex; align-items: center;
-      padding: 0 4px;
-      flex-shrink: 0;
+      display: flex; align-items: center; padding: 0 4px; flex-shrink: 0;
     }
 
     .xp-menu-item {
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; color: #000;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
       padding: 2px 6px; cursor: pointer; border-radius: 2px;
     }
 
@@ -109,122 +95,148 @@
 
     /* ── TOOLBAR ── */
     .xp-toolbar {
-      height: 36px;
-      background: linear-gradient(to bottom, #f5f2e8 0%, #ede9da 50%, #e0dbc8 100%);
+      height: 32px;
+      background: linear-gradient(to bottom, #f8f5ec 0%, #ede8d8 40%, #e4dfc8 100%);
       border-top: 1px solid #ffffff;
-      border-bottom: 1px solid #aca899;
+      border-bottom: 1px solid #c8c4b4;
       display: flex; align-items: center;
-      padding: 0 6px; gap: 2px;
+      padding: 3px 4px; gap: 2px;
       flex-shrink: 0;
     }
 
-    /* GLOSSY 3D BACK/FORWARD BUTTONS */
-    .xp-nav-group { display: flex; align-items: center; gap: 3px; }
-
-    .xp-nav-btn {
-      display: flex; align-items: stretch;
-      height: 26px;
+    /* SPHERE BACK/FORWARD BUTTONS */
+    .xp-nav-group {
+      display: flex; align-items: center;
+      gap: 0;
     }
 
-    .xp-nav-main {
-      background: radial-gradient(ellipse at 40% 30%, #7acc5a 0%, #4ca038 40%, #2e7a1e 100%);
-      border: 1px solid #1e5c10;
-      border-right: none;
-      border-radius: 14px 0 0 14px;
-      padding: 0 10px;
-      display: flex; align-items: center; gap: 4px;
-      color: white;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; font-weight: 700;
+    .xp-sphere-btn {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 35% 30%,
+        #a8e060 0%,
+        #6cbb30 25%,
+        #3a8a1a 60%,
+        #2a6a10 100%
+      );
+      border: 1px solid #1a5a08;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
-      white-space: nowrap;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+      flex-shrink: 0;
     }
 
-    .xp-nav-main:hover {
-      background: radial-gradient(ellipse at 40% 30%, #90dc70 0%, #5ab844 40%, #3a9828 100%);
+    .xp-sphere-btn:hover {
+      background: radial-gradient(
+        circle at 35% 30%,
+        #c0f070 0%,
+        #80cc40 25%,
+        #4a9a28 60%,
+        #3a7a18 100%
+      );
+    }
+
+    .xp-sphere-arrow {
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+      line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .xp-nav-label {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px; color: #000;
+      padding: 0 3px;
+      cursor: pointer;
+    }
+
+    .xp-nav-label:hover { color: #316ac5; }
+
+    .xp-nav-sep {
+      width: 1px; height: 14px;
+      background: #aca899;
+      margin: 0 2px;
     }
 
     .xp-nav-drop {
-      background: radial-gradient(ellipse at 40% 30%, #7acc5a 0%, #4ca038 40%, #2e7a1e 100%);
-      border: 1px solid #1e5c10;
-      border-radius: 0 14px 14px 0;
-      width: 14px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 7px;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+      font-size: 8px; color: #444;
+      cursor: pointer; padding: 0 2px;
     }
 
-    .xp-nav-drop:hover {
-      background: radial-gradient(ellipse at 40% 30%, #90dc70 0%, #5ab844 40%, #3a9828 100%);
-    }
+    .xp-toolbar-sep { width: 1px; height: 18px; background: #aca899; margin: 0 3px; flex-shrink: 0; }
 
-    /* FLAT TOOLBAR BUTTONS (invisible until hover) */
+    /* FLAT TOOLBAR BUTTONS */
     .xp-toolbar-btn {
       background: transparent;
       border: 1px solid transparent;
       border-radius: 3px;
-      padding: 0 7px;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; color: #000;
+      padding: 0 6px;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
       cursor: pointer;
       display: flex; align-items: center; gap: 3px;
       white-space: nowrap; height: 26px;
     }
 
     .xp-toolbar-btn:hover {
-      background: linear-gradient(to bottom, #fefefe, #e8e4d8);
-      border-color: #aca899;
+      background: linear-gradient(to bottom, #fefdf8, #e8e4d4);
+      border-color: #c4c0b0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
-
-    .xp-toolbar-sep { width: 1px; height: 18px; background: #aca899; margin: 0 3px; flex-shrink: 0; }
 
     /* ── ADDRESS BAR ── */
     .xp-address-bar {
-      height: 24px;
-      background: #ece9d8;
-      border-bottom: 1px solid #aca899;
+      height: 22px; background: #ece9d8;
+      border-top: 1px solid #c8c4b4;
+      border-bottom: 1px solid #c8c4b4;
       display: flex; align-items: center;
-      padding: 0 6px; gap: 0;
+      padding: 1px 4px; gap: 0;
       flex-shrink: 0;
     }
 
     .xp-address-label {
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; color: #666;
-      padding: 0 6px;
-      white-space: nowrap;
-      border-right: 1px solid #aca899;
-      height: 100%;
-      display: flex; align-items: center;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #444;
+      padding-right: 6px;
+      border-right: 1px solid #c8c4b4;
       margin-right: 4px;
+      white-space: nowrap;
+      height: 100%; display: flex; align-items: center;
     }
 
     .xp-address-field-wrap {
       flex: 1; height: 18px;
+      position: relative;
       display: flex;
-      border: 1px solid #7ba2c8;
+      border: 1px solid #7090b8;
+      box-shadow: inset 1px 1px 0 #c0c8d8;
       background: white;
-      box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15);
       overflow: hidden;
     }
 
     .xp-address-field-inner {
       flex: 1;
       display: flex; align-items: center;
-      padding: 0 4px 0 4px; gap: 3px;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; color: #000;
+      padding: 0 2px 0 22px;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
       overflow: hidden; white-space: nowrap;
+      position: relative;
+    }
+
+    .xp-address-folder-icon {
+      position: absolute;
+      left: 4px;
+      font-size: 13px;
+      line-height: 1;
     }
 
     .xp-address-dropdown {
-      width: 18px;
-      background: linear-gradient(to bottom, #f0ede0, #d8d4c4);
-      border-left: 1px solid #aca899;
+      width: 16px; height: 100%;
+      background: linear-gradient(to bottom, #f0ede0, #d4d0c0);
+      border-left: 1px solid #9090a0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 9px; color: #000;
+      font-size: 8px; color: #404040;
       cursor: pointer; flex-shrink: 0;
     }
 
@@ -232,22 +244,19 @@
 
     /* GREEN GO BUTTON */
     .xp-address-go {
-      width: 42px; height: 22px;
-      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
-      border: 1px solid #1e5c10;
-      border-radius: 2px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+      width: 50px; height: 22px;
+      background: linear-gradient(to bottom, #5abb3a, #3a8a1a);
+      border: 1px solid #1e6010;
+      border-radius: 3px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.3);
       display: flex; align-items: center; justify-content: center;
-      gap: 3px;
-      cursor: pointer;
-      margin-left: 3px;
-      flex-shrink: 0;
+      gap: 3px; cursor: pointer;
+      margin-left: 4px; flex-shrink: 0;
     }
 
-    .xp-address-go:hover { background: linear-gradient(to bottom, #5ab844, #3a9828); }
-
+    .xp-address-go:hover { background: linear-gradient(to bottom, #6acc44, #4a9a22); }
     .xp-address-go .go-arrow { color: white; font-size: 12px; font-weight: 700; }
-    .xp-address-go .go-text { color: white; font-family: Tahoma, Arial, sans-serif; font-size: 11px; }
+    .xp-address-go .go-text { color: white; font-family: Tahoma, Arial, sans-serif; font-size: 11px; font-weight: 700; }
 
     /* WINDOW BODY */
     .xp-body { background-color: #ece9d8; overflow-y: auto; flex: 1; }
@@ -276,8 +285,7 @@
       max-height: calc(100vh - 80px);
       padding: 8px 6px;
       display: flex; flex-direction: column; gap: 6px;
-      background: #d6e8f8;
-      overflow-y: auto;
+      background: #d6e8f8; overflow-y: auto;
     }
 
     .sidebar-name { font-size: 13px; font-weight: 700; color: #003366; font-family: 'Trebuchet MS', Arial, sans-serif; padding: 2px 6px; }
@@ -289,8 +297,7 @@
     .xp-panel-header {
       background: linear-gradient(to bottom, #c1d9f5 0%, #a8c8f0 100%);
       color: #003366; font-size: 11px; font-weight: 700;
-      padding: 4px 8px;
-      font-family: 'Trebuchet MS', Arial, sans-serif;
+      padding: 4px 8px; font-family: 'Trebuchet MS', Arial, sans-serif;
       border-bottom: 1px solid #7ba2c8;
       display: flex; align-items: center; justify-content: space-between;
     }
@@ -312,7 +319,6 @@
        MAIN WINDOW
     ══════════════════════════════ */
     #main-win { top: 16px; left: 248px; width: calc(100vw - 276px); height: calc(100vh - 58px); }
-
     #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
 
     .section { margin-bottom: 44px; }
@@ -328,7 +334,6 @@
 
     .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list { flex: 7; }
-
     .experience-list h3 { font-size: 14px; font-weight: 700; margin-bottom: 2px; color: #003399; font-family: 'Trebuchet MS', Arial, sans-serif; }
     .job-meta { font-size: 11px; color: #666; margin-bottom: 5px; font-family: Tahoma, Arial, sans-serif; }
     .experience-list ul { padding-left: 18px; margin-bottom: 18px; }
@@ -338,8 +343,7 @@
     .doc-stack { position: relative; width: 110px; height: 150px; cursor: pointer; }
 
     .doc-stack .card {
-      position: absolute; width: 90px; height: 130px;
-      background: #ece9d8;
+      position: absolute; width: 90px; height: 130px; background: #ece9d8;
       border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
       border-bottom: 1px solid #404040; border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
@@ -356,12 +360,9 @@
     .stack-label { font-size: 11px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
 
     .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(236,233,216,0.92);
-      z-index: 9000;
-      display: flex; align-items: center; justify-content: center; gap: 30px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.2s ease;
+      position: fixed; inset: 0; background: rgba(236,233,216,0.92);
+      z-index: 9000; display: flex; align-items: center; justify-content: center; gap: 30px;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
     }
 
     .modal-overlay.active { opacity: 1; pointer-events: all; }
@@ -410,15 +411,13 @@
       position: fixed; bottom: 0; left: 0; right: 0;
       height: 30px; background: #245edc;
       border-top: 1px solid #6b9fff;
-      display: flex; align-items: center;
-      padding: 0 2px; gap: 2px; z-index: 9999;
+      display: flex; align-items: center; padding: 0 2px; gap: 2px; z-index: 9999;
     }
 
     .start-btn {
       height: 24px; padding: 0 10px 0 6px;
       background: linear-gradient(to bottom, #67cf5b, #3a8a3a, #1e5c1e);
-      border-radius: 0 12px 12px 0;
-      border: 1px solid #1a5808; border-left: none;
+      border-radius: 0 12px 12px 0; border: 1px solid #1a5808; border-left: none;
       box-shadow: inset 0 1px 0 rgba(168,230,160,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
       color: white; font-family: 'Trebuchet MS', Arial, sans-serif;
       font-size: 12px; font-weight: 700; font-style: italic;
@@ -431,25 +430,20 @@
     .taskbar-btn {
       height: 22px; padding: 0 8px;
       background: rgba(255,255,255,0.15);
-      border-top: 1px solid rgba(255,255,255,0.4);
-      border-left: 1px solid rgba(255,255,255,0.4);
-      border-bottom: 1px solid rgba(0,0,0,0.3);
-      border-right: 1px solid rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.4); border-left: 1px solid rgba(255,255,255,0.4);
+      border-bottom: 1px solid rgba(0,0,0,0.3); border-right: 1px solid rgba(0,0,0,0.3);
       color: white; font-size: 11px; font-family: Tahoma, Arial, sans-serif; cursor: pointer;
     }
 
     .taskbar-btn:hover { background: rgba(255,255,255,0.28); }
 
     .taskbar-tray {
-      margin-left: auto; display: flex; align-items: center;
-      height: 100%;
+      margin-left: auto; display: flex; align-items: center; height: 100%;
       background: linear-gradient(180deg, #1c50c8 0%, #1848b8 50%, #1040a8 100%);
-      border-left: 1px solid rgba(255,255,255,0.2);
-      padding: 0 10px;
+      border-left: 1px solid rgba(255,255,255,0.2); padding: 0 10px;
     }
 
     .taskbar-clock { color: white; font-size: 11px; font-family: Tahoma, Arial, sans-serif; background: none; }
-
     .xp-window.snapping { transition: top 0.28s ease, left 0.28s ease; }
   </style>
 </head>
@@ -522,20 +516,22 @@
       <span class="xp-menu-item">Help</span>
     </div>
 
+    <!-- TOOLBAR with sphere buttons -->
     <div class="xp-toolbar">
+      <!-- BACK -->
       <div class="xp-nav-group">
-        <div class="xp-nav-btn">
-          <div class="xp-nav-main">← Back</div>
-          <div class="xp-nav-drop">▼</div>
-        </div>
+        <div class="xp-sphere-btn"><span class="xp-sphere-arrow">←</span></div>
+        <span class="xp-nav-label">Back</span>
+        <div class="xp-nav-sep"></div>
+        <span class="xp-nav-drop">▼</span>
       </div>
-      <div class="xp-nav-group">
-        <div class="xp-nav-btn">
-          <div class="xp-nav-main">→</div>
-          <div class="xp-nav-drop">▼</div>
-        </div>
+      <!-- FORWARD -->
+      <div class="xp-nav-group" style="margin-left:4px;">
+        <div class="xp-sphere-btn"><span class="xp-sphere-arrow">→</span></div>
+        <div class="xp-nav-sep"></div>
+        <span class="xp-nav-drop">▼</span>
       </div>
-      <div class="xp-toolbar-sep"></div>
+      <div class="xp-toolbar-sep" style="margin-left:4px;"></div>
       <button class="xp-toolbar-btn">↑ Up</button>
       <div class="xp-toolbar-sep"></div>
       <button class="xp-toolbar-btn">🔍 Search</button>
@@ -544,12 +540,13 @@
       <button class="xp-toolbar-btn">⊞ Views ▾</button>
     </div>
 
+    <!-- ADDRESS BAR -->
     <div class="xp-address-bar">
       <span class="xp-address-label">Address</span>
       <div class="xp-address-field-wrap">
         <div class="xp-address-field-inner">
-          <span>📁</span>
-          <span>Spencer Jacobs — Portfolio</span>
+          <span class="xp-address-folder-icon">📁</span>
+          Spencer Jacobs — Portfolio
         </div>
         <div class="xp-address-dropdown">▼</div>
       </div>
