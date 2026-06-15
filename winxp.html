@@ -23,12 +23,7 @@
       overflow: hidden;
     }
 
-    .desktop {
-      width: 100vw;
-      height: 100vh;
-      position: relative;
-      padding-bottom: 30px;
-    }
+    .desktop { width: 100vw; height: 100vh; position: relative; padding-bottom: 30px; }
 
     /* ══════════════════════════════
        XP WINDOW CHROME
@@ -50,19 +45,8 @@
     .xp-title-bar {
       height: 28px;
       background:
-        linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.5) 0%,
-          rgba(255,255,255,0.0) 55%,
-          rgba(0,0,0,0.2) 100%
-        ),
-        linear-gradient(
-          to right,
-          #0a246a 0%,
-          #1b4faa 25%,
-          #4c86d0 60%,
-          #a6caf0 100%
-        );
+        linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.0) 55%, rgba(0,0,0,0.2) 100%),
+        linear-gradient(to right, #0a246a 0%, #1b4faa 25%, #4c86d0 60%, #a6caf0 100%);
       border-top: 1px solid #6b9fff;
       border-bottom: 1px solid #0831d9;
       display: flex;
@@ -90,16 +74,11 @@
     .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 3px;
       font-size: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-weight: 700;
-      color: white;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-weight: 700; color: white;
       border-top: 1px solid rgba(255,255,255,0.6);
       border-bottom: 1px solid rgba(0,0,0,0.3);
       border-left: 1px solid rgba(255,255,255,0.3);
@@ -115,19 +94,15 @@
       height: 20px;
       background: #ece9d8;
       border-bottom: 1px solid #aca899;
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       padding: 0 4px;
       flex-shrink: 0;
     }
 
     .xp-menu-item {
       font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      color: #000;
-      padding: 2px 6px;
-      cursor: pointer;
-      border-radius: 2px;
+      font-size: 11px; color: #000;
+      padding: 2px 6px; cursor: pointer; border-radius: 2px;
     }
 
     .xp-menu-item:hover { background: #316ac5; color: white; }
@@ -135,157 +110,144 @@
     /* ── TOOLBAR ── */
     .xp-toolbar {
       height: 36px;
-      background: linear-gradient(to bottom, #f0ede0 0%, #d8d4c4 100%);
+      background: linear-gradient(to bottom, #f5f2e8 0%, #ede9da 50%, #e0dbc8 100%);
+      border-top: 1px solid #ffffff;
       border-bottom: 1px solid #aca899;
-      display: flex;
-      align-items: center;
-      padding: 0 6px;
-      gap: 2px;
+      display: flex; align-items: center;
+      padding: 0 6px; gap: 2px;
       flex-shrink: 0;
     }
 
-    /* GREEN NAV BUTTONS — no gap */
+    /* GLOSSY 3D BACK/FORWARD BUTTONS */
     .xp-nav-group { display: flex; align-items: center; gap: 3px; }
 
     .xp-nav-btn {
-      display: flex;
-      align-items: stretch;
+      display: flex; align-items: stretch;
       height: 26px;
-      border: 1px solid #1e5c10;
-      border-radius: 3px;
-      overflow: hidden;
     }
 
     .xp-nav-main {
-      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
-      padding: 0 8px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      background: radial-gradient(ellipse at 40% 30%, #7acc5a 0%, #4ca038 40%, #2e7a1e 100%);
+      border: 1px solid #1e5c10;
+      border-right: none;
+      border-radius: 14px 0 0 14px;
+      padding: 0 10px;
+      display: flex; align-items: center; gap: 4px;
       color: white;
       font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      border-right: 1px solid #1e5c10;
+      font-size: 11px; font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
     }
 
-    .xp-nav-main:hover { background: linear-gradient(to bottom, #6ac050, #3a9828); }
+    .xp-nav-main:hover {
+      background: radial-gradient(ellipse at 40% 30%, #90dc70 0%, #5ab844 40%, #3a9828 100%);
+    }
 
     .xp-nav-drop {
-      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
+      background: radial-gradient(ellipse at 40% 30%, #7acc5a 0%, #4ca038 40%, #2e7a1e 100%);
+      border: 1px solid #1e5c10;
+      border-radius: 0 14px 14px 0;
       width: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 7px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 7px;
       cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
     }
 
-    .xp-nav-drop:hover { background: linear-gradient(to bottom, #6ac050, #3a9828); }
+    .xp-nav-drop:hover {
+      background: radial-gradient(ellipse at 40% 30%, #90dc70 0%, #5ab844 40%, #3a9828 100%);
+    }
 
-    /* REGULAR TOOLBAR BUTTONS */
+    /* FLAT TOOLBAR BUTTONS (invisible until hover) */
     .xp-toolbar-btn {
-      background: linear-gradient(to bottom, #f5f3ee, #ddd9ce);
-      border: 1px solid #aca899;
-      border-radius: 2px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 3px;
       padding: 0 7px;
       font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      color: #000;
+      font-size: 11px; color: #000;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      white-space: nowrap;
-      height: 26px;
+      display: flex; align-items: center; gap: 3px;
+      white-space: nowrap; height: 26px;
     }
 
-    .xp-toolbar-btn:hover { background: #c1d9f5; border-color: #316ac5; }
+    .xp-toolbar-btn:hover {
+      background: linear-gradient(to bottom, #fefefe, #e8e4d8);
+      border-color: #aca899;
+    }
 
     .xp-toolbar-sep { width: 1px; height: 18px; background: #aca899; margin: 0 3px; flex-shrink: 0; }
 
     /* ── ADDRESS BAR ── */
     .xp-address-bar {
-      height: 26px;
+      height: 24px;
       background: #ece9d8;
       border-bottom: 1px solid #aca899;
-      display: flex;
-      align-items: center;
-      padding: 0 6px;
-      gap: 4px;
+      display: flex; align-items: center;
+      padding: 0 6px; gap: 0;
       flex-shrink: 0;
     }
 
-    .xp-address-label { font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #666; white-space: nowrap; }
-    .xp-address-sep { width: 1px; height: 16px; background: #aca899; flex-shrink: 0; }
+    .xp-address-label {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px; color: #666;
+      padding: 0 6px;
+      white-space: nowrap;
+      border-right: 1px solid #aca899;
+      height: 100%;
+      display: flex; align-items: center;
+      margin-right: 4px;
+    }
 
     .xp-address-field-wrap {
-      flex: 1;
-      height: 22px;
+      flex: 1; height: 18px;
       display: flex;
       border: 1px solid #7ba2c8;
       background: white;
+      box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15);
       overflow: hidden;
     }
 
     .xp-address-field-inner {
       flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 0 4px;
-      gap: 4px;
+      display: flex; align-items: center;
+      padding: 0 4px 0 4px; gap: 3px;
       font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      color: #000;
-      overflow: hidden;
-      white-space: nowrap;
+      font-size: 11px; color: #000;
+      overflow: hidden; white-space: nowrap;
     }
 
     .xp-address-dropdown {
       width: 18px;
       background: linear-gradient(to bottom, #f0ede0, #d8d4c4);
-      border-left: 1px solid #7ba2c8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: #000;
-      cursor: pointer;
-      flex-shrink: 0;
+      border-left: 1px solid #aca899;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #000;
+      cursor: pointer; flex-shrink: 0;
     }
 
     .xp-address-dropdown:hover { background: #c1d9f5; }
 
+    /* GREEN GO BUTTON */
     .xp-address-go {
-      width: 40px;
-      height: 22px;
-      background: linear-gradient(to bottom, #f0ede0, #d8d4c4);
-      border: 1px solid #aca899;
+      width: 42px; height: 22px;
+      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
+      border: 1px solid #1e5c10;
       border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
       gap: 3px;
       cursor: pointer;
+      margin-left: 3px;
       flex-shrink: 0;
     }
 
-    .xp-address-go:hover { background: #c1d9f5; border-color: #316ac5; }
+    .xp-address-go:hover { background: linear-gradient(to bottom, #5ab844, #3a9828); }
 
-    .xp-address-go .go-arrow {
-      color: #2e7a1e;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .xp-address-go .go-text {
-      color: #000;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-    }
+    .xp-address-go .go-arrow { color: white; font-size: 12px; font-weight: 700; }
+    .xp-address-go .go-text { color: white; font-family: Tahoma, Arial, sans-serif; font-size: 11px; }
 
     /* WINDOW BODY */
     .xp-body { background-color: #ece9d8; overflow-y: auto; flex: 1; }
@@ -294,20 +256,15 @@
     .xp-body::-webkit-scrollbar-track { background: #d4d0c8; border-left: 1px solid #808080; }
     .xp-body::-webkit-scrollbar-thumb {
       background: #c0c0c0;
-      border-top: 1px solid #ffffff;
-      border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040;
-      border-right: 1px solid #404040;
+      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
     }
     .xp-body::-webkit-scrollbar-button {
       background: #d4d0c8;
-      border-top: 1px solid #ffffff;
-      border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040;
-      border-right: 1px solid #404040;
-      height: 17px;
-      display: block;
+      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
+      height: 17px; display: block;
     }
 
     /* ══════════════════════════════
@@ -318,9 +275,7 @@
     #sidebar-win .xp-body {
       max-height: calc(100vh - 80px);
       padding: 8px 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      display: flex; flex-direction: column; gap: 6px;
       background: #d6e8f8;
       overflow-y: auto;
     }
@@ -333,31 +288,21 @@
 
     .xp-panel-header {
       background: linear-gradient(to bottom, #c1d9f5 0%, #a8c8f0 100%);
-      color: #003366;
-      font-size: 11px;
-      font-weight: 700;
+      color: #003366; font-size: 11px; font-weight: 700;
       padding: 4px 8px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       border-bottom: 1px solid #7ba2c8;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
 
     .xp-panel-chevron { font-size: 8px; color: #003366; }
     .xp-panel-body { padding: 3px 4px; background: #d6e8f8; }
 
     .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 6px;
-      font-size: 12px;
-      color: #003399;
-      cursor: pointer;
-      text-decoration: none;
-      font-family: Tahoma, Arial, sans-serif;
-      border-radius: 2px;
+      display: flex; align-items: center; gap: 6px;
+      padding: 4px 6px; font-size: 12px; color: #003399;
+      cursor: pointer; text-decoration: none;
+      font-family: Tahoma, Arial, sans-serif; border-radius: 2px;
     }
 
     .nav-item:hover { background: #316ac5; color: white; }
@@ -366,26 +311,15 @@
     /* ══════════════════════════════
        MAIN WINDOW
     ══════════════════════════════ */
-    #main-win {
-      top: 16px;
-      left: 248px;
-      width: calc(100vw - 276px);
-      height: calc(100vh - 58px);
-    }
+    #main-win { top: 16px; left: 248px; width: calc(100vw - 276px); height: calc(100vh - 58px); }
 
     #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
 
-    /* ══════════════════════════════
-       SECTIONS
-    ══════════════════════════════ */
     .section { margin-bottom: 44px; }
 
     .section h2 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #003399;
-      margin-bottom: 10px;
-      padding-bottom: 3px;
+      font-size: 15px; font-weight: 700; color: #003399;
+      margin-bottom: 10px; padding-bottom: 3px;
       border-bottom: 1px solid #7a96df;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
@@ -404,23 +338,13 @@
     .doc-stack { position: relative; width: 110px; height: 150px; cursor: pointer; }
 
     .doc-stack .card {
-      position: absolute;
-      width: 90px;
-      height: 130px;
+      position: absolute; width: 90px; height: 130px;
       background: #ece9d8;
-      border-top: 1px solid #ffffff;
-      border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040;
-      border-right: 1px solid #404040;
+      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      font-size: 11px;
-      font-family: Tahoma, Arial, sans-serif;
-      color: #333;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px; font-size: 11px; font-family: Tahoma, Arial, sans-serif; color: #333;
       transition: transform 0.25s ease;
     }
 
@@ -432,16 +356,11 @@
     .stack-label { font-size: 11px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
 
     .modal-overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(236,233,216,0.92);
       z-index: 9000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      opacity: 0;
-      pointer-events: none;
+      display: flex; align-items: center; justify-content: center; gap: 30px;
+      opacity: 0; pointer-events: none;
       transition: opacity 0.2s ease;
     }
 
@@ -451,24 +370,13 @@
     .modal-doc { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
     .modal-doc a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 240px;
-      height: 340px;
-      background: #ece9d8;
-      border-top: 1px solid #ffffff;
-      border-left: 1px solid #ffffff;
-      border-bottom: 1px solid #404040;
-      border-right: 1px solid #404040;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      width: 240px; height: 340px; background: #ece9d8;
+      border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+      border-bottom: 1px solid #404040; border-right: 1px solid #404040;
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
-      text-decoration: none;
-      color: #003399;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: Tahoma, Arial, sans-serif;
+      text-decoration: none; color: #003399;
+      font-size: 13px; font-weight: 700; font-family: Tahoma, Arial, sans-serif;
       transition: transform 0.2s ease;
     }
 
@@ -476,32 +384,20 @@
     .modal-doc a:hover { transform: translateY(-2px); }
 
     .modal-close-hint {
-      position: fixed;
-      bottom: 46px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px;
-      color: #666;
-      font-family: Tahoma, Arial, sans-serif;
+      position: fixed; bottom: 46px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; color: #666; font-family: Tahoma, Arial, sans-serif;
     }
 
     .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
     .project-card {
-      border-top: 1px solid #808080;
-      border-left: 1px solid #808080;
-      border-bottom: 1px solid #ffffff;
-      border-right: 1px solid #ffffff;
+      border-top: 1px solid #808080; border-left: 1px solid #808080;
+      border-bottom: 1px solid #ffffff; border-right: 1px solid #ffffff;
       box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
-      padding: 12px;
-      text-decoration: none;
-      color: #000;
-      display: block;
-      aspect-ratio: 1 / 1;
-      background: #ece9d8;
+      padding: 12px; text-decoration: none; color: #000;
+      display: block; aspect-ratio: 1 / 1; background: #ece9d8;
       transition: background 0.1s ease, color 0.1s ease;
-      font-size: 13px;
-      font-family: Tahoma, Arial, sans-serif;
+      font-size: 13px; font-family: Tahoma, Arial, sans-serif;
     }
 
     .project-card:hover { background: #316ac5; color: white; border-top: 1px solid #1a4a9a; border-left: 1px solid #1a4a9a; border-bottom: 1px solid #5a8ad8; border-right: 1px solid #5a8ad8; box-shadow: none; }
@@ -509,64 +405,43 @@
     .project-card:hover h3 { color: white; }
     .project-card p { font-size: 12px; margin: 0; line-height: 1.5; }
 
-    /* ══════════════════════════════
-       TASKBAR
-    ══════════════════════════════ */
+    /* TASKBAR */
     .taskbar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: 30px;
-      background: #245edc;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 30px; background: #245edc;
       border-top: 1px solid #6b9fff;
-      display: flex;
-      align-items: center;
-      padding: 0 2px;
-      gap: 2px;
-      z-index: 9999;
+      display: flex; align-items: center;
+      padding: 0 2px; gap: 2px; z-index: 9999;
     }
 
     .start-btn {
-      height: 24px;
-      padding: 0 10px 0 6px;
+      height: 24px; padding: 0 10px 0 6px;
       background: linear-gradient(to bottom, #67cf5b, #3a8a3a, #1e5c1e);
       border-radius: 0 12px 12px 0;
-      border: 1px solid #1a5808;
-      border-left: none;
+      border: 1px solid #1a5808; border-left: none;
       box-shadow: inset 0 1px 0 rgba(168,230,160,0.6), inset 0 -1px 0 rgba(0,0,0,0.3);
-      color: white;
-      font-family: 'Trebuchet MS', Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      font-style: italic;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      color: white; font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-size: 12px; font-weight: 700; font-style: italic;
+      cursor: pointer; display: flex; align-items: center; gap: 4px;
     }
 
     .start-btn:hover { background: linear-gradient(to bottom, #78de6a, #4a9a48, #2a6a28); }
     .taskbar-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.25); margin: 0 2px; }
 
     .taskbar-btn {
-      height: 22px;
-      padding: 0 8px;
+      height: 22px; padding: 0 8px;
       background: rgba(255,255,255,0.15);
       border-top: 1px solid rgba(255,255,255,0.4);
       border-left: 1px solid rgba(255,255,255,0.4);
       border-bottom: 1px solid rgba(0,0,0,0.3);
       border-right: 1px solid rgba(0,0,0,0.3);
-      color: white;
-      font-size: 11px;
-      font-family: Tahoma, Arial, sans-serif;
-      cursor: pointer;
+      color: white; font-size: 11px; font-family: Tahoma, Arial, sans-serif; cursor: pointer;
     }
 
     .taskbar-btn:hover { background: rgba(255,255,255,0.28); }
 
     .taskbar-tray {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
+      margin-left: auto; display: flex; align-items: center;
       height: 100%;
       background: linear-gradient(180deg, #1c50c8 0%, #1848b8 50%, #1040a8 100%);
       border-left: 1px solid rgba(255,255,255,0.2);
@@ -671,7 +546,6 @@
 
     <div class="xp-address-bar">
       <span class="xp-address-label">Address</span>
-      <div class="xp-address-sep"></div>
       <div class="xp-address-field-wrap">
         <div class="xp-address-field-inner">
           <span>📁</span>
@@ -805,7 +679,6 @@
     if (el && body) body.scrollTo({ top: el.offsetTop - 12, behavior: 'smooth' });
   }
 
-  // DRAG + SNAP BACK
   function makeDraggable(winEl, barEl) {
     let origTop, origLeft;
     requestAnimationFrame(() => {
@@ -843,7 +716,6 @@
   makeDraggable(document.getElementById('sidebar-win'), document.getElementById('sidebar-bar'));
   makeDraggable(document.getElementById('main-win'),    document.getElementById('main-bar'));
 
-  // DOC STACK
   const stack = document.getElementById('docStack');
   const modal = document.getElementById('docModal');
 
