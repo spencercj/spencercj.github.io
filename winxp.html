@@ -25,9 +25,6 @@
 
     .desktop { width: 100vw; height: 100vh; position: relative; padding-bottom: 30px; }
 
-    /* ══════════════════════════════
-       XP WINDOW CHROME
-    ══════════════════════════════ */
     .xp-window {
       position: absolute;
       border-radius: 4px 4px 0 0;
@@ -79,7 +76,6 @@
     .xp-btn-max { background: linear-gradient(to bottom, #b8d0f0, #7aaad8); border-color: #5080b8; }
     .xp-btn-close { width: 21px; background: linear-gradient(to bottom, #e8705a, #c03820); border-color: #a02010; }
 
-    /* ── MENU BAR ── */
     .xp-menu-bar {
       height: 20px; background: #ece9d8;
       border-bottom: 1px solid #aca899;
@@ -93,7 +89,6 @@
 
     .xp-menu-item:hover { background: #316ac5; color: white; }
 
-    /* ── TOOLBAR ── */
     .xp-toolbar {
       height: 32px;
       background: linear-gradient(to bottom, #f8f5ec 0%, #ede8d8 40%, #e4dfc8 100%);
@@ -104,131 +99,78 @@
       flex-shrink: 0;
     }
 
-    /* SPHERE BACK/FORWARD BUTTONS */
-    .xp-nav-group {
-      display: flex; align-items: center;
-      gap: 0;
-    }
+    .xp-nav-group { display: flex; align-items: center; gap: 0; }
 
     .xp-sphere-btn {
       width: 24px; height: 24px;
       border-radius: 50%;
-      background: radial-gradient(
-        circle at 35% 30%,
-        #a8e060 0%,
-        #6cbb30 25%,
-        #3a8a1a 60%,
-        #2a6a10 100%
-      );
+      background: radial-gradient(circle at 35% 30%, #a8e060 0%, #6cbb30 25%, #3a8a1a 60%, #2a6a10 100%);
       border: 1px solid #1a5a08;
       box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
+      cursor: pointer; flex-shrink: 0;
     }
 
     .xp-sphere-btn:hover {
-      background: radial-gradient(
-        circle at 35% 30%,
-        #c0f070 0%,
-        #80cc40 25%,
-        #4a9a28 60%,
-        #3a7a18 100%
-      );
+      background: radial-gradient(circle at 35% 30%, #c0f070 0%, #80cc40 25%, #4a9a28 60%, #3a7a18 100%);
     }
 
     .xp-sphere-arrow {
-      color: white;
-      font-size: 13px;
-      font-weight: 900;
+      color: white; font-size: 13px; font-weight: 900;
       text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-      line-height: 1;
-      display: flex; align-items: center; justify-content: center;
+      line-height: 1; display: flex; align-items: center; justify-content: center;
     }
 
-    .xp-nav-label {
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px; color: #000;
-      padding: 0 3px;
-      cursor: pointer;
-    }
-
+    .xp-nav-label { font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000; padding: 0 3px; cursor: pointer; }
     .xp-nav-label:hover { color: #316ac5; }
-
-    .xp-nav-sep {
-      width: 1px; height: 14px;
-      background: #aca899;
-      margin: 0 2px;
-    }
-
-    .xp-nav-drop {
-      font-size: 8px; color: #444;
-      cursor: pointer; padding: 0 2px;
-    }
-
+    .xp-nav-sep { width: 1px; height: 14px; background: #aca899; margin: 0 2px; }
+    .xp-nav-drop { font-size: 8px; color: #444; cursor: pointer; padding: 0 2px; }
     .xp-toolbar-sep { width: 1px; height: 18px; background: #aca899; margin: 0 3px; flex-shrink: 0; }
 
-    /* FLAT TOOLBAR BUTTONS */
     .xp-toolbar-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 3px;
-      padding: 0 6px;
-      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
-      cursor: pointer;
-      display: flex; align-items: center; gap: 3px;
+      background: transparent; border: 1px solid transparent; border-radius: 3px;
+      padding: 0 6px; font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
+      cursor: pointer; display: flex; align-items: center; gap: 3px;
       white-space: nowrap; height: 26px;
     }
 
     .xp-toolbar-btn:hover {
       background: linear-gradient(to bottom, #fefdf8, #e8e4d4);
-      border-color: #c4c0b0;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      border-color: #c4c0b0; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
-    /* ── ADDRESS BAR ── */
     .xp-address-bar {
       height: 22px; background: #ece9d8;
-      border-top: 1px solid #c8c4b4;
-      border-bottom: 1px solid #c8c4b4;
-      display: flex; align-items: center;
-      padding: 1px 4px; gap: 0;
-      flex-shrink: 0;
+      border-top: 1px solid #c8c4b4; border-bottom: 1px solid #c8c4b4;
+      display: flex; align-items: center; padding: 1px 4px; gap: 0; flex-shrink: 0;
     }
 
     .xp-address-label {
       font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #444;
-      padding-right: 6px;
-      border-right: 1px solid #c8c4b4;
-      margin-right: 4px;
-      white-space: nowrap;
-      height: 100%; display: flex; align-items: center;
+      padding-right: 6px; border-right: 1px solid #c8c4b4; margin-right: 4px;
+      white-space: nowrap; height: 100%; display: flex; align-items: center;
     }
 
     .xp-address-field-wrap {
-      flex: 1; height: 18px;
-      position: relative;
-      display: flex;
-      border: 1px solid #7090b8;
-      box-shadow: inset 1px 1px 0 #c0c8d8;
-      background: white;
-      overflow: hidden;
+      flex: 1; height: 18px; position: relative; display: flex;
+      border: 1px solid #7090b8; box-shadow: inset 1px 1px 0 #c0c8d8;
+      background: white; overflow: hidden;
     }
 
     .xp-address-field-inner {
-      flex: 1;
-      display: flex; align-items: center;
+      flex: 1; display: flex; align-items: center;
       padding: 0 2px 0 22px;
       font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
-      overflow: hidden; white-space: nowrap;
-      position: relative;
+      overflow: hidden; white-space: nowrap; position: relative;
     }
 
     .xp-address-folder-icon {
-      position: absolute;
-      left: 4px;
-      font-size: 13px;
-      line-height: 1;
+      position: absolute; left: 4px; font-size: 13px; line-height: 1;
+    }
+
+    #address-path {
+      overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+      display: block; max-width: 100%;
     }
 
     .xp-address-dropdown {
@@ -236,29 +178,24 @@
       background: linear-gradient(to bottom, #f0ede0, #d4d0c0);
       border-left: 1px solid #9090a0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 8px; color: #404040;
-      cursor: pointer; flex-shrink: 0;
+      font-size: 8px; color: #404040; cursor: pointer; flex-shrink: 0;
     }
 
     .xp-address-dropdown:hover { background: #c1d9f5; }
 
-    /* GREEN GO BUTTON */
     .xp-address-go {
       width: 50px; height: 22px;
       background: linear-gradient(to bottom, #5abb3a, #3a8a1a);
-      border: 1px solid #1e6010;
-      border-radius: 3px;
+      border: 1px solid #1e6010; border-radius: 3px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.3);
       display: flex; align-items: center; justify-content: center;
-      gap: 3px; cursor: pointer;
-      margin-left: 4px; flex-shrink: 0;
+      gap: 3px; cursor: pointer; margin-left: 4px; flex-shrink: 0;
     }
 
     .xp-address-go:hover { background: linear-gradient(to bottom, #6acc44, #4a9a22); }
     .xp-address-go .go-arrow { color: white; font-size: 12px; font-weight: 700; }
     .xp-address-go .go-text { color: white; font-family: Tahoma, Arial, sans-serif; font-size: 11px; font-weight: 700; }
 
-    /* WINDOW BODY */
     .xp-body { background-color: #ece9d8; overflow-y: auto; flex: 1; }
 
     .xp-body::-webkit-scrollbar { width: 17px; }
@@ -276,14 +213,10 @@
       height: 17px; display: block;
     }
 
-    /* ══════════════════════════════
-       SIDEBAR
-    ══════════════════════════════ */
     #sidebar-win { top: 16px; left: 16px; width: 220px; }
 
     #sidebar-win .xp-body {
-      max-height: calc(100vh - 80px);
-      padding: 8px 6px;
+      max-height: calc(100vh - 80px); padding: 8px 6px;
       display: flex; flex-direction: column; gap: 6px;
       background: #d6e8f8; overflow-y: auto;
     }
@@ -306,18 +239,14 @@
     .xp-panel-body { padding: 3px 4px; background: #d6e8f8; }
 
     .nav-item {
-      display: flex; align-items: center; gap: 6px;
-      padding: 4px 6px; font-size: 12px; color: #003399;
-      cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; gap: 6px; padding: 4px 6px;
+      font-size: 12px; color: #003399; cursor: pointer; text-decoration: none;
       font-family: Tahoma, Arial, sans-serif; border-radius: 2px;
     }
 
     .nav-item:hover { background: #316ac5; color: white; }
     .nav-icon { width: 18px; text-align: center; font-size: 14px; }
 
-    /* ══════════════════════════════
-       MAIN WINDOW
-    ══════════════════════════════ */
     #main-win { top: 16px; left: 248px; width: calc(100vw - 276px); height: calc(100vh - 58px); }
     #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
 
@@ -325,8 +254,7 @@
 
     .section h2 {
       font-size: 15px; font-weight: 700; color: #003399;
-      margin-bottom: 10px; padding-bottom: 3px;
-      border-bottom: 1px solid #7a96df;
+      margin-bottom: 10px; padding-bottom: 3px; border-bottom: 1px solid #7a96df;
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
@@ -406,11 +334,9 @@
     .project-card:hover h3 { color: white; }
     .project-card p { font-size: 12px; margin: 0; line-height: 1.5; }
 
-    /* TASKBAR */
     .taskbar {
       position: fixed; bottom: 0; left: 0; right: 0;
-      height: 30px; background: #245edc;
-      border-top: 1px solid #6b9fff;
+      height: 30px; background: #245edc; border-top: 1px solid #6b9fff;
       display: flex; align-items: center; padding: 0 2px; gap: 2px; z-index: 9999;
     }
 
@@ -428,8 +354,7 @@
     .taskbar-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.25); margin: 0 2px; }
 
     .taskbar-btn {
-      height: 22px; padding: 0 8px;
-      background: rgba(255,255,255,0.15);
+      height: 22px; padding: 0 8px; background: rgba(255,255,255,0.15);
       border-top: 1px solid rgba(255,255,255,0.4); border-left: 1px solid rgba(255,255,255,0.4);
       border-bottom: 1px solid rgba(0,0,0,0.3); border-right: 1px solid rgba(0,0,0,0.3);
       color: white; font-size: 11px; font-family: Tahoma, Arial, sans-serif; cursor: pointer;
@@ -516,16 +441,13 @@
       <span class="xp-menu-item">Help</span>
     </div>
 
-    <!-- TOOLBAR with sphere buttons -->
     <div class="xp-toolbar">
-      <!-- BACK -->
       <div class="xp-nav-group">
         <div class="xp-sphere-btn"><span class="xp-sphere-arrow">←</span></div>
         <span class="xp-nav-label">Back</span>
         <div class="xp-nav-sep"></div>
         <span class="xp-nav-drop">▼</span>
       </div>
-      <!-- FORWARD -->
       <div class="xp-nav-group" style="margin-left:4px;">
         <div class="xp-sphere-btn"><span class="xp-sphere-arrow">→</span></div>
         <div class="xp-nav-sep"></div>
@@ -546,7 +468,7 @@
       <div class="xp-address-field-wrap">
         <div class="xp-address-field-inner">
           <span class="xp-address-folder-icon">📁</span>
-          Spencer Jacobs — Portfolio
+          <span id="address-path"><span style="color:#000;">C:\Users\Spencer_Jacobs\Portfolio</span></span>
         </div>
         <div class="xp-address-dropdown">▼</div>
       </div>
@@ -734,6 +656,58 @@
     if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
       modal.classList.remove('active');
     }
+  });
+
+  // DYNAMIC ADDRESS BAR
+  const addressPath = document.getElementById('address-path');
+  const basePath = 'C:\\Users\\Spencer_Jacobs\\Portfolio';
+
+  const trackedSections = [
+    { id: 'about',          label: 'About' },
+    { id: 'experience',     label: 'Experience' },
+    { id: 'skills',         label: 'Skills' },
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'projects',       label: 'Projects' },
+  ];
+
+  function setAddressPath(label) {
+    if (!label) {
+      addressPath.innerHTML = `<span style="color:#000;">${basePath}</span>`;
+    } else {
+      addressPath.innerHTML =
+        `<span style="color:#000;">${basePath}\\</span><span style="font-weight:700; color:#000;">${label}</span>`;
+    }
+  }
+
+  const visibleSections = new Set();
+
+  function updateAddress() {
+    for (const s of trackedSections) {
+      if (visibleSections.has(s.id)) {
+        setAddressPath(s.label);
+        return;
+      }
+    }
+    setAddressPath(null);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        visibleSections.add(entry.target.id);
+      } else {
+        visibleSections.delete(entry.target.id);
+      }
+    });
+    updateAddress();
+  }, {
+    root: document.getElementById('main-body'),
+    threshold: 0.3
+  });
+
+  trackedSections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) observer.observe(el);
   });
 </script>
 </body>
