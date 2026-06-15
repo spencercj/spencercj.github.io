@@ -9,7 +9,7 @@
 
     body {
       font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
+      font-size: 13px;
       background:
         radial-gradient(ellipse at 30% 100%, #1e5c10 0%, #3a8820 25%, #5ab830 45%, transparent 65%),
         radial-gradient(ellipse at 70% 100%, #2a6e18 0%, #4a9e28 30%, transparent 60%),
@@ -46,16 +46,10 @@
       flex-direction: column;
     }
 
-    /* AUTHENTIC LUNA TITLE BAR — 2D gradient (top-to-bottom + left-to-right) */
+    /* LUNA TITLE BAR — diagonal gradient dark navy to powder blue */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(
-        to bottom,
-        #4a90d8 0%,
-        #1a55b0 35%,
-        #0a246a 65%,
-        #1a4a9a 100%
-      );
+      background: linear-gradient(160deg, #6ba0d8 0%, #1b4faa 30%, #0a246a 60%, #3b78c8 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -63,16 +57,6 @@
       cursor: grab;
       user-select: none;
       flex-shrink: 0;
-      position: relative;
-    }
-
-    /* subtle left-to-right lightening overlay */
-    .xp-title-bar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent 0%, rgba(166,202,240,0.35) 100%);
-      pointer-events: none;
     }
 
     .xp-title-bar:active { cursor: grabbing; }
@@ -86,17 +70,9 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      position: relative;
-      z-index: 1;
     }
 
-    .xp-title-btns {
-      display: flex;
-      gap: 2px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
+    .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
       width: 21px;
@@ -161,14 +137,11 @@
     }
 
     /* ══════════════════════════════
-       SIDEBAR WINDOW
+       SIDEBAR
     ══════════════════════════════ */
-    #sidebar-win {
-      top: 16px;
-      left: 16px;
-      width: 220px;
-    }
+    #sidebar-win { top: 16px; left: 16px; width: 220px; }
 
+    /* ice blue sidebar body */
     #sidebar-win .xp-body {
       max-height: calc(100vh - 80px);
       padding: 8px 6px;
@@ -176,35 +149,36 @@
       flex-direction: column;
       gap: 6px;
       background: #d6e8f8;
+      overflow-y: auto;
     }
 
     .sidebar-name {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: #003366;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      padding: 4px 6px 2px;
+      padding: 2px 6px;
     }
 
     .sidebar-subtitle {
-      font-size: 10px;
+      font-size: 11px;
       color: #555;
       font-family: Tahoma, Arial, sans-serif;
       padding: 0 6px;
     }
 
     .sidebar-bio {
-      font-size: 10px;
+      font-size: 11px;
       line-height: 1.55;
       color: #222;
       font-family: Tahoma, Arial, sans-serif;
       padding: 4px 6px 8px;
-      border-bottom: 1px solid #a8c4e0;
+      border-bottom: 1px solid #7ba2c8;
     }
 
-    /* XP PANEL — exact Luna style */
+    /* XP PANEL */
     .xp-panel {
-      border: 1px solid #5080c0;
+      border: 1px solid #7ba2c8;
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 2px;
@@ -213,20 +187,17 @@
     .xp-panel-header {
       background: linear-gradient(to bottom, #c1d9f5 0%, #a8c8f0 100%);
       color: #003366;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
       padding: 4px 8px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      border-bottom: 1px solid #5080c0;
+      border-bottom: 1px solid #7ba2c8;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .xp-panel-chevron {
-      font-size: 8px;
-      color: #003366;
-    }
+    .xp-panel-chevron { font-size: 8px; color: #003366; }
 
     .xp-panel-body {
       padding: 3px 4px;
@@ -237,8 +208,8 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 3px 6px;
-      font-size: 11px;
+      padding: 4px 6px;
+      font-size: 12px;
       color: #003399;
       cursor: pointer;
       text-decoration: none;
@@ -246,12 +217,8 @@
       border-radius: 2px;
     }
 
-    .nav-item:hover {
-      background: #316ac5;
-      color: white;
-    }
-
-    .nav-icon { width: 18px; text-align: center; font-size: 13px; }
+    .nav-item:hover { background: #316ac5; color: white; }
+    .nav-icon { width: 18px; text-align: center; font-size: 14px; }
 
     /* ══════════════════════════════
        MAIN WINDOW
@@ -264,7 +231,7 @@
     }
 
     #main-body {
-      padding: 16px 20px;
+      padding: 20px 20px 16px 20px;
       height: 100%;
       overflow-y: scroll;
     }
@@ -275,7 +242,7 @@
     .section { margin-bottom: 44px; }
 
     .section h2 {
-      font-size: 12px;
+      font-size: 15px;
       font-weight: 700;
       color: #003399;
       margin-bottom: 10px;
@@ -285,7 +252,7 @@
     }
 
     .section p {
-      font-size: 11px;
+      font-size: 13px;
       line-height: 1.65;
       margin-bottom: 8px;
       color: #111;
@@ -297,7 +264,7 @@
     .experience-list  { flex: 7; }
 
     .experience-list h3 {
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       margin-bottom: 2px;
       color: #003399;
@@ -305,18 +272,18 @@
     }
 
     .job-meta {
-      font-size: 10px;
+      font-size: 11px;
       color: #666;
       margin-bottom: 5px;
       font-family: Tahoma, Arial, sans-serif;
     }
 
-    .experience-list ul { padding-left: 16px; margin-bottom: 18px; }
+    .experience-list ul { padding-left: 18px; margin-bottom: 18px; }
 
     .experience-list ul li {
-      font-size: 11px;
+      font-size: 13px;
       line-height: 1.6;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       color: #222;
       font-family: Tahoma, Arial, sans-serif;
     }
@@ -348,7 +315,7 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      font-size: 10px;
+      font-size: 11px;
       font-family: Tahoma, Arial, sans-serif;
       color: #333;
       transition: transform 0.25s ease;
@@ -360,7 +327,7 @@
     .doc-stack:hover .card-front { transform: rotate(-5deg) translateY(-4px); }
     .doc-stack:hover .card-back  { transform: rotate(9deg) translateY(2px); }
 
-    .stack-label { font-size: 10px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
+    .stack-label { font-size: 11px; color: #555; text-align: center; font-family: Tahoma, Arial, sans-serif; }
 
     /* MODAL */
     .modal-overlay {
@@ -406,7 +373,7 @@
       box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
       text-decoration: none;
       color: #003399;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       font-family: Tahoma, Arial, sans-serif;
       transition: transform 0.2s ease;
@@ -420,7 +387,7 @@
       bottom: 46px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 10px;
+      font-size: 11px;
       color: #666;
       font-family: Tahoma, Arial, sans-serif;
     }
@@ -445,7 +412,7 @@
       aspect-ratio: 1 / 1;
       background: #ece9d8;
       transition: background 0.1s ease, color 0.1s ease;
-      font-size: 11px;
+      font-size: 13px;
       font-family: Tahoma, Arial, sans-serif;
     }
 
@@ -460,18 +427,14 @@
     }
 
     .project-card h3 {
-      font-size: 11px;
+      font-size: 13px;
       margin-bottom: 6px;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       color: #003399;
     }
 
     .project-card:hover h3 { color: white; }
-    .project-card p { font-size: 10px; margin: 0; line-height: 1.5; }
-
-    /* SETTINGS */
-    .field-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .field-row label { font-size: 11px; cursor: pointer; font-family: Tahoma, Arial, sans-serif; }
+    .project-card p { font-size: 12px; margin: 0; line-height: 1.5; }
 
     /* ══════════════════════════════
        TASKBAR
@@ -508,9 +471,7 @@
       gap: 4px;
     }
 
-    .start-btn:hover {
-      background: linear-gradient(to bottom, #78de6a, #4a9a48, #2a6a28);
-    }
+    .start-btn:hover { background: linear-gradient(to bottom, #78de6a, #4a9a48, #2a6a28); }
 
     .taskbar-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.25); margin: 0 2px; }
 
@@ -523,7 +484,7 @@
       border-bottom: 1px solid rgba(0,0,0,0.3);
       border-right: 1px solid rgba(0,0,0,0.3);
       color: white;
-      font-size: 10px;
+      font-size: 11px;
       font-family: Tahoma, Arial, sans-serif;
       cursor: pointer;
     }
@@ -542,7 +503,7 @@
 
     .taskbar-clock {
       color: white;
-      font-size: 10px;
+      font-size: 11px;
       font-family: Tahoma, Arial, sans-serif;
       background: none;
     }
@@ -584,11 +545,10 @@
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
-    <div class="xp-body" style="max-height:calc(100vh - 80px);">
+    <div class="xp-body">
       <p class="sidebar-name">Spencer Jacobs</p>
       <p class="sidebar-subtitle">'26 Cybersecurity Graduate · IT Support</p>
       <p class="sidebar-bio">Penn State Cybersecurity Analytics & Operations senior graduating Aug. 2026. Hands-on with Splunk, Wireshark, MS365, PowerShell, SolarWinds, GHIDRA, and FTK Imager. Looking to bring real-world security experience into a SOC, IR or cybersecurity analyst role.</p>
-
       <div class="xp-panel">
         <div class="xp-panel-header">
           <span>Navigation</span>
@@ -616,7 +576,7 @@
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
-    <div class="xp-body" id="main-body" style="padding:16px 20px;">
+    <div class="xp-body" id="main-body" style="padding:20px 20px 16px 20px;">
 
       <div class="section" id="about">
         <h2>About</h2>
