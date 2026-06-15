@@ -31,25 +31,36 @@
     }
 
     /* ══════════════════════════════
-       XP WINDOW CHROME
+       XP WINDOW CHROME — AUTHENTIC BEVEL
     ══════════════════════════════ */
     .xp-window {
       position: absolute;
-      border-radius: 6px 6px 0 0;
-      border: 2px solid #0831d9;
+      border-radius: 4px 4px 0 0;
+      border: none;
       box-shadow:
+        0 0 0 2px #0831d9,
         inset 1px 1px 0 #aecaf8,
-        inset -1px -1px 0 #0a246a,
-        3px 3px 10px rgba(0,0,0,0.55);
+        inset -1px -1px 0 #0a246a;
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* LUNA TITLE BAR — diagonal gradient dark navy to powder blue */
+    /* LUNA TITLE BAR — two-layer gradient */
     .xp-title-bar {
       height: 28px;
-      background: linear-gradient(160deg, #6ba0d8 0%, #1b4faa 30%, #0a246a 60%, #3b78c8 100%);
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.30) 0%,
+          rgba(255,255,255,0.00) 50%,
+          rgba(0,0,0,0.15) 100%
+        ),
+        linear-gradient(
+          to right,
+          #0a246a 0%,
+          #a6caf0 100%
+        );
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -105,6 +116,128 @@
       border-right: 1px solid rgba(255,255,255,0.7);
     }
 
+    /* ── MENU BAR ── */
+    .xp-menu-bar {
+      height: 22px;
+      background: #ece9d8;
+      border-bottom: 1px solid #aca899;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
+
+    .xp-menu-item {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      color: #000;
+      padding: 2px 8px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .xp-menu-item:hover {
+      background: #316ac5;
+      color: white;
+    }
+
+    /* ── TOOLBAR ── */
+    .xp-toolbar {
+      height: 36px;
+      background: linear-gradient(to bottom, #f0ede0 0%, #d8d4c4 100%);
+      border-bottom: 1px solid #aca899;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .xp-toolbar-btn {
+      background: linear-gradient(to bottom, #f5f3ee, #ddd9ce);
+      border: 1px solid #aca899;
+      border-radius: 2px;
+      padding: 3px 7px;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      color: #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+      height: 26px;
+    }
+
+    .xp-toolbar-btn:hover {
+      background: #c1d9f5;
+      border-color: #316ac5;
+    }
+
+    .xp-toolbar-sep {
+      width: 1px;
+      height: 20px;
+      background: #aca899;
+      margin: 0 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── ADDRESS BAR ── */
+    .xp-address-bar {
+      height: 24px;
+      background: #ece9d8;
+      border-bottom: 1px solid #aca899;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      gap: 0;
+      flex-shrink: 0;
+    }
+
+    .xp-address-label {
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      color: #666;
+      padding: 0 6px;
+      white-space: nowrap;
+    }
+
+    .xp-address-sep {
+      width: 1px;
+      height: 16px;
+      background: #aca899;
+      margin: 0 2px;
+      flex-shrink: 0;
+    }
+
+    .xp-address-input {
+      flex: 1;
+      height: 18px;
+      background: white;
+      border-top: 1px solid #808080;
+      border-left: 1px solid #808080;
+      border-bottom: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      padding: 0 4px;
+      color: #000;
+      outline: none;
+    }
+
+    .xp-address-go {
+      background: #ece9d8;
+      border: 1px solid #aca899;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      padding: 1px 8px;
+      cursor: pointer;
+      margin-left: 2px;
+      height: 20px;
+    }
+
+    .xp-address-go:hover { background: #c1d9f5; border-color: #316ac5; }
+
     /* WINDOW BODY */
     .xp-body {
       background-color: #ece9d8;
@@ -141,7 +274,6 @@
     ══════════════════════════════ */
     #sidebar-win { top: 16px; left: 16px; width: 220px; }
 
-    /* ice blue sidebar body */
     #sidebar-win .xp-body {
       max-height: calc(100vh - 80px);
       padding: 8px 6px;
@@ -176,7 +308,6 @@
       border-bottom: 1px solid #7ba2c8;
     }
 
-    /* XP PANEL */
     .xp-panel {
       border: 1px solid #7ba2c8;
       border-radius: 4px;
@@ -199,10 +330,7 @@
 
     .xp-panel-chevron { font-size: 8px; color: #003366; }
 
-    .xp-panel-body {
-      padding: 3px 4px;
-      background: #d6e8f8;
-    }
+    .xp-panel-body { padding: 3px 4px; background: #d6e8f8; }
 
     .nav-item {
       display: flex;
@@ -259,7 +387,6 @@
       font-family: Tahoma, Arial, sans-serif;
     }
 
-    /* EXPERIENCE */
     .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list  { flex: 7; }
 
@@ -576,6 +703,38 @@
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
     </div>
+
+    <!-- MENU BAR -->
+    <div class="xp-menu-bar">
+      <span class="xp-menu-item">File</span>
+      <span class="xp-menu-item">Edit</span>
+      <span class="xp-menu-item">View</span>
+      <span class="xp-menu-item">Favorites</span>
+      <span class="xp-menu-item">Tools</span>
+      <span class="xp-menu-item">Help</span>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="xp-toolbar">
+      <button class="xp-toolbar-btn">← Back ▾</button>
+      <button class="xp-toolbar-btn">→ ▾</button>
+      <div class="xp-toolbar-sep"></div>
+      <button class="xp-toolbar-btn">↑ Up</button>
+      <div class="xp-toolbar-sep"></div>
+      <button class="xp-toolbar-btn">🔍 Search</button>
+      <button class="xp-toolbar-btn">📁 Folders</button>
+      <div class="xp-toolbar-sep"></div>
+      <button class="xp-toolbar-btn">⊞ Views ▾</button>
+    </div>
+
+    <!-- ADDRESS BAR -->
+    <div class="xp-address-bar">
+      <span class="xp-address-label">Address</span>
+      <div class="xp-address-sep"></div>
+      <input class="xp-address-input" type="text" value="Spencer Jacobs — Portfolio" readonly />
+      <button class="xp-address-go">→ Go</button>
+    </div>
+
     <div class="xp-body" id="main-body" style="padding:20px 20px 16px 20px;">
 
       <div class="section" id="about">
