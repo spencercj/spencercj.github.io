@@ -39,26 +39,29 @@
       box-shadow:
         0 0 0 2px #0831d9,
         inset 1px 1px 0 #aecaf8,
-        inset -1px -1px 0 #0a246a;
+        inset -1px -1px 0 #0a246a,
+        4px 4px 12px rgba(0,0,0,0.5),
+        2px 2px 4px rgba(0,0,0,0.3);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* LUNA TITLE BAR — full three-layer spec */
+    /* LUNA TITLE BAR — three-stop gradient */
     .xp-title-bar {
       height: 28px;
       background:
         linear-gradient(
           to bottom,
-          rgba(255,255,255,0.35) 0%,
-          rgba(255,255,255,0.10) 45%,
-          rgba(0,0,0,0.08) 100%
+          rgba(255,255,255,0.5) 0%,
+          rgba(255,255,255,0.0) 55%,
+          rgba(0,0,0,0.2) 100%
         ),
         linear-gradient(
           to right,
           #0a246a 0%,
-          #2060b8 40%,
+          #1b4faa 25%,
+          #4c86d0 60%,
           #a6caf0 100%
         );
       border-top: 1px solid #6b9fff;
@@ -85,7 +88,6 @@
       gap: 5px;
     }
 
-    /* TITLE BAR BUTTONS */
     .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
@@ -105,24 +107,12 @@
       border-right: 1px solid rgba(0,0,0,0.2);
     }
 
-    .xp-btn-min {
-      background: linear-gradient(to bottom, #b8d0f0, #7aaad8);
-      border-color: #5080b8;
-    }
-
-    .xp-btn-max {
-      background: linear-gradient(to bottom, #b8d0f0, #7aaad8);
-      border-color: #5080b8;
-    }
-
+    .xp-btn-min { background: linear-gradient(to bottom, #b8d0f0, #7aaad8); border-color: #5080b8; }
+    .xp-btn-max { background: linear-gradient(to bottom, #b8d0f0, #7aaad8); border-color: #5080b8; }
     .xp-btn-close {
       width: 21px;
       background: linear-gradient(to bottom, #e8705a, #c03820);
       border-color: #a02010;
-    }
-
-    .xp-btn:active {
-      filter: brightness(0.9);
     }
 
     /* ── MENU BAR ── */
@@ -159,11 +149,58 @@
       flex-shrink: 0;
     }
 
+    /* GREEN NAV BUTTON GROUP */
+    .xp-nav-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .xp-nav-btn {
+      display: flex;
+      align-items: center;
+      height: 26px;
+      cursor: pointer;
+      border: 1px solid #1e5c10;
+    }
+
+    .xp-nav-main {
+      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 100%;
+      color: white;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 3px 0 0 3px;
+      border-right: 1px solid #1e5c10;
+    }
+
+    .xp-nav-main:hover { background: linear-gradient(to bottom, #6ac050, #3a9828); }
+
+    .xp-nav-drop {
+      background: linear-gradient(to bottom, #4ca038, #2e7a1e);
+      width: 14px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 7px;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .xp-nav-drop:hover { background: linear-gradient(to bottom, #6ac050, #3a9828); }
+
+    /* REGULAR TOOLBAR BUTTONS */
     .xp-toolbar-btn {
       background: linear-gradient(to bottom, #f5f3ee, #ddd9ce);
       border: 1px solid #aca899;
       border-radius: 2px;
-      padding: 3px 7px;
+      padding: 0 7px;
       font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
       color: #000;
@@ -175,10 +212,7 @@
       height: 26px;
     }
 
-    .xp-toolbar-btn:hover {
-      background: #c1d9f5;
-      border-color: #316ac5;
-    }
+    .xp-toolbar-btn:hover { background: #c1d9f5; border-color: #316ac5; }
 
     .xp-toolbar-sep {
       width: 1px;
@@ -186,13 +220,11 @@
       background: #aca899;
       margin: 0 3px;
       flex-shrink: 0;
-      display: inline-block;
-      vertical-align: middle;
     }
 
     /* ── ADDRESS BAR ── */
     .xp-address-bar {
-      height: 24px;
+      height: 26px;
       background: #ece9d8;
       border-bottom: 1px solid #aca899;
       display: flex;
@@ -216,40 +248,57 @@
       flex-shrink: 0;
     }
 
-    .xp-address-field {
+    .xp-address-field-wrap {
       flex: 1;
-      height: 18px;
-      background: white;
-      border: 1px solid #7ba2c8;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      padding: 0 4px 0 2px;
-      color: #000;
+      height: 22px;
       display: flex;
-      align-items: center;
-      gap: 4px;
+      border: 1px solid #7ba2c8;
+      background: white;
       overflow: hidden;
     }
 
-    .xp-address-field span {
+    .xp-address-field-inner {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      gap: 4px;
+      font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
-      white-space: nowrap;
+      color: #000;
       overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap;
     }
+
+    .xp-address-dropdown {
+      width: 18px;
+      background: linear-gradient(to bottom, #f0ede0, #d8d4c4);
+      border-left: 1px solid #7ba2c8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #000;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .xp-address-dropdown:hover { background: #c1d9f5; }
 
     .xp-address-go {
-      background: #ece9d8;
+      width: 32px;
+      height: 22px;
+      background: linear-gradient(to bottom, #f0ede0, #d8d4c4);
       border: 1px solid #aca899;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: 11px;
-      padding: 1px 6px;
-      cursor: pointer;
-      height: 20px;
+      border-radius: 2px;
       display: flex;
       align-items: center;
-      gap: 3px;
-      color: #000;
+      justify-content: center;
+      font-size: 14px;
+      color: #2e7a1e;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
     .xp-address-go:hover { background: #c1d9f5; border-color: #316ac5; }
@@ -261,12 +310,8 @@
       flex: 1;
     }
 
-    /* XP SCROLLBAR */
     .xp-body::-webkit-scrollbar { width: 17px; }
-    .xp-body::-webkit-scrollbar-track {
-      background: #d4d0c8;
-      border-left: 1px solid #808080;
-    }
+    .xp-body::-webkit-scrollbar-track { background: #d4d0c8; border-left: 1px solid #808080; }
     .xp-body::-webkit-scrollbar-thumb {
       background: #c0c0c0;
       border-top: 1px solid #ffffff;
@@ -308,12 +353,7 @@
       padding: 2px 6px;
     }
 
-    .sidebar-subtitle {
-      font-size: 11px;
-      color: #555;
-      font-family: Tahoma, Arial, sans-serif;
-      padding: 0 6px;
-    }
+    .sidebar-subtitle { font-size: 11px; color: #555; font-family: Tahoma, Arial, sans-serif; padding: 0 6px; }
 
     .sidebar-bio {
       font-size: 11px;
@@ -324,12 +364,7 @@
       border-bottom: 1px solid #7ba2c8;
     }
 
-    .xp-panel {
-      border: 1px solid #7ba2c8;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 2px;
-    }
+    .xp-panel { border: 1px solid #7ba2c8; border-radius: 4px; overflow: hidden; margin-bottom: 2px; }
 
     .xp-panel-header {
       background: linear-gradient(to bottom, #c1d9f5 0%, #a8c8f0 100%);
@@ -390,13 +425,7 @@
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
-    .section p {
-      font-size: 13px;
-      line-height: 1.65;
-      margin-bottom: 8px;
-      color: #111;
-      font-family: Tahoma, Arial, sans-serif;
-    }
+    .section p { font-size: 13px; line-height: 1.65; margin-bottom: 8px; color: #111; font-family: Tahoma, Arial, sans-serif; }
 
     .experience-split { display: flex; gap: 20px; align-items: stretch; }
     .experience-list  { flex: 7; }
@@ -409,12 +438,7 @@
       font-family: 'Trebuchet MS', Arial, sans-serif;
     }
 
-    .job-meta {
-      font-size: 11px;
-      color: #666;
-      margin-bottom: 5px;
-      font-family: Tahoma, Arial, sans-serif;
-    }
+    .job-meta { font-size: 11px; color: #666; margin-bottom: 5px; font-family: Tahoma, Arial, sans-serif; }
 
     .experience-list ul { padding-left: 18px; margin-bottom: 18px; }
 
@@ -427,14 +451,7 @@
     }
 
     /* DOC STACK */
-    .stack-wrapper {
-      flex: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+    .stack-wrapper { flex: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
 
     .doc-stack { position: relative; width: 110px; height: 150px; cursor: pointer; }
 
@@ -484,13 +501,7 @@
 
     .modal-overlay.active { opacity: 1; pointer-events: all; }
 
-    .modal-content {
-      display: flex;
-      gap: 30px;
-      transform: scale(0.93);
-      transition: transform 0.2s ease;
-    }
-
+    .modal-content { display: flex; gap: 30px; transform: scale(0.93); transition: transform 0.2s ease; }
     .modal-overlay.active .modal-content { transform: scale(1); }
 
     .modal-doc { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -531,11 +542,7 @@
     }
 
     /* PROJECTS */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
     .project-card {
       border-top: 1px solid #808080;
@@ -564,13 +571,7 @@
       box-shadow: none;
     }
 
-    .project-card h3 {
-      font-size: 13px;
-      margin-bottom: 6px;
-      font-family: 'Trebuchet MS', Arial, sans-serif;
-      color: #003399;
-    }
-
+    .project-card h3 { font-size: 13px; margin-bottom: 6px; font-family: 'Trebuchet MS', Arial, sans-serif; color: #003399; }
     .project-card:hover h3 { color: white; }
     .project-card p { font-size: 12px; margin: 0; line-height: 1.5; }
 
@@ -639,12 +640,7 @@
       padding: 0 10px;
     }
 
-    .taskbar-clock {
-      color: white;
-      font-size: 11px;
-      font-family: Tahoma, Arial, sans-serif;
-      background: none;
-    }
+    .taskbar-clock { color: white; font-size: 11px; font-family: Tahoma, Arial, sans-serif; background: none; }
 
     .xp-window.snapping { transition: top 0.28s ease, left 0.28s ease; }
   </style>
@@ -654,17 +650,11 @@
 <div class="modal-overlay" id="docModal">
   <div class="modal-content">
     <div class="modal-doc">
-      <a href="resume.pdf" target="_blank">
-        <span class="doc-icon">📄</span>
-        View Resume
-      </a>
+      <a href="resume.pdf" target="_blank"><span class="doc-icon">📄</span>View Resume</a>
       <p>Resume</p>
     </div>
     <div class="modal-doc">
-      <a href="cv.pdf" target="_blank">
-        <span class="doc-icon">📋</span>
-        View CV
-      </a>
+      <a href="cv.pdf" target="_blank"><span class="doc-icon">📋</span>View CV</a>
       <p>CV</p>
     </div>
   </div>
@@ -727,8 +717,20 @@
 
     <!-- TOOLBAR -->
     <div class="xp-toolbar">
-      <button class="xp-toolbar-btn">← Back ▾</button>
-      <button class="xp-toolbar-btn">→ ▾</button>
+      <!-- BACK button group -->
+      <div class="xp-nav-group">
+        <div class="xp-nav-btn">
+          <div class="xp-nav-main">← Back</div>
+          <div class="xp-nav-drop">▼</div>
+        </div>
+      </div>
+      <!-- FORWARD button group -->
+      <div class="xp-nav-group">
+        <div class="xp-nav-btn">
+          <div class="xp-nav-main">→</div>
+          <div class="xp-nav-drop">▼</div>
+        </div>
+      </div>
       <div class="xp-toolbar-sep"></div>
       <button class="xp-toolbar-btn">↑ Up</button>
       <div class="xp-toolbar-sep"></div>
@@ -742,11 +744,14 @@
     <div class="xp-address-bar">
       <span class="xp-address-label">Address</span>
       <div class="xp-address-sep"></div>
-      <div class="xp-address-field">
-        <span>📁</span>
-        <span>Spencer Jacobs — Portfolio</span>
+      <div class="xp-address-field-wrap">
+        <div class="xp-address-field-inner">
+          <span>📁</span>
+          <span>Spencer Jacobs — Portfolio</span>
+        </div>
+        <div class="xp-address-dropdown">▼</div>
       </div>
-      <button class="xp-address-go">🟢 Go</button>
+      <div class="xp-address-go">→</div>
     </div>
 
     <div class="xp-body" id="main-body" style="padding:20px 20px 16px 20px;">
@@ -774,166 +779,4 @@
             <ul>
               <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
               <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
-              <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
-            </ul>
-            <h3>Congressional Internship Under State Rep. David Madsen</h3>
-            <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
-            <ul>
-              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation.</li>
-              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
-              <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
-              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication and timely updates.</li>
-            </ul>
-            <h3>Shift Supervisor</h3>
-            <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
-            <ul>
-              <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
-              <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
-              <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
-              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
-            </ul>
-          </div>
-          <div class="stack-wrapper">
-            <div class="doc-stack" id="docStack">
-              <div class="card card-back">
-                <span class="file-icon">📋</span>
-                <span>CV</span>
-              </div>
-              <div class="card card-front">
-                <span class="file-icon">📄</span>
-                <span>Resume</span>
-              </div>
-            </div>
-            <p class="stack-label">Resume & CV</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" id="skills">
-        <h2>Skills</h2>
-        <p>Networking · IT Support · Linux · Security Fundamentals · Helpdesk · Troubleshooting · Splunk · Wireshark · MS365 · PowerShell · SolarWinds · GHIDRA · FTK Imager</p>
-      </div>
-
-      <div class="section" id="certifications">
-        <h2>Certifications</h2>
-        <p>Google Cybersecurity Certificate</p>
-        <p>PSU Networking Certificate</p>
-        <p>CompTIA Network+ <em>(in progress)</em></p>
-      </div>
-
-      <div class="section" id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-          <a href="projects.html#deskstretch" class="project-card">
-            <h3>🖥️ DeskStretch</h3>
-            <p>A desktop stretch reminder app built with Electron and React. Integrates the Claude Vision API for smart break suggestions.</p>
-          </a>
-          <a href="projects.html#project-two" class="project-card">
-            <h3>📄 Project Title</h3>
-            <p>Brief description of what you built, what tools you used, and what you learned.</p>
-          </a>
-          <a href="projects.html#project-three" class="project-card">
-            <h3>🔒 Project Title</h3>
-            <p>Brief description of what you built, what tools you used, and what you learned.</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="section" id="contact">
-        <h2>Contact</h2>
-        <p>GitHub: <a href="https://github.com/spencercj" style="color:#003399;">github.com/spencercj</a></p>
-        <p>LinkedIn: your link here</p>
-        <p>Email: your email here</p>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-<div class="taskbar">
-  <button class="start-btn">⊞ start</button>
-  <div class="taskbar-sep"></div>
-  <button class="taskbar-btn">📂 Portfolio</button>
-  <div class="taskbar-tray">
-    <div class="taskbar-clock" id="clock"></div>
-  </div>
-</div>
-
-<script>
-  function updateClock() {
-    const now = new Date();
-    document.getElementById('clock').textContent =
-      now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-
-  function scrollToSection(id) {
-    const el = document.getElementById(id);
-    const body = document.getElementById('main-body');
-    if (el && body) body.scrollTo({ top: el.offsetTop - 12, behavior: 'smooth' });
-  }
-
-  function makeDraggable(winEl, barEl) {
-    let origTop, origLeft;
-    requestAnimationFrame(() => {
-      origTop  = winEl.offsetTop;
-      origLeft = winEl.offsetLeft;
-    });
-    let dragging = false, offX = 0, offY = 0;
-
-    barEl.addEventListener('mousedown', e => {
-      if (e.target.classList.contains('xp-btn')) return;
-      dragging = true;
-      offX = e.clientX - winEl.offsetLeft;
-      offY = e.clientY - winEl.offsetTop;
-      winEl.style.zIndex = 100;
-      winEl.classList.remove('snapping');
-      e.preventDefault();
-    });
-
-    document.addEventListener('mousemove', e => {
-      if (!dragging) return;
-      winEl.style.left = (e.clientX - offX) + 'px';
-      winEl.style.top  = (e.clientY - offY) + 'px';
-    });
-
-    document.addEventListener('mouseup', () => {
-      if (!dragging) return;
-      dragging = false;
-      winEl.classList.add('snapping');
-      winEl.style.top  = origTop + 'px';
-      winEl.style.left = origLeft + 'px';
-      winEl.style.zIndex = '';
-    });
-  }
-
-  makeDraggable(document.getElementById('sidebar-win'), document.getElementById('sidebar-bar'));
-  makeDraggable(document.getElementById('main-win'),    document.getElementById('main-bar'));
-
-  const stack = document.getElementById('docStack');
-  const modal = document.getElementById('docModal');
-
-  stack.addEventListener('click', () => {
-    const front = stack.querySelector('.card-front');
-    const back  = stack.querySelector('.card-back');
-    front.style.transition = 'transform 0.25s ease';
-    back.style.transition  = 'transform 0.25s ease';
-    front.style.transform  = 'rotate(-8deg) translateX(-6px)';
-    back.style.transform   = 'rotate(10deg) translateX(6px)';
-    setTimeout(() => {
-      modal.classList.add('active');
-      front.style.transform = '';
-      back.style.transform  = '';
-    }, 260);
-  });
-
-  modal.addEventListener('click', e => {
-    if (e.target === modal || e.target.classList.contains('modal-close-hint')) {
-      modal.classList.remove('active');
-    }
-  });
-</script>
-</body>
-</html>
+              <li>Coordinated with course
