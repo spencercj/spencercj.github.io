@@ -221,17 +221,26 @@
     .xp-address-dropdown:hover { background: #c1d9f5; }
 
     .xp-address-go {
-      width: 50px; height: 22px;
-      background: linear-gradient(to bottom, #5abb3a, #3a8a1a);
-      border: 1px solid #1e6010; border-radius: 3px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.3);
+      width: 36px; height: 22px;
+      background: linear-gradient(to bottom, #f0ede0 0%, #ddd9cc 50%, #d0ccb8 100%);
+      border: 1px solid #7ba2c8; border-radius: 2px;
+      box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8), inset -1px -1px 0 rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.15);
       display: flex; align-items: center; justify-content: center;
-      gap: 3px; cursor: pointer; margin-left: 4px; flex-shrink: 0;
+      gap: 3px; cursor: pointer; margin-left: 3px; flex-shrink: 0;
     }
 
-    .xp-address-go:hover { background: linear-gradient(to bottom, #6acc44, #4a9a22); }
-    .xp-address-go .go-arrow { color: white; font-size: 12px; font-weight: 700; }
-    .xp-address-go .go-text { color: white; font-family: Tahoma, Arial, sans-serif; font-size: 11px; font-weight: 700; }
+    .xp-address-go:hover {
+      background: linear-gradient(to bottom, #fefdf5 0%, #eae6d4 50%, #dedad0 100%);
+      border-color: #4a7ac8;
+    }
+
+    .xp-address-go:active {
+      background: linear-gradient(to bottom, #d0ccb8 0%, #ddd9cc 50%, #f0ede0 100%);
+      box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .xp-address-go .go-arrow { color: #2e7a1e; font-size: 13px; font-weight: 900; line-height: 1; }
+    .xp-address-go .go-text { color: #000; font-family: Tahoma, Arial, sans-serif; font-size: 11px; font-weight: normal; }
 
     .xp-body { background-color: #ece9d8; overflow-y: auto; flex: 1; }
 
@@ -682,8 +691,8 @@
         </div>
         <div class="xp-address-dropdown">▼</div>
       </div>
-      <div class="xp-address-go">
-        <span class="go-arrow">→</span>
+     <div class="xp-address-go">
+        <span class="go-arrow">➜</span>
         <span class="go-text">Go</span>
       </div>
     </div>
