@@ -31,12 +31,11 @@
     }
 
     /* ══════════════════════════════
-       XP WINDOW CHROME — AUTHENTIC BEVEL
+       XP WINDOW CHROME
     ══════════════════════════════ */
     .xp-window {
       position: absolute;
       border-radius: 4px 4px 0 0;
-      border: none;
       box-shadow:
         0 0 0 2px #0831d9,
         inset 1px 1px 0 #aecaf8,
@@ -46,25 +45,28 @@
       flex-direction: column;
     }
 
-    /* LUNA TITLE BAR — two-layer gradient */
+    /* LUNA TITLE BAR — full three-layer spec */
     .xp-title-bar {
       height: 28px;
       background:
         linear-gradient(
           to bottom,
-          rgba(255,255,255,0.30) 0%,
-          rgba(255,255,255,0.00) 50%,
-          rgba(0,0,0,0.15) 100%
+          rgba(255,255,255,0.35) 0%,
+          rgba(255,255,255,0.10) 45%,
+          rgba(0,0,0,0.08) 100%
         ),
         linear-gradient(
           to right,
           #0a246a 0%,
+          #2060b8 40%,
           #a6caf0 100%
         );
+      border-top: 1px solid #6b9fff;
+      border-bottom: 1px solid #0831d9;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 4px 0 8px;
+      padding: 0 4px 0 6px;
       cursor: grab;
       user-select: none;
       flex-shrink: 0;
@@ -74,51 +76,58 @@
 
     .xp-title-text {
       color: white;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       font-family: 'Trebuchet MS', Arial, sans-serif;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       gap: 5px;
     }
 
+    /* TITLE BAR BUTTONS */
     .xp-title-btns { display: flex; gap: 2px; align-items: center; }
 
     .xp-btn {
-      width: 21px;
-      height: 21px;
+      width: 18px;
+      height: 18px;
       border-radius: 3px;
-      font-size: 9px;
+      font-size: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       font-weight: 700;
-      border-top: 1px solid rgba(255,255,255,0.7);
-      border-left: 1px solid rgba(255,255,255,0.7);
-      border-bottom: 1px solid rgba(0,0,0,0.4);
-      border-right: 1px solid rgba(0,0,0,0.4);
+      color: white;
+      border-top: 1px solid rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+      border-left: 1px solid rgba(255,255,255,0.3);
+      border-right: 1px solid rgba(0,0,0,0.2);
     }
 
-    .xp-btn-min { background: linear-gradient(180deg, #d8d4c8 0%, #b8b0a0 100%); color: #000; }
-    .xp-btn-max { background: linear-gradient(180deg, #d8d4c8 0%, #b8b0a0 100%); color: #000; }
+    .xp-btn-min {
+      background: linear-gradient(to bottom, #b8d0f0, #7aaad8);
+      border-color: #5080b8;
+    }
+
+    .xp-btn-max {
+      background: linear-gradient(to bottom, #b8d0f0, #7aaad8);
+      border-color: #5080b8;
+    }
+
     .xp-btn-close {
-      background: linear-gradient(180deg, #e87058 0%, #c83820 55%, #b02010 100%);
-      color: white;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+      width: 21px;
+      background: linear-gradient(to bottom, #e8705a, #c03820);
+      border-color: #a02010;
     }
 
     .xp-btn:active {
-      border-top: 1px solid rgba(0,0,0,0.4);
-      border-left: 1px solid rgba(0,0,0,0.4);
-      border-bottom: 1px solid rgba(255,255,255,0.7);
-      border-right: 1px solid rgba(255,255,255,0.7);
+      filter: brightness(0.9);
     }
 
     /* ── MENU BAR ── */
     .xp-menu-bar {
-      height: 22px;
+      height: 20px;
       background: #ece9d8;
       border-bottom: 1px solid #aca899;
       display: flex;
@@ -131,15 +140,12 @@
       font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
       color: #000;
-      padding: 2px 8px;
+      padding: 2px 6px;
       cursor: pointer;
       border-radius: 2px;
     }
 
-    .xp-menu-item:hover {
-      background: #316ac5;
-      color: white;
-    }
+    .xp-menu-item:hover { background: #316ac5; color: white; }
 
     /* ── TOOLBAR ── */
     .xp-toolbar {
@@ -176,10 +182,12 @@
 
     .xp-toolbar-sep {
       width: 1px;
-      height: 20px;
+      height: 18px;
       background: #aca899;
       margin: 0 3px;
       flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     /* ── ADDRESS BAR ── */
@@ -189,8 +197,8 @@
       border-bottom: 1px solid #aca899;
       display: flex;
       align-items: center;
-      padding: 0 4px;
-      gap: 0;
+      padding: 0 6px;
+      gap: 4px;
       flex-shrink: 0;
     }
 
@@ -198,7 +206,6 @@
       font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
       color: #666;
-      padding: 0 6px;
       white-space: nowrap;
     }
 
@@ -206,23 +213,29 @@
       width: 1px;
       height: 16px;
       background: #aca899;
-      margin: 0 2px;
       flex-shrink: 0;
     }
 
-    .xp-address-input {
+    .xp-address-field {
       flex: 1;
       height: 18px;
       background: white;
-      border-top: 1px solid #808080;
-      border-left: 1px solid #808080;
-      border-bottom: 1px solid #ffffff;
-      border-right: 1px solid #ffffff;
+      border: 1px solid #7ba2c8;
       font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
-      padding: 0 4px;
+      padding: 0 4px 0 2px;
       color: #000;
-      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow: hidden;
+    }
+
+    .xp-address-field span {
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .xp-address-go {
@@ -230,10 +243,13 @@
       border: 1px solid #aca899;
       font-family: Tahoma, Arial, sans-serif;
       font-size: 11px;
-      padding: 1px 8px;
+      padding: 1px 6px;
       cursor: pointer;
-      margin-left: 2px;
       height: 20px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: #000;
     }
 
     .xp-address-go:hover { background: #c1d9f5; border-color: #316ac5; }
@@ -329,7 +345,6 @@
     }
 
     .xp-panel-chevron { font-size: 8px; color: #003366; }
-
     .xp-panel-body { padding: 3px 4px; background: #d6e8f8; }
 
     .nav-item {
@@ -358,11 +373,7 @@
       height: calc(100vh - 58px);
     }
 
-    #main-body {
-      padding: 20px 20px 16px 20px;
-      height: 100%;
-      overflow-y: scroll;
-    }
+    #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
 
     /* ══════════════════════════════
        SECTIONS
@@ -667,7 +678,7 @@
     <div class="xp-title-bar" id="sidebar-bar">
       <div class="xp-title-text">🖥️ Spencer Jacobs</div>
       <div class="xp-title-btns">
-        <div class="xp-btn xp-btn-min">─</div>
+        <div class="xp-btn xp-btn-min">_</div>
         <div class="xp-btn xp-btn-max">□</div>
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
@@ -698,7 +709,7 @@
     <div class="xp-title-bar" id="main-bar">
       <div class="xp-title-text">📂 Spencer Jacobs — Portfolio</div>
       <div class="xp-title-btns">
-        <div class="xp-btn xp-btn-min">─</div>
+        <div class="xp-btn xp-btn-min">_</div>
         <div class="xp-btn xp-btn-max">□</div>
         <div class="xp-btn xp-btn-close">✕</div>
       </div>
@@ -731,8 +742,11 @@
     <div class="xp-address-bar">
       <span class="xp-address-label">Address</span>
       <div class="xp-address-sep"></div>
-      <input class="xp-address-input" type="text" value="Spencer Jacobs — Portfolio" readonly />
-      <button class="xp-address-go">→ Go</button>
+      <div class="xp-address-field">
+        <span>📁</span>
+        <span>Spencer Jacobs — Portfolio</span>
+      </div>
+      <button class="xp-address-go">🟢 Go</button>
     </div>
 
     <div class="xp-body" id="main-body" style="padding:20px 20px 16px 20px;">
