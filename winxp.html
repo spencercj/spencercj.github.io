@@ -25,6 +25,7 @@
 
     .desktop { width: 100vw; height: 100vh; position: relative; padding-bottom: 30px; }
 
+    /* ══ XP WINDOW ══ */
     .xp-window {
       position: absolute;
       border-radius: 4px 4px 0 0;
@@ -39,27 +40,26 @@
       flex-direction: column;
     }
 
-    /* ACTIVE TITLE BAR — 3 layer */
+    /* ACTIVE TITLE BAR */
     .xp-title-bar {
       height: 28px;
       background:
         linear-gradient(to bottom,
-          rgba(255,255,255,0.55) 0%,
-          rgba(255,255,255,0.25) 30%,
-          rgba(255,255,255,0.00) 55%,
-          rgba(0,0,0,0.00) 55%,
-          rgba(0,0,0,0.15) 100%
+          rgba(255,255,255,0.60) 0%,
+          rgba(255,255,255,0.20) 35%,
+          rgba(255,255,255,0.00) 60%,
+          rgba(0,0,0,0.10) 100%
         ),
         linear-gradient(to bottom,
-          rgba(100,160,230,0.0) 0%,
-          rgba(100,160,230,0.3) 45%,
-          rgba(100,160,230,0.0) 100%
+          rgba(120,180,255,0.00) 0%,
+          rgba(120,180,255,0.25) 50%,
+          rgba(120,180,255,0.00) 100%
         ),
         linear-gradient(to right,
-          #0a246a 0%, #1b4faa 20%, #4c86d0 55%, #a6caf0 100%
+          #1638c8 0%, #2b5ce6 25%, #5b8fe8 55%, #c4dcfa 100%
         );
-      border-top: 1px solid #6ea8e8;
-      border-bottom: 1px solid #0a246a;
+      border-top: 1px solid #80b0ff;
+      border-bottom: 1px solid #1030a0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 6px;
       cursor: grab; user-select: none; flex-shrink: 0;
@@ -67,21 +67,13 @@
 
     .xp-title-bar:active { cursor: grabbing; }
 
-    /* INACTIVE TITLE BAR — sidebar */
+    /* INACTIVE TITLE BAR */
     .xp-title-bar-inactive {
       height: 28px;
       background:
         linear-gradient(to bottom,
-          rgba(255,255,255,0.25) 0%,
-          rgba(255,255,255,0.10) 30%,
-          rgba(255,255,255,0.00) 55%,
-          rgba(0,0,0,0.00) 55%,
-          rgba(0,0,0,0.10) 100%
-        ),
-        linear-gradient(to bottom,
-          rgba(100,160,230,0.0) 0%,
-          rgba(100,160,230,0.15) 45%,
-          rgba(100,160,230,0.0) 100%
+          rgba(255,255,255,0.20) 0%,
+          rgba(255,255,255,0.00) 100%
         ),
         linear-gradient(to right,
           #7a96df 0%, #9db8e8 50%, #c4d3f0 100%
@@ -94,6 +86,22 @@
     }
 
     .xp-title-bar-inactive:active { cursor: grabbing; }
+
+    /* INACTIVE STATE when modal open */
+    .window-inactive .xp-title-bar {
+      background:
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.20) 0%,
+          rgba(255,255,255,0.00) 100%
+        ),
+        linear-gradient(to right,
+          #7a96df 0%, #9db8e8 50%, #c4d3f0 100%
+        ) !important;
+    }
+
+    .window-inactive .xp-title-bar .xp-title-text {
+      text-shadow: none !important;
+    }
 
     .xp-title-text {
       color: white; font-size: 12px; font-weight: 700;
@@ -117,7 +125,9 @@
     .xp-btn-min { background: linear-gradient(to bottom, #b8d0f0, #7aaad8); border-color: #5080b8; }
     .xp-btn-max { background: linear-gradient(to bottom, #b8d0f0, #7aaad8); border-color: #5080b8; }
     .xp-btn-close { width: 21px; background: linear-gradient(to bottom, #e8705a, #c03820); border-color: #a02010; }
+    .xp-btn-close:hover { background: linear-gradient(to bottom, #f08070, #d04830); }
 
+    /* ══ MENU BAR ══ */
     .xp-menu-bar {
       height: 20px; background: #ece9d8;
       border-bottom: 1px solid #aca899;
@@ -131,14 +141,12 @@
 
     .xp-menu-item:hover { background: #316ac5; color: white; }
 
+    /* ══ TOOLBAR ══ */
     .xp-toolbar {
       height: 32px;
       background: linear-gradient(to bottom, #f8f5ec 0%, #ede8d8 40%, #e4dfc8 100%);
-      border-top: 1px solid #ffffff;
-      border-bottom: 1px solid #c8c4b4;
-      display: flex; align-items: center;
-      padding: 3px 4px; gap: 2px;
-      flex-shrink: 0;
+      border-top: 1px solid #ffffff; border-bottom: 1px solid #c8c4b4;
+      display: flex; align-items: center; padding: 3px 4px; gap: 2px; flex-shrink: 0;
     }
 
     .xp-nav-group { display: flex; align-items: center; gap: 0; }
@@ -178,6 +186,7 @@
       border-color: #c4c0b0; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
+    /* ══ ADDRESS BAR ══ */
     .xp-address-bar {
       height: 22px; background: #ece9d8;
       border-top: 1px solid #c8c4b4; border-bottom: 1px solid #c8c4b4;
@@ -220,30 +229,29 @@
 
     .xp-address-dropdown:hover { background: #c1d9f5; }
 
+    /* GO BUTTON */
     .xp-address-go {
-      height: 20px;
-      background: transparent;
-      border: none;
+      height: 20px; background: transparent; border: none;
       display: flex; align-items: center; justify-content: center;
-      gap: 4px; cursor: pointer; margin-left: 4px; flex-shrink: 0;
-      padding: 0 2px;
+      gap: 4px; cursor: pointer; margin-left: 4px; flex-shrink: 0; padding: 0 2px;
     }
 
-    .xp-address-go:hover .go-icon-box { background: linear-gradient(to bottom, #5acc3a, #3a9a1a); }
+    .xp-address-go:hover .go-icon-box {
+      background: linear-gradient(to bottom, #5acc3a, #3a9a1a);
+    }
 
     .go-icon-box {
       width: 20px; height: 20px;
       background: linear-gradient(to bottom, #4cba38, #2e8a1e);
-      border: 1px solid #1e6010;
-      border-radius: 3px;
+      border: 1px solid #1e6010; border-radius: 3px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.25);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
 
     .go-icon-box .go-arrow { color: white; font-size: 12px; font-weight: 900; line-height: 1; }
     .xp-address-go .go-text { color: #000; font-family: Tahoma, Arial, sans-serif; font-size: 11px; font-weight: normal; }
 
+    /* ══ WINDOW BODY ══ */
     .xp-body { background-color: #ece9d8; overflow-y: auto; flex: 1; }
 
     .xp-body::-webkit-scrollbar { width: 17px; }
@@ -261,6 +269,7 @@
       height: 17px; display: block;
     }
 
+    /* ══ SIDEBAR ══ */
     #sidebar-win { top: 16px; left: 16px; width: 220px; }
 
     #sidebar-win .xp-body {
@@ -295,9 +304,11 @@
     .nav-item:hover { background: #316ac5; color: white; }
     .nav-icon { width: 18px; text-align: center; font-size: 14px; }
 
+    /* ══ MAIN WINDOW ══ */
     #main-win { top: 16px; left: 248px; width: calc(100vw - 276px); height: calc(100vh - 58px); }
-    #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; position: relative; }
+    #main-body { padding: 20px 20px 16px 20px; height: 100%; overflow-y: scroll; }
 
+    /* ══ SECTIONS ══ */
     .section { margin-bottom: 44px; }
 
     .section h2 {
@@ -315,13 +326,13 @@
     .experience-list ul { padding-left: 18px; margin-bottom: 18px; }
     .experience-list ul li { font-size: 13px; line-height: 1.6; margin-bottom: 3px; color: #222; font-family: Tahoma, Arial, sans-serif; }
 
-    /* STACK WRAPPER */
+    /* ══ FILE ICON ══ */
     .stack-wrapper { flex: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
 
-    /* XP FILE ICON */
     .xp-file-icon-wrap {
       display: flex; flex-direction: column; align-items: center;
       width: 80px; cursor: pointer; padding: 4px; border-radius: 2px;
+      border: 1px solid transparent;
     }
 
     .xp-file-icon-wrap:hover {
@@ -330,140 +341,152 @@
     }
 
     .xp-file-icon {
-      width: 32px; height: 40px;
-      background: #ffffff;
-      border: 1px solid #336699;
-      position: relative;
-      flex-shrink: 0;
+      width: 32px; height: 40px; background: #ffffff;
+      border: 1px solid #336699; border-radius: 0 4px 0 0;
+      position: relative; box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      margin-bottom: 4px;
     }
 
     .xp-file-icon .fold {
       position: absolute; top: 0; right: 0;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 8px 8px 0;
-      border-color: transparent #c0d8f0 transparent transparent;
+      width: 0; height: 0; border-style: solid;
+      border-width: 8px 8px 0 0;
+      border-color: #ece9d8 #ece9d8 transparent transparent;
+      box-shadow: -1px 1px 0 #336699;
     }
 
-    .xp-file-icon .line {
-      height: 2px; background: #336699;
-      margin: 6px 4px 0 4px; border-radius: 1px;
+    .xp-file-icon .fline {
+      height: 2px; background: #336699; margin: 0 4px; border-radius: 1px;
     }
-
-    .xp-file-icon .line:nth-child(2) { width: calc(70% - 8px); }
-    .xp-file-icon .line:nth-child(3) { width: calc(90% - 8px); }
-    .xp-file-icon .line:nth-child(4) { width: calc(80% - 8px); }
 
     .xp-file-label {
       font-family: Tahoma, Arial, sans-serif; font-size: 11px;
-      color: #ffffff; background: #316ac5;
-      text-align: center; padding: 1px 4px; margin-top: 4px;
-      white-space: nowrap;
+      color: #fff; background: #316ac5;
+      text-align: center; padding: 1px 4px; white-space: nowrap;
     }
 
-    /* XP DIALOG */
+    /* ══ DOC DIALOG ══ */
     #doc-overlay {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: transparent; z-index: 999;
-      display: none;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: transparent; z-index: 999; display: none;
     }
 
     #doc-dialog {
       position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 280px; z-index: 1000;
+      width: 320px; z-index: 1000;
       border: 2px solid #0831d9;
-      box-shadow: inset 1px 1px 0 #aecaf8, inset -1px -1px 0 #0a246a, 4px 4px 12px rgba(0,0,0,0.5);
+      box-shadow: inset 1px 1px 0 #aecaf8, inset -1px -1px 0 #0a246a, 6px 6px 16px rgba(0,0,0,0.6);
       border-radius: 4px 4px 0 0;
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
+      overflow: hidden; display: none; flex-direction: column;
       background: #ece9d8;
     }
 
     #doc-dialog .dialog-title-bar {
       height: 28px;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.1) 100%),
-        linear-gradient(to right, #0a246a 0%, #2060b8 35%, #a6caf0 100%);
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.20) 35%,
+          rgba(255,255,255,0.00) 60%, rgba(0,0,0,0.10) 100%
+        ),
+        linear-gradient(to bottom,
+          rgba(120,180,255,0.00) 0%, rgba(120,180,255,0.25) 50%,
+          rgba(120,180,255,0.00) 100%
+        ),
+        linear-gradient(to right,
+          #1638c8 0%, #2b5ce6 25%, #5b8fe8 55%, #c4dcfa 100%
+        );
+      border-top: 1px solid #80b0ff;
+      border-radius: 3px 3px 0 0;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 4px 0 8px; flex-shrink: 0;
+      padding: 0 4px 0 8px;
+      cursor: grab; user-select: none; flex-shrink: 0;
     }
 
+    #doc-dialog .dialog-title-bar:active { cursor: grabbing; }
+
     #doc-dialog .dialog-title-text {
-      color: white; font-size: 11px; font-weight: 700;
+      color: white; font-size: 12px; font-weight: 700;
       font-family: 'Trebuchet MS', Arial, sans-serif;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
       display: flex; align-items: center; gap: 4px;
     }
 
-    #doc-dialog .dialog-body {
-      padding: 16px;
+    #doc-dialog .dialog-close {
+      width: 21px; height: 21px; border-radius: 3px;
+      background: linear-gradient(to bottom, #e8705a, #c03820);
+      border: 1px solid #a02010; color: white; font-weight: bold; font-size: 12px;
+      box-shadow: inset 1px 1px 0 rgba(255,255,255,0.4), inset -1px -1px 0 rgba(0,0,0,0.3);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      margin-left: auto;
     }
 
+    #doc-dialog .dialog-close:hover { background: linear-gradient(to bottom, #f08070, #d04030); }
+
+    #doc-dialog .dialog-body { padding: 16px; background: #ece9d8; }
+
     #doc-dialog .dialog-question {
-      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
-      margin-bottom: 16px;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000; margin-bottom: 16px;
     }
 
     #doc-dialog .dialog-icons {
       display: flex; gap: 24px; justify-content: center; margin-bottom: 16px;
     }
 
-    #doc-dialog .dialog-file {
+    .dialog-file {
       display: flex; flex-direction: column; align-items: center;
-      cursor: pointer; padding: 4px; border-radius: 2px;
+      cursor: pointer; padding: 4px; border: 1px solid transparent;
+      border-radius: 2px; width: 70px;
     }
 
-    #doc-dialog .dialog-file:hover {
-      outline: 1px dotted #000;
-      background: rgba(49,106,197,0.1);
+    .dialog-file:hover { background: rgba(49,106,197,0.15); border-color: #316ac5; }
+    .dialog-file.selected { background: rgba(49,106,197,0.25); border-color: #316ac5; }
+    .dialog-file.selected .dialog-file-label { background: #316ac5; color: #fff; }
+
+    .dialog-file-icon {
+      width: 32px; height: 40px; background: #ffffff;
+      border: 1px solid #336699; border-radius: 0 4px 0 0;
+      position: relative; margin-bottom: 4px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
 
-    #doc-dialog .dialog-file-icon {
-      width: 24px; height: 30px;
-      background: #ffffff; border: 1px solid #336699; position: relative;
+    .dialog-file-icon .fold {
+      position: absolute; top: 0; right: 0; width: 0; height: 0;
+      border-style: solid; border-width: 8px 8px 0 0;
+      border-color: #ece9d8 #ece9d8 transparent transparent;
+      box-shadow: -1px 1px 0 #336699;
     }
 
-    #doc-dialog .dialog-file-icon .fold {
-      position: absolute; top: 0; right: 0;
-      width: 0; height: 0; border-style: solid;
-      border-width: 0 6px 6px 0;
-      border-color: transparent #c0d8f0 transparent transparent;
+    .dialog-file-icon .fline {
+      height: 2px; background: #336699; margin: 0 4px; border-radius: 1px;
     }
 
-    #doc-dialog .dialog-file-icon .line {
-      height: 2px; background: #336699; margin: 4px 3px 0 3px; border-radius: 1px;
-    }
-
-    #doc-dialog .dialog-file-label {
-      font-family: Tahoma, Arial, sans-serif; font-size: 10px;
-      color: #fff; background: #316ac5;
-      padding: 1px 3px; margin-top: 3px; text-align: center;
+    .dialog-file-label {
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #000;
+      text-align: center; padding: 1px 3px; max-width: 70px; word-break: break-word;
     }
 
     #doc-dialog .dialog-btns {
-      display: flex; justify-content: flex-end; gap: 6px;
+      display: flex; justify-content: flex-end; gap: 8px;
+      border-top: 1px solid #aca899; padding-top: 10px; margin-top: 4px;
     }
 
     .xp-dialog-btn {
-      background: linear-gradient(to bottom, #fefefe, #e0ddd4);
-      border: 1px solid #707070; border-radius: 3px;
-      padding: 4px 16px; font-family: Tahoma, Arial, sans-serif; font-size: 11px;
-      box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #a0a0a0;
+      font-family: Tahoma, Arial, sans-serif; font-size: 11px;
+      padding: 4px 20px; border: 1px solid #707070; border-radius: 3px;
+      background: linear-gradient(to bottom, #fefefe, #dedad2);
+      box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #a8a49c, 0 1px 2px rgba(0,0,0,0.2);
       cursor: pointer;
     }
 
-    .xp-dialog-btn:hover { background: linear-gradient(to bottom, #ffffff, #e8e8e8); }
-    .xp-dialog-btn.primary { border-color: #003399; }
+    .xp-dialog-btn:hover { background: linear-gradient(to bottom, #ffffff, #eae6de); }
+    .xp-dialog-btn:active { background: linear-gradient(to bottom, #dedad2, #fefefe); box-shadow: inset 1px 1px 0 #a8a49c; }
+    .xp-dialog-btn.primary { border-color: #003399; outline: 1px dotted #000; outline-offset: -3px; }
 
     /* INFO DIALOG */
     #info-overlay {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: transparent; z-index: 1998;
-      display: none;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: transparent; z-index: 1998; display: none;
     }
 
     #info-dialog {
@@ -473,15 +496,18 @@
       border: 2px solid #0831d9;
       box-shadow: inset 1px 1px 0 #aecaf8, inset -1px -1px 0 #0a246a, 4px 4px 12px rgba(0,0,0,0.5);
       border-radius: 4px 4px 0 0; overflow: hidden;
-      display: none; flex-direction: column;
-      background: #ece9d8;
+      display: none; flex-direction: column; background: #ece9d8;
     }
 
     #info-dialog .dialog-title-bar {
       height: 28px;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.1) 100%),
-        linear-gradient(to right, #0a246a 0%, #2060b8 35%, #a6caf0 100%);
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.20) 35%,
+          rgba(255,255,255,0.00) 60%, rgba(0,0,0,0.10) 100%
+        ),
+        linear-gradient(to right, #1638c8 0%, #2b5ce6 25%, #5b8fe8 55%, #c4dcfa 100%);
+      border-top: 1px solid #80b0ff;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 8px; flex-shrink: 0;
     }
@@ -497,9 +523,9 @@
     }
 
     #info-dialog .info-msg { margin-bottom: 16px; }
-
     #info-dialog .dialog-btns { display: flex; justify-content: flex-end; }
 
+    /* ══ PROJECTS ══ */
     .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
     .project-card {
@@ -517,6 +543,7 @@
     .project-card:hover h3 { color: white; }
     .project-card p { font-size: 12px; margin: 0; line-height: 1.5; }
 
+    /* ══ TASKBAR ══ */
     .taskbar {
       position: fixed; bottom: 0; left: 0; right: 0;
       height: 30px; background: #245edc; border-top: 1px solid #6b9fff;
@@ -557,40 +584,38 @@
 </head>
 <body>
 
-<!-- DOC SELECTION OVERLAY + DIALOG -->
+<!-- DOC OVERLAY + DIALOG -->
 <div id="doc-overlay"></div>
 <div id="doc-dialog">
-  <div class="dialog-title-bar">
-    <div class="dialog-title-text">📄 Open Document</div>
-    <div class="xp-title-btns">
-      <div class="xp-btn xp-btn-close" onclick="closeDocDialog()">✕</div>
-    </div>
+  <div class="dialog-title-bar" id="doc-dialog-bar">
+    <div class="dialog-title-text">📄 Select Document</div>
+    <div class="dialog-close" onclick="closeDocDialog()">✕</div>
   </div>
   <div class="dialog-body">
     <p class="dialog-question">Which document would you like to open?</p>
     <div class="dialog-icons">
-      <div class="dialog-file" onclick="openResume()">
+      <div class="dialog-file" id="file-resume" onclick="selectFile('resume')">
         <div class="dialog-file-icon">
           <div class="fold"></div>
-          <div class="line" style="width:65%;"></div>
-          <div class="line" style="width:85%;"></div>
-          <div class="line" style="width:75%;"></div>
+          <div class="fline" style="margin-top:14px; width:calc(100% - 8px);"></div>
+          <div class="fline" style="margin-top:3px; width:calc(100% - 12px);"></div>
+          <div class="fline" style="margin-top:3px; width:calc(100% - 10px);"></div>
         </div>
         <div class="dialog-file-label">Resume.pdf</div>
       </div>
-      <div class="dialog-file" onclick="openCV()">
+      <div class="dialog-file" id="file-cv" onclick="selectFile('cv')">
         <div class="dialog-file-icon">
           <div class="fold"></div>
-          <div class="line" style="width:65%;"></div>
-          <div class="line" style="width:85%;"></div>
-          <div class="line" style="width:75%;"></div>
+          <div class="fline" style="margin-top:14px; width:calc(100% - 8px);"></div>
+          <div class="fline" style="margin-top:3px; width:calc(100% - 12px);"></div>
+          <div class="fline" style="margin-top:3px; width:calc(100% - 10px);"></div>
         </div>
         <div class="dialog-file-label">CV.pdf</div>
       </div>
     </div>
     <div class="dialog-btns">
       <button class="xp-dialog-btn" onclick="closeDocDialog()">Cancel</button>
-      <button class="xp-dialog-btn primary">Open</button>
+      <button class="xp-dialog-btn primary" onclick="openSelected()">Open</button>
     </div>
   </div>
 </div>
@@ -600,9 +625,7 @@
 <div id="info-dialog">
   <div class="dialog-title-bar">
     <div class="dialog-title-text">Open</div>
-    <div class="xp-title-btns">
-      <div class="xp-btn xp-btn-close" onclick="closeInfoDialog()">✕</div>
-    </div>
+    <div class="dialog-close" onclick="closeInfoDialog()" style="width:21px;height:21px;border-radius:3px;background:linear-gradient(to bottom,#e8705a,#c03820);border:1px solid #a02010;color:white;font-weight:bold;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:auto;">✕</div>
   </div>
   <div class="dialog-body">
     <p class="info-msg">No file linked yet. Add your PDF path to the href to enable this.</p>
@@ -693,7 +716,7 @@
         </div>
         <div class="xp-address-dropdown">▼</div>
       </div>
-    <div class="xp-address-go">
+      <div class="xp-address-go">
         <div class="go-icon-box"><span class="go-arrow">→</span></div>
         <span class="go-text">Go</span>
       </div>
@@ -713,26 +736,26 @@
             <h3>IT Support Specialist Intern</h3>
             <p class="job-meta">Penn Veterinary Supply Inc. · MAY, 2026 – PRESENT</p>
             <ul>
-              <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions and escalating with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
-              <li>Harden and maintain secure endpoint configurations across 100+ user devices, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
-              <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues and supporting critical end-of-period closing processes.</li>
+              <li>Serve as first-line incident triage for ~20+ weekly helpdesk tickets via SolarWinds Service Desk, documenting actions taken and escalating unresolved issues with full chain-of-custody records, mirroring SOC Tier 1 triage workflows.</li>
+              <li>Harden and maintain secure endpoint configurations across 100+ user devices in a healthcare-adjacent environment, enforcing Microsoft 365, Endpoint Manager, and Windows 10/11 security standards.</li>
+              <li>Safeguard data integrity and availability of VAI S2K ERP system by diagnosing access issues, ensuring system reliability, and supporting critical end-of-period closing processes.</li>
               <li>Manage full asset lifecycle for 150+ hardware assets, tracking deployment through decommission to minimize attack surface.</li>
               <li>Monitor and enforce organizational IT security policies, identifying and escalating employee compliance violations across all IT touchpoints.</li>
             </ul>
             <h3>Learning Assistant for Professor Betsy Campbell</h3>
             <p class="job-meta">Pennsylvania State University · JAN, 2026 – MAY, 2026</p>
             <ul>
-              <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts.</li>
+              <li>Assisted 150+ students across an introductory IST course, supporting comprehension of core IT concepts including data systems, sociotechnical analysis, and digital literacy.</li>
               <li>Evaluated and delivered structured feedback on 900+ student submissions per semester.</li>
-              <li>Coordinated with course faculty and fellow learning assistants to align grading standards.</li>
+              <li>Coordinated with course faculty and fellow learning assistants to align grading standards and ensure consistent academic support.</li>
             </ul>
             <h3>Congressional Internship Under State Rep. David Madsen</h3>
             <p class="job-meta">Pennsylvania House of Representatives · JUNE, 2024 – AUG, 2024</p>
             <ul>
-              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information.</li>
-              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy.</li>
+              <li>Managed and organized 300+ constituent records, ensuring secure handling of sensitive information and accurate documentation.</li>
+              <li>Researched technology and cybersecurity-related legislation, analyzing potential impacts on state policy and digital privacy.</li>
               <li>Used digital casework tools to continuously track and update 200+ constituent issues.</li>
-              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication.</li>
+              <li>Assisted in resolving 200+ constituent service inquiries with clear, secure communication and timely updates.</li>
             </ul>
             <h3>Shift Supervisor</h3>
             <p class="job-meta">CVS Pharmacy · OCT, 2023 – PRESENT</p>
@@ -740,17 +763,16 @@
               <li>Oversaw daily operations for a high-traffic store serving 150-250 customers per shift using internal IT systems.</li>
               <li>Ensured accurate cash-handling and security procedures for $5,000-$7,000 per shift.</li>
               <li>Consistently maintained customer satisfaction scores above 95% using internal feedback metrics.</li>
-              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20%.</li>
+              <li>Identified process improvements that reduced checkout congestion and improved efficiency by 15-20% during peak hours.</li>
             </ul>
           </div>
           <div class="stack-wrapper">
-            <!-- XP FILE ICON -->
             <div class="xp-file-icon-wrap" onclick="openDocDialog()">
               <div class="xp-file-icon">
                 <div class="fold"></div>
-                <div class="line" style="width:calc(70% - 8px);"></div>
-                <div class="line" style="width:calc(90% - 8px);"></div>
-                <div class="line" style="width:calc(80% - 8px);"></div>
+                <div class="fline" style="margin-top:14px; width:calc(70% - 8px);"></div>
+                <div class="fline" style="margin-top:3px; width:calc(90% - 8px);"></div>
+                <div class="fline" style="margin-top:3px; width:calc(80% - 8px);"></div>
               </div>
               <div class="xp-file-label">Resume & CV</div>
             </div>
@@ -827,14 +849,11 @@
   // DRAGGABLE WINDOWS
   function makeDraggable(winEl, barEl) {
     let origTop, origLeft;
-    requestAnimationFrame(() => {
-      origTop  = winEl.offsetTop;
-      origLeft = winEl.offsetLeft;
-    });
+    requestAnimationFrame(() => { origTop = winEl.offsetTop; origLeft = winEl.offsetLeft; });
     let dragging = false, offX = 0, offY = 0;
 
     barEl.addEventListener('mousedown', e => {
-      if (e.target.classList.contains('xp-btn')) return;
+      if (e.target.classList.contains('xp-btn') || e.target.classList.contains('dialog-close')) return;
       dragging = true;
       offX = e.clientX - winEl.offsetLeft;
       offY = e.clientY - winEl.offsetTop;
@@ -862,19 +881,62 @@
   makeDraggable(document.getElementById('sidebar-win'), document.getElementById('sidebar-bar'));
   makeDraggable(document.getElementById('main-win'),    document.getElementById('main-bar'));
 
+  // DRAGGABLE DIALOG
+  const docDialog = document.getElementById('doc-dialog');
+  const docDialogBar = document.getElementById('doc-dialog-bar');
+  let dlgDragging = false, dlgOffX = 0, dlgOffY = 0;
+
+  docDialogBar.addEventListener('mousedown', e => {
+    if (e.target.classList.contains('dialog-close')) return;
+    dlgDragging = true;
+    dlgOffX = e.clientX - docDialog.offsetLeft;
+    dlgOffY = e.clientY - docDialog.offsetTop;
+    docDialog.style.transform = 'none';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dlgDragging) return;
+    docDialog.style.left = (e.clientX - dlgOffX) + 'px';
+    docDialog.style.top  = (e.clientY - dlgOffY) + 'px';
+  });
+
+  document.addEventListener('mouseup', () => { dlgDragging = false; });
+
   // DOC DIALOG
+  let selectedFile = null;
+
   function openDocDialog() {
+    selectedFile = null;
+    document.querySelectorAll('.dialog-file').forEach(f => f.classList.remove('selected'));
     document.getElementById('doc-overlay').style.display = 'block';
-    document.getElementById('doc-dialog').style.display  = 'flex';
+    docDialog.style.display = 'flex';
+    docDialog.style.top = '50%';
+    docDialog.style.left = '50%';
+    docDialog.style.transform = 'translate(-50%, -50%)';
+    document.getElementById('main-win').classList.add('window-inactive');
   }
 
   function closeDocDialog() {
     document.getElementById('doc-overlay').style.display = 'none';
-    document.getElementById('doc-dialog').style.display  = 'none';
+    docDialog.style.display = 'none';
+    document.getElementById('main-win').classList.remove('window-inactive');
+  }
+
+  function selectFile(type) {
+    selectedFile = type;
+    document.querySelectorAll('.dialog-file').forEach(f => f.classList.remove('selected'));
+    document.getElementById('file-' + type).classList.add('selected');
+  }
+
+  function openSelected() {
+    if (selectedFile === 'resume') openResume();
+    else if (selectedFile === 'cv') openCV();
+    else showXPDialog('Please select a document first.');
   }
 
   document.getElementById('doc-overlay').addEventListener('click', closeDocDialog);
-  document.getElementById('doc-dialog').addEventListener('click', e => e.stopPropagation());
+  docDialog.addEventListener('click', e => e.stopPropagation());
 
   // INFO DIALOG
   function showXPDialog(msg) {
