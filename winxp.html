@@ -41,28 +41,55 @@
     }
 
     /* ACTIVE TITLE BAR */
-    .xp-title-bar {
+   .xp-title-bar {
       height: 28px;
       background:
-        linear-gradient(to bottom,
-          rgba(255,255,255,0.60) 0%,
-          rgba(255,255,255,0.20) 35%,
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.70) 0%,
+          rgba(255,255,255,0.30) 15%,
+          rgba(255,255,255,0.00) 40%,
           rgba(255,255,255,0.00) 60%,
-          rgba(0,0,0,0.10) 100%
+          rgba(255,255,255,0.15) 85%,
+          rgba(255,255,255,0.05) 100%
         ),
-        linear-gradient(to bottom,
-          rgba(120,180,255,0.00) 0%,
-          rgba(120,180,255,0.25) 50%,
-          rgba(120,180,255,0.00) 100%
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.00) 0%,
+          rgba(0,0,0,0.00) 55%,
+          rgba(0,0,0,0.20) 80%,
+          rgba(0,0,0,0.35) 100%
         ),
-        linear-gradient(to right,
-          #1638c8 0%, #2b5ce6 25%, #5b8fe8 55%, #c4dcfa 100%
+        linear-gradient(
+          to bottom,
+          #6aabee 0%,
+          #3578d4 20%,
+          #1a52b8 45%,
+          #1e58bc 60%,
+          #2e6fcc 80%,
+          #1a3ea0 100%
         );
-      border-top: 1px solid #80b0ff;
-      border-bottom: 1px solid #1030a0;
+      border-top: 2px solid #8ec4f8;
+      border-bottom: 1px solid #0a1e6a;
+      border-radius: 4px 4px 0 0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 6px;
       cursor: grab; user-select: none; flex-shrink: 0;
+      position: relative;
+    }
+
+    .xp-title-bar::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.00) 15%,
+        rgba(0,0,0,0.00) 85%,
+        rgba(0,0,0,0.20) 100%
+      );
+      border-radius: 4px 4px 0 0;
+      pointer-events: none;
     }
 
     .xp-title-bar:active { cursor: grabbing; }
@@ -71,15 +98,20 @@
     .xp-title-bar-inactive {
       height: 28px;
       background:
-        linear-gradient(to bottom,
-          rgba(255,255,255,0.20) 0%,
-          rgba(255,255,255,0.00) 100%
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.30) 0%,
+          rgba(255,255,255,0.00) 40%,
+          rgba(0,0,0,0.10) 100%
         ),
-        linear-gradient(to right,
-          #7a96df 0%, #9db8e8 50%, #c4d3f0 100%
+        linear-gradient(
+          to bottom,
+          #9db8e8 0%,
+          #7a96df 40%,
+          #6888cc 100%
         );
-      border-top: 1px solid #a0b8e0;
-      border-bottom: 1px solid #4a6aaa;
+      border-top: 1px solid #b8ccf0;
+      border-bottom: 1px solid #4a5ea0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 6px;
       cursor: grab; user-select: none; flex-shrink: 0;
@@ -90,13 +122,20 @@
     /* INACTIVE STATE when modal open */
     .window-inactive .xp-title-bar {
       background:
-        linear-gradient(to bottom,
-          rgba(255,255,255,0.20) 0%,
-          rgba(255,255,255,0.00) 100%
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.30) 0%,
+          rgba(255,255,255,0.00) 40%,
+          rgba(0,0,0,0.10) 100%
         ),
-        linear-gradient(to right,
-          #7a96df 0%, #9db8e8 50%, #c4d3f0 100%
+        linear-gradient(
+          to bottom,
+          #9db8e8 0%,
+          #7a96df 40%,
+          #6888cc 100%
         ) !important;
+      border-top: 1px solid #b8ccf0 !important;
+      border-bottom: 1px solid #4a5ea0 !important;
     }
 
     .window-inactive .xp-title-bar .xp-title-text {
@@ -386,17 +425,19 @@
       height: 28px;
       background:
         linear-gradient(to bottom,
-          rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.20) 35%,
-          rgba(255,255,255,0.00) 60%, rgba(0,0,0,0.10) 100%
+          rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.30) 15%,
+          rgba(255,255,255,0.00) 40%, rgba(255,255,255,0.00) 60%,
+          rgba(255,255,255,0.15) 85%, rgba(255,255,255,0.05) 100%
         ),
         linear-gradient(to bottom,
-          rgba(120,180,255,0.00) 0%, rgba(120,180,255,0.25) 50%,
-          rgba(120,180,255,0.00) 100%
+          rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 55%,
+          rgba(0,0,0,0.20) 80%, rgba(0,0,0,0.35) 100%
         ),
-        linear-gradient(to right,
-          #1638c8 0%, #2b5ce6 25%, #5b8fe8 55%, #c4dcfa 100%
+        linear-gradient(to bottom,
+          #6aabee 0%, #3578d4 20%, #1a52b8 45%,
+          #1e58bc 60%, #2e6fcc 80%, #1a3ea0 100%
         );
-      border-top: 1px solid #80b0ff;
+      border-top: 2px solid #8ec4f8;
       border-radius: 3px 3px 0 0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4px 0 8px;
